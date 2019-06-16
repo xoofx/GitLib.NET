@@ -47,6 +47,9 @@ typedef int git_result;",
 
                 MappingRules =
                 {
+                    // Remove this function as it is not supported (varargs)
+                    e => e.Map<CppFunction>("git_libgit2_opts").Discard(),
+                    
                     e => e.Map<CppField>("git_strarray::strings").Private(),
                     e => e.Map<CppField>("git_strarray::count").Private(),
                     e => e.MapAll<CppParameter>().CSharpAction(ProcessCSharpParameter),
