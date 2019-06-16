@@ -103,7 +103,7 @@ namespace LibGit2
         /// <summary>
         /// Get a buffer with the filtered content of a blob.
         /// </summary>
-        /// <param name="@out">The git_buf to be filled in</param>
+        /// <param name="out">The git_buf to be filled in</param>
         /// <param name="blob">Pointer to the blob</param>
         /// <param name="as_path">Path used for file attribute lookups, etc.</param>
         /// <param name="check_for_binary_data">Should this test if blob content contains
@@ -168,7 +168,7 @@ namespace LibGit2
         /// <summary>
         /// Create a stream to write a new blob into the object db
         /// </summary>
-        /// <param name="@out">the stream into which to write</param>
+        /// <param name="out">the stream into which to write</param>
         /// <param name="repo">Repository where the blob will be written.
         /// This repository can be bare or not.</param>
         /// <param name="hintpath">If not NULL, will be used to select data filters
@@ -198,7 +198,7 @@ namespace LibGit2
         /// <summary>
         /// Close the stream and write the blob to the object db
         /// </summary>
-        /// <param name="@out">the id of the new blob</param>
+        /// <param name="out">the id of the new blob</param>
         /// <param name="stream">the stream to close</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>
@@ -248,7 +248,7 @@ namespace LibGit2
         /// Create an in-memory copy of a blob. The copy must be explicitly
         /// free'd or it will leak.
         /// </summary>
-        /// <param name="@out">Pointer to store the copy of the object</param>
+        /// <param name="out">Pointer to store the copy of the object</param>
         /// <param name="source">Original object to copy</param>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
         public static extern int git_blob_dup(out git_blob @out, git_blob source);

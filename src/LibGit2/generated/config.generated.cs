@@ -214,7 +214,7 @@ namespace LibGit2
         /// <summary>
         /// Locate the path to the global configuration file
         /// </summary>
-        /// <param name="@out">Pointer to a user-allocated git_buf in which to store the path</param>
+        /// <param name="out">Pointer to a user-allocated git_buf in which to store the path</param>
         /// <returns>0 if a global configuration file has been found. Its path will be stored in `out`.</returns>
         /// <remarks>
         /// The user or global configuration file is usually
@@ -230,7 +230,7 @@ namespace LibGit2
         /// <summary>
         /// Locate the path to the global xdg compatible configuration file
         /// </summary>
-        /// <param name="@out">Pointer to a user-allocated git_buf in which to store the path</param>
+        /// <param name="out">Pointer to a user-allocated git_buf in which to store the path</param>
         /// <returns>0 if a xdg compatible configuration file has been
         /// found. Its path will be stored in `out`.</returns>
         /// <remarks>
@@ -246,7 +246,7 @@ namespace LibGit2
         /// <summary>
         /// Locate the path to the system configuration file
         /// </summary>
-        /// <param name="@out">Pointer to a user-allocated git_buf in which to store the path</param>
+        /// <param name="out">Pointer to a user-allocated git_buf in which to store the path</param>
         /// <returns>0 if a system configuration file has been
         /// found. Its path will be stored in `out`.</returns>
         /// <remarks>
@@ -259,7 +259,7 @@ namespace LibGit2
         /// <summary>
         /// Locate the path to the configuration file in ProgramData
         /// </summary>
-        /// <param name="@out">Pointer to a user-allocated git_buf in which to store the path</param>
+        /// <param name="out">Pointer to a user-allocated git_buf in which to store the path</param>
         /// <returns>0 if a ProgramData configuration file has been
         /// found. Its path will be stored in `out`.</returns>
         /// <remarks>
@@ -271,7 +271,7 @@ namespace LibGit2
         /// <summary>
         /// Open the global, XDG and system configuration files
         /// </summary>
-        /// <param name="@out">Pointer to store the config instance</param>
+        /// <param name="out">Pointer to store the config instance</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>
         /// Utility wrapper that finds the global, XDG and system configuration files
@@ -290,7 +290,7 @@ namespace LibGit2
         /// <summary>
         /// Allocate a new configuration object
         /// </summary>
-        /// <param name="@out">pointer to the new configuration</param>
+        /// <param name="out">pointer to the new configuration</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This object is empty, so you have to add a file to it before you
@@ -338,7 +338,7 @@ namespace LibGit2
         /// <summary>
         /// Create a new config instance containing a single on-disk file
         /// </summary>
-        /// <param name="@out">The configuration instance to create</param>
+        /// <param name="out">The configuration instance to create</param>
         /// <param name="path">Path to the on-disk file to open</param>
         /// <returns>0 on success, or an error code</returns>
         /// <remarks>
@@ -359,7 +359,7 @@ namespace LibGit2
         /// <summary>
         /// Build a single-level focused config object from a multi-level one.
         /// </summary>
-        /// <param name="@out">The configuration instance to create</param>
+        /// <param name="out">The configuration instance to create</param>
         /// <param name="parent">Multi-level config to search for the given level</param>
         /// <param name="level">Configuration level to search for</param>
         /// <returns>0, GIT_ENOTFOUND if the passed level cannot be found in the
@@ -382,7 +382,7 @@ namespace LibGit2
         /// <summary>
         /// Open the global/XDG configuration file according to git's rules
         /// </summary>
-        /// <param name="@out">pointer in which to store the config object</param>
+        /// <param name="out">pointer in which to store the config object</param>
         /// <param name="config">the config object in which to look</param>
         /// <remarks>
         /// Git allows you to store your global configuration at
@@ -397,7 +397,7 @@ namespace LibGit2
         /// <summary>
         /// Create a snapshot of the configuration
         /// </summary>
-        /// <param name="@out">pointer in which to store the snapshot config object</param>
+        /// <param name="out">pointer in which to store the snapshot config object</param>
         /// <param name="config">configuration to snapshot</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>
@@ -425,7 +425,7 @@ namespace LibGit2
         /// <summary>
         /// Get the git_config_entry of a config variable.
         /// </summary>
-        /// <param name="@out">pointer to the variable git_config_entry</param>
+        /// <param name="out">pointer to the variable git_config_entry</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
         /// <returns>0 or an error code</returns>
@@ -444,7 +444,7 @@ namespace LibGit2
         /// <summary>
         /// Get the value of an integer config variable.
         /// </summary>
-        /// <param name="@out">pointer to the variable where the value should be stored</param>
+        /// <param name="out">pointer to the variable where the value should be stored</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
         /// <returns>0 or an error code</returns>
@@ -465,7 +465,7 @@ namespace LibGit2
         /// <summary>
         /// Get the value of a long integer config variable.
         /// </summary>
-        /// <param name="@out">pointer to the variable where the value should be stored</param>
+        /// <param name="out">pointer to the variable where the value should be stored</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
         /// <returns>0 or an error code</returns>
@@ -486,7 +486,7 @@ namespace LibGit2
         /// <summary>
         /// Get the value of a boolean config variable.
         /// </summary>
-        /// <param name="@out">pointer to the variable where the value should be stored</param>
+        /// <param name="out">pointer to the variable where the value should be stored</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
         /// <returns>0 or an error code</returns>
@@ -508,7 +508,7 @@ namespace LibGit2
         /// <summary>
         /// Get the value of a path config variable.
         /// </summary>
-        /// <param name="@out">the buffer in which to store the result</param>
+        /// <param name="out">the buffer in which to store the result</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
         /// <returns>0 or an error code</returns>
@@ -531,7 +531,7 @@ namespace LibGit2
         /// <summary>
         /// Get the value of a string config variable.
         /// </summary>
-        /// <param name="@out">pointer to the string</param>
+        /// <param name="out">pointer to the string</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
         /// <returns>0 or an error code</returns>
@@ -554,7 +554,7 @@ namespace LibGit2
         /// <summary>
         /// Get the value of a string config variable.
         /// </summary>
-        /// <param name="@out">buffer in which to store the string</param>
+        /// <param name="out">buffer in which to store the string</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
         /// <returns>0 or an error code</returns>
@@ -592,7 +592,7 @@ namespace LibGit2
         /// <summary>
         /// Get each value of a multivar
         /// </summary>
-        /// <param name="@out">pointer to store the iterator</param>
+        /// <param name="out">pointer to store the iterator</param>
         /// <param name="cfg">where to look for the variable</param>
         /// <param name="name">the variable's name</param>
         /// <param name="regexp">regular expression to filter which variables we're
@@ -770,7 +770,7 @@ namespace LibGit2
         /// <summary>
         /// Iterate over all the config variables
         /// </summary>
-        /// <param name="@out">pointer to store the iterator</param>
+        /// <param name="out">pointer to store the iterator</param>
         /// <param name="cfg">where to ge the variables from</param>
         /// <remarks>
         /// Use `git_config_next` to advance the iteration and
@@ -782,7 +782,7 @@ namespace LibGit2
         /// <summary>
         /// Iterate over all the config variables whose name matches a pattern
         /// </summary>
-        /// <param name="@out">pointer to store the iterator</param>
+        /// <param name="out">pointer to store the iterator</param>
         /// <param name="cfg">where to ge the variables from</param>
         /// <param name="regexp">regular expression to match the names</param>
         /// <remarks>
@@ -817,7 +817,7 @@ namespace LibGit2
         /// Query the value of a config variable and return it mapped to
         /// an integer constant.
         /// </summary>
-        /// <param name="@out">place to store the result of the mapping</param>
+        /// <param name="out">place to store the result of the mapping</param>
         /// <param name="cfg">config file to get the variables from</param>
         /// <param name="name">name of the config variable to lookup</param>
         /// <param name="maps">array of `git_cvar_map` objects specifying the possible mappings</param>
@@ -847,7 +847,7 @@ namespace LibGit2
         /// <summary>
         /// Maps a string value to an integer constant
         /// </summary>
-        /// <param name="@out">place to store the result of the parsing</param>
+        /// <param name="out">place to store the result of the parsing</param>
         /// <param name="maps">array of `git_cvar_map` objects specifying the possible mappings</param>
         /// <param name="map_n">number of mapping objects in `maps`</param>
         /// <param name="value">value to parse</param>
@@ -857,7 +857,7 @@ namespace LibGit2
         /// <summary>
         /// Parse a string value as a bool.
         /// </summary>
-        /// <param name="@out">place to store the result of the parsing</param>
+        /// <param name="out">place to store the result of the parsing</param>
         /// <param name="value">value to parse</param>
         /// <remarks>
         /// Valid values for true are: 'true', 'yes', 'on', 1 or any
@@ -870,7 +870,7 @@ namespace LibGit2
         /// <summary>
         /// Parse a string value as an int32.
         /// </summary>
-        /// <param name="@out">place to store the result of the parsing</param>
+        /// <param name="out">place to store the result of the parsing</param>
         /// <param name="value">value to parse</param>
         /// <remarks>
         /// An optional value suffix of 'k', 'm', or 'g' will
@@ -883,7 +883,7 @@ namespace LibGit2
         /// <summary>
         /// Parse a string value as an int64.
         /// </summary>
-        /// <param name="@out">place to store the result of the parsing</param>
+        /// <param name="out">place to store the result of the parsing</param>
         /// <param name="value">value to parse</param>
         /// <remarks>
         /// An optional value suffix of 'k', 'm', or 'g' will
@@ -896,7 +896,7 @@ namespace LibGit2
         /// <summary>
         /// Parse a string value as a path.
         /// </summary>
-        /// <param name="@out">placae to store the result of parsing</param>
+        /// <param name="out">placae to store the result of parsing</param>
         /// <param name="value">the path to evaluate</param>
         /// <remarks>
         /// A leading '~' will be expanded to the global search path (which

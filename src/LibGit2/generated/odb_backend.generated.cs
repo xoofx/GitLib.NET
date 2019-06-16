@@ -103,7 +103,7 @@ namespace LibGit2
         /// <summary>
         /// Create a backend for the packfiles.
         /// </summary>
-        /// <param name="@out">location to store the odb backend pointer</param>
+        /// <param name="out">location to store the odb backend pointer</param>
         /// <param name="objects_dir">the Git repository's objects directory</param>
         /// <returns>0 or an error code</returns>
         public static git_result git_odb_backend_pack(out git_odb_backend @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string objects_dir)
@@ -118,7 +118,7 @@ namespace LibGit2
         /// <summary>
         /// Create a backend for loose objects
         /// </summary>
-        /// <param name="@out">location to store the odb backend pointer</param>
+        /// <param name="out">location to store the odb backend pointer</param>
         /// <param name="objects_dir">the Git repository's objects directory</param>
         /// <param name="compression_level">zlib compression level to use</param>
         /// <param name="do_fsync">whether to do an fsync() after writing</param>
@@ -137,7 +137,7 @@ namespace LibGit2
         /// <summary>
         /// Create a backend out of a single packfile
         /// </summary>
-        /// <param name="@out">location to store the odb backend pointer</param>
+        /// <param name="out">location to store the odb backend pointer</param>
         /// <param name="index_file">path to the packfile's .idx file</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>

@@ -160,7 +160,7 @@ namespace LibGit2
         /// <summary>
         /// Compile a pathspec
         /// </summary>
-        /// <param name="@out">Output of the compiled pathspec</param>
+        /// <param name="out">Output of the compiled pathspec</param>
         /// <param name="pathspec">A git_strarray of the paths to match</param>
         /// <returns>0 on success, 
         /// &lt;
@@ -203,7 +203,7 @@ namespace LibGit2
         /// <summary>
         /// Match a pathspec against the working directory of a repository.
         /// </summary>
-        /// <param name="@out">Output list of matches; pass NULL to just get return value</param>
+        /// <param name="out">Output list of matches; pass NULL to just get return value</param>
         /// <param name="repo">The repository in which to match; bare repo is an error</param>
         /// <param name="flags">Combination of git_pathspec_flag_t options to control match</param>
         /// <param name="ps">Pathspec to be matched</param>
@@ -226,7 +226,7 @@ namespace LibGit2
         /// <summary>
         /// Match a pathspec against entries in an index.
         /// </summary>
-        /// <param name="@out">Output list of matches; pass NULL to just get return value</param>
+        /// <param name="out">Output list of matches; pass NULL to just get return value</param>
         /// <param name="index">The index to match against</param>
         /// <param name="flags">Combination of git_pathspec_flag_t options to control match</param>
         /// <param name="ps">Pathspec to be matched</param>
@@ -248,7 +248,7 @@ namespace LibGit2
         /// <summary>
         /// Match a pathspec against files in a tree.
         /// </summary>
-        /// <param name="@out">Output list of matches; pass NULL to just get return value</param>
+        /// <param name="out">Output list of matches; pass NULL to just get return value</param>
         /// <param name="tree">The root-level tree to match against</param>
         /// <param name="flags">Combination of git_pathspec_flag_t options to control match</param>
         /// <param name="ps">Pathspec to be matched</param>
@@ -267,7 +267,7 @@ namespace LibGit2
         /// <summary>
         /// Match a pathspec against files in a diff list.
         /// </summary>
-        /// <param name="@out">Output list of matches; pass NULL to just get return value</param>
+        /// <param name="out">Output list of matches; pass NULL to just get return value</param>
         /// <param name="diff">A generated diff list</param>
         /// <param name="flags">Combination of git_pathspec_flag_t options to control match</param>
         /// <param name="ps">Pathspec to be matched</param>

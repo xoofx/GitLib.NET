@@ -17,7 +17,7 @@ namespace LibGit2
         /// <summary>
         /// Create a new transaction object
         /// </summary>
-        /// <param name="@out">the resulting transaction</param>
+        /// <param name="out">the resulting transaction</param>
         /// <param name="repo">the repository in which to lock</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>

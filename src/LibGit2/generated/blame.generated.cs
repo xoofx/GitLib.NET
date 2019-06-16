@@ -279,7 +279,7 @@ namespace LibGit2
         /// <summary>
         /// Get the blame for a single file.
         /// </summary>
-        /// <param name="@out">pointer that will receive the blame object</param>
+        /// <param name="out">pointer that will receive the blame object</param>
         /// <param name="repo">repository whose history is to be walked</param>
         /// <param name="path">path to file to consider</param>
         /// <param name="options">options for the blame operation.  If NULL, this is treated as
@@ -301,7 +301,7 @@ namespace LibGit2
         /// means that once a file blame is completed (which can be expensive), updating
         /// the buffer blame is very fast.
         /// </summary>
-        /// <param name="@out">pointer that will receive the resulting blame data</param>
+        /// <param name="out">pointer that will receive the resulting blame data</param>
         /// <param name="reference">cached blame from the history of the file (usually the output
         /// from git_blame_file)</param>
         /// <param name="buffer">the (possibly) modified contents of the file</param>

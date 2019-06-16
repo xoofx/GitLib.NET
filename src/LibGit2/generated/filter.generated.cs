@@ -170,9 +170,9 @@ namespace LibGit2
         /// <summary>
         /// Apply filter list to a data buffer.
         /// </summary>
-        /// <param name="@out">Buffer to store the result of the filtering</param>
+        /// <param name="out">Buffer to store the result of the filtering</param>
         /// <param name="filters">A loaded git_filter_list (or NULL)</param>
-        /// <param name="@in">Buffer containing the data to filter</param>
+        /// <param name="in">Buffer containing the data to filter</param>
         /// <returns>0 on success, an error code otherwise</returns>
         /// <remarks>
         /// See `git2/buffer.h` for background on `git_buf` objects.If the `in` buffer holds data allocated by libgit2 (i.e. `in-&gt;asize` is
@@ -195,7 +195,7 @@ namespace LibGit2
         /// <summary>
         /// Apply a filter list to the contents of a file on disk
         /// </summary>
-        /// <param name="@out">buffer into which to store the filtered file</param>
+        /// <param name="out">buffer into which to store the filtered file</param>
         /// <param name="filters">the list of filters to apply</param>
         /// <param name="repo">the repository in which to perform the filtering</param>
         /// <param name="path">the path of the file to filter, a relative path will be
@@ -206,7 +206,7 @@ namespace LibGit2
         /// <summary>
         /// Apply a filter list to the contents of a blob
         /// </summary>
-        /// <param name="@out">buffer into which to store the filtered file</param>
+        /// <param name="out">buffer into which to store the filtered file</param>
         /// <param name="filters">the list of filters to apply</param>
         /// <param name="blob">the blob to filter</param>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]

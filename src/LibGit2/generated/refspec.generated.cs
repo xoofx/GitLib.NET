@@ -97,7 +97,7 @@ namespace LibGit2
         /// <summary>
         /// Transform a reference to its target following the refspec's rules
         /// </summary>
-        /// <param name="@out">where to store the target name</param>
+        /// <param name="out">where to store the target name</param>
         /// <param name="spec">the refspec</param>
         /// <param name="name">the name of the reference to transform</param>
         /// <returns>0, GIT_EBUFS or another error</returns>
@@ -107,7 +107,7 @@ namespace LibGit2
         /// <summary>
         /// Transform a target reference to its source reference following the refspec's rules
         /// </summary>
-        /// <param name="@out">where to store the source reference name</param>
+        /// <param name="out">where to store the source reference name</param>
         /// <param name="spec">the refspec</param>
         /// <param name="name">the name of the reference to transform</param>
         /// <returns>0, GIT_EBUFS or another error</returns>

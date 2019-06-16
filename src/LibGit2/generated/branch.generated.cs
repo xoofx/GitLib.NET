@@ -42,7 +42,7 @@ namespace LibGit2
         /// <summary>
         /// Create a new branch pointing at a target commit
         /// </summary>
-        /// <param name="@out">Pointer where to store the underlying reference.</param>
+        /// <param name="out">Pointer where to store the underlying reference.</param>
         /// <param name="branch_name">Name for the branch; this name is
         /// validated for consistency. It should also not conflict with
         /// an already existing branch name.</param>
@@ -102,7 +102,7 @@ namespace LibGit2
         /// <summary>
         /// Create an iterator which loops over the requested branches.
         /// </summary>
-        /// <param name="@out">the iterator</param>
+        /// <param name="out">the iterator</param>
         /// <param name="repo">Repository where to find the branches.</param>
         /// <param name="list_flags">Filtering flags for the branch
         /// listing. Valid values are GIT_BRANCH_LOCAL, GIT_BRANCH_REMOTE
@@ -120,7 +120,7 @@ namespace LibGit2
         /// <summary>
         /// Retrieve the next branch from the iterator
         /// </summary>
-        /// <param name="@out">the reference</param>
+        /// <param name="out">the reference</param>
         /// <param name="out_type">the type of branch (local or remote-tracking)</param>
         /// <param name="iter">the branch iterator</param>
         /// <returns>0 on success, GIT_ITEROVER if there are no more branches or an error code.</returns>
@@ -164,7 +164,7 @@ namespace LibGit2
         /// <summary>
         /// Lookup a branch by its name in a repository.
         /// </summary>
-        /// <param name="@out">pointer to the looked-up branch reference</param>
+        /// <param name="out">pointer to the looked-up branch reference</param>
         /// <param name="repo">the repository to look up the branch</param>
         /// <param name="branch_name">Name of the branch to be looked-up;
         /// this name is validated for consistency.</param>
@@ -182,9 +182,9 @@ namespace LibGit2
         /// <summary>
         /// Return the name of the given local or remote branch.
         /// </summary>
-        /// <param name="@out">where the pointer of branch name is stored;
+        /// <param name="out">where the pointer of branch name is stored;
         /// this is valid as long as the ref is not freed.</param>
-        /// <param name="@ref">the reference ideally pointing to a branch</param>
+        /// <param name="ref">the reference ideally pointing to a branch</param>
         /// <returns>0 on success; otherwise an error code (e.g., if the
         /// ref is no local or remote branch).</returns>
         /// <remarks>
@@ -200,7 +200,7 @@ namespace LibGit2
         /// Return the reference supporting the remote tracking branch,
         /// given a local branch reference.
         /// </summary>
-        /// <param name="@out">Pointer where to store the retrieved
+        /// <param name="out">Pointer where to store the retrieved
         /// reference.</param>
         /// <param name="branch">Current underlying reference of the branch.</param>
         /// <returns>0 on success; GIT_ENOTFOUND when no remote tracking
@@ -228,7 +228,7 @@ namespace LibGit2
         /// Return the name of the reference supporting the remote tracking branch,
         /// given the name of a local branch reference.
         /// </summary>
-        /// <param name="@out">Pointer to the user-allocated git_buf which will be
+        /// <param name="out">Pointer to the user-allocated git_buf which will be
         /// filled with the name of the reference.</param>
         /// <param name="repo">the repository where the branches live</param>
         /// <param name="refname">reference name of the local branch.</param>
@@ -259,7 +259,7 @@ namespace LibGit2
         /// <summary>
         /// Return the name of remote that the remote tracking branch belongs to.
         /// </summary>
-        /// <param name="@out">Pointer to the user-allocated git_buf which will be filled with the name of the remote.</param>
+        /// <param name="out">Pointer to the user-allocated git_buf which will be filled with the name of the remote.</param>
         /// <param name="repo">The repository where the branch lives.</param>
         /// <param name="canonical_branch_name">name of the remote tracking branch.</param>
         /// <returns>0, GIT_ENOTFOUND

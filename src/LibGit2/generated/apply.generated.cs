@@ -84,7 +84,7 @@ namespace LibGit2
         /// Apply a `git_diff` to a `git_tree`, and return the resulting image
         /// as an index.
         /// </summary>
-        /// <param name="@out">the postimage of the application</param>
+        /// <param name="out">the postimage of the application</param>
         /// <param name="repo">the repository to apply</param>
         /// <param name="preimage">the tree to apply the diff to</param>
         /// <param name="diff">the diff to apply</param>

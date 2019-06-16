@@ -46,7 +46,7 @@ namespace LibGit2
         /// <summary>
         /// Return a patch for an entry in the diff list.
         /// </summary>
-        /// <param name="@out">Output parameter for the delta patch object</param>
+        /// <param name="out">Output parameter for the delta patch object</param>
         /// <param name="diff">Diff list object</param>
         /// <param name="idx">Index into diff list</param>
         /// <returns>0 on success, other value 
@@ -67,7 +67,7 @@ namespace LibGit2
         /// <summary>
         /// Directly generate a patch from the difference between two blobs.
         /// </summary>
-        /// <param name="@out">The generated patch; NULL on error</param>
+        /// <param name="out">The generated patch; NULL on error</param>
         /// <param name="old_blob">Blob for old side of diff, or NULL for empty blob</param>
         /// <param name="old_as_path">Treat old blob as if it had this filename; can be NULL</param>
         /// <param name="new_blob">Blob for new side of diff, or NULL for empty blob</param>
@@ -94,7 +94,7 @@ namespace LibGit2
         /// <summary>
         /// Directly generate a patch from the difference between a blob and a buffer.
         /// </summary>
-        /// <param name="@out">The generated patch; NULL on error</param>
+        /// <param name="out">The generated patch; NULL on error</param>
         /// <param name="old_blob">Blob for old side of diff, or NULL for empty blob</param>
         /// <param name="old_as_path">Treat old blob as if it had this filename; can be NULL</param>
         /// <param name="buffer">Raw data for new side of diff, or NULL for empty</param>
@@ -122,7 +122,7 @@ namespace LibGit2
         /// <summary>
         /// Directly generate a patch from the difference between two buffers.
         /// </summary>
-        /// <param name="@out">The generated patch; NULL on error</param>
+        /// <param name="out">The generated patch; NULL on error</param>
         /// <param name="old_buffer">Raw data for old side of diff, or NULL for empty</param>
         /// <param name="old_len">Length of the raw data for old side of the diff</param>
         /// <param name="old_as_path">Treat old buffer as if it had this filename; can be NULL</param>
@@ -189,7 +189,7 @@ namespace LibGit2
         /// <summary>
         /// Get the information about a hunk in a patch
         /// </summary>
-        /// <param name="@out">Output pointer to git_diff_hunk of hunk</param>
+        /// <param name="out">Output pointer to git_diff_hunk of hunk</param>
         /// <param name="lines_in_hunk">Output count of total lines in this hunk</param>
         /// <param name="patch">Input pointer to patch object</param>
         /// <param name="hunk_idx">Input index of hunk to get information about</param>
@@ -216,7 +216,7 @@ namespace LibGit2
         /// <summary>
         /// Get data about a line in a hunk of a patch.
         /// </summary>
-        /// <param name="@out">The git_diff_line data for this line</param>
+        /// <param name="out">The git_diff_line data for this line</param>
         /// <param name="patch">The patch to look in</param>
         /// <param name="hunk_idx">The index of the hunk</param>
         /// <param name="line_of_hunk">The index of the line in the hunk</param>
@@ -279,7 +279,7 @@ namespace LibGit2
         /// <summary>
         /// Get the content of a patch as a single diff text.
         /// </summary>
-        /// <param name="@out">The git_buf to be filled in</param>
+        /// <param name="out">The git_buf to be filled in</param>
         /// <param name="patch">A git_patch representing changes to one file</param>
         /// <returns>0 on success, 
         /// &lt;

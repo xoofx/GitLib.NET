@@ -76,7 +76,7 @@ namespace LibGit2
         /// <summary>
         /// Create a new indexer instance
         /// </summary>
-        /// <param name="@out">where to store the indexer instance</param>
+        /// <param name="out">where to store the indexer instance</param>
         /// <param name="path">to the directory where the packfile should be stored</param>
         /// <param name="mode">permissions to use creating packfile or 0 for defaults</param>
         /// <param name="odb">object database from which to read base objects when

@@ -69,7 +69,7 @@ namespace LibGit2
         /// <summary>
         /// Creates a new iterator for notes
         /// </summary>
-        /// <param name="@out">pointer to the iterator</param>
+        /// <param name="out">pointer to the iterator</param>
         /// <param name="repo">repository where to look up the note</param>
         /// <param name="notes_ref">canonical name of the reference to use (optional); defaults to
         /// "refs/notes/commits"</param>
@@ -89,7 +89,7 @@ namespace LibGit2
         /// <summary>
         /// Creates a new iterator for notes from a commit
         /// </summary>
-        /// <param name="@out">pointer to the iterator</param>
+        /// <param name="out">pointer to the iterator</param>
         /// <param name="notes_commit">a pointer to the notes commit object</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>
@@ -132,7 +132,7 @@ namespace LibGit2
         /// <summary>
         /// Read the note for an object
         /// </summary>
-        /// <param name="@out">pointer to the read note; NULL in case of error</param>
+        /// <param name="out">pointer to the read note; NULL in case of error</param>
         /// <param name="repo">repository where to look up the note</param>
         /// <param name="notes_ref">canonical name of the reference to use (optional); defaults to
         /// "refs/notes/commits"</param>
@@ -153,7 +153,7 @@ namespace LibGit2
         /// <summary>
         /// Read the note for an object from a note commit
         /// </summary>
-        /// <param name="@out">pointer to the read note; NULL in case of error</param>
+        /// <param name="out">pointer to the read note; NULL in case of error</param>
         /// <param name="repo">repository where to look up the note</param>
         /// <param name="notes_commit">a pointer to the notes commit object</param>
         /// <param name="oid">OID of the git object to read the note from</param>
@@ -206,7 +206,7 @@ namespace LibGit2
         /// <summary>
         /// Add a note for an object
         /// </summary>
-        /// <param name="@out">pointer to store the OID (optional); NULL in case of error</param>
+        /// <param name="out">pointer to store the OID (optional); NULL in case of error</param>
         /// <param name="repo">repository where to store the note</param>
         /// <param name="notes_ref">canonical name of the reference to use (optional);
         /// defaults to "refs/notes/commits"</param>
@@ -307,7 +307,7 @@ namespace LibGit2
         /// <summary>
         /// Get the default notes reference for a repository
         /// </summary>
-        /// <param name="@out">buffer in which to store the name of the default notes reference</param>
+        /// <param name="out">buffer in which to store the name of the default notes reference</param>
         /// <param name="repo">The Git repository</param>
         /// <returns>0 or an error code</returns>
         public static git_result git_note_default_ref(out git_buf @out, git_repository repo)

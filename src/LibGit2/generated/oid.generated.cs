@@ -54,7 +54,7 @@ namespace LibGit2
         /// <summary>
         /// Parse a hex formatted object id into a git_oid.
         /// </summary>
-        /// <param name="@out">oid structure the result is written into.</param>
+        /// <param name="out">oid structure the result is written into.</param>
         /// <param name="str">input hex string; must be pointing at the start of
         /// the hex sequence and have at least the number of bytes
         /// needed for an oid encoded in hex (40 bytes).</param>
@@ -71,7 +71,7 @@ namespace LibGit2
         /// <summary>
         /// Parse a hex formatted null-terminated string into a git_oid.
         /// </summary>
-        /// <param name="@out">oid structure the result is written into.</param>
+        /// <param name="out">oid structure the result is written into.</param>
         /// <param name="str">input hex string; must be null-terminated.</param>
         /// <returns>0 or an error code</returns>
         public static git_result git_oid_fromstrp(out git_oid @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string str)
@@ -86,7 +86,7 @@ namespace LibGit2
         /// <summary>
         /// Parse N characters of a hex formatted object id into a git_oid.
         /// </summary>
-        /// <param name="@out">oid structure the result is written into.</param>
+        /// <param name="out">oid structure the result is written into.</param>
         /// <param name="str">input hex string of at least size `length`</param>
         /// <param name="length">length of the input string</param>
         /// <returns>0 or an error code</returns>
@@ -106,7 +106,7 @@ namespace LibGit2
         /// <summary>
         /// Copy an already raw oid into a git_oid structure.
         /// </summary>
-        /// <param name="@out">oid structure the result is written into.</param>
+        /// <param name="out">oid structure the result is written into.</param>
         /// <param name="raw">the raw input bytes to be copied.</param>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
         public static extern void git_oid_fromraw(out git_oid @out, IntPtr raw);
@@ -114,7 +114,7 @@ namespace LibGit2
         /// <summary>
         /// Format a git_oid into a hex string.
         /// </summary>
-        /// <param name="@out">output hex string; must be pointing at the start of
+        /// <param name="out">output hex string; must be pointing at the start of
         /// the hex sequence and have at least the number of bytes
         /// needed for an oid encoded in hex (40 bytes). Only the
         /// oid digits are written; a '
@@ -128,7 +128,7 @@ namespace LibGit2
         /// <summary>
         /// Format a git_oid into a partial hex string.
         /// </summary>
-        /// <param name="@out">output hex string; you say how many bytes to write.
+        /// <param name="out">output hex string; you say how many bytes to write.
         /// If the number of bytes is &gt; GIT_OID_HEXSZ, extra bytes
         /// will be zeroed; if not, a '
         /// \
@@ -141,7 +141,7 @@ namespace LibGit2
         /// <summary>
         /// Format a git_oid into a loose-object path string.
         /// </summary>
-        /// <param name="@out">output hex string; must be pointing at the start of
+        /// <param name="out">output hex string; must be pointing at the start of
         /// the hex sequence and have at least the number of bytes
         /// needed for an oid encoded in hex (41 bytes). Only the
         /// oid digits are written; a '
@@ -173,7 +173,7 @@ namespace LibGit2
         /// <summary>
         /// Format a git_oid into a buffer as a hex format c-string.
         /// </summary>
-        /// <param name="@out">the buffer into which the oid string is output.</param>
+        /// <param name="out">the buffer into which the oid string is output.</param>
         /// <param name="n">the size of the out buffer.</param>
         /// <param name="id">the oid structure to format.</param>
         /// <returns>the out buffer pointer, assuming no input parameter
@@ -191,7 +191,7 @@ namespace LibGit2
         /// <summary>
         /// Copy an oid from one structure to another.
         /// </summary>
-        /// <param name="@out">oid structure the result is written into.</param>
+        /// <param name="out">oid structure the result is written into.</param>
         /// <param name="src">oid structure to copy from.</param>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
         public static extern void git_oid_cpy(out git_oid @out, in git_oid src);

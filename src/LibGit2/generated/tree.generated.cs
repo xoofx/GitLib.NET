@@ -103,7 +103,7 @@ namespace LibGit2
         /// <summary>
         /// Lookup a tree object from the repository.
         /// </summary>
-        /// <param name="@out">Pointer to the looked up tree</param>
+        /// <param name="out">Pointer to the looked up tree</param>
         /// <param name="repo">The repo to use when locating the tree.</param>
         /// <param name="id">Identity of the tree to locate.</param>
         /// <returns>0 or an error code</returns>
@@ -122,7 +122,7 @@ namespace LibGit2
         /// </summary>
         /// <seealso cref="git_object_lookup_prefix"/>
         /// 
-        /// <param name="@out">pointer to the looked up tree</param>
+        /// <param name="out">pointer to the looked up tree</param>
         /// <param name="repo">the repo to use when locating the tree.</param>
         /// <param name="id">identity of the tree to locate.</param>
         /// <param name="len">the length of the short identifier</param>
@@ -214,7 +214,7 @@ namespace LibGit2
         /// Retrieve a tree entry contained in a tree or in any of its subtrees,
         /// given its relative path.
         /// </summary>
-        /// <param name="@out">Pointer where to store the tree entry</param>
+        /// <param name="out">Pointer where to store the tree entry</param>
         /// <param name="root">Previously loaded tree which is the root of the relative path</param>
         /// <param name="path">Path to the contained entry</param>
         /// <returns>0 on success; GIT_ENOTFOUND if the path does not exist</returns>
@@ -333,7 +333,7 @@ namespace LibGit2
         /// <summary>
         /// Create a new tree builder.
         /// </summary>
-        /// <param name="@out">Pointer where to store the tree builder</param>
+        /// <param name="out">Pointer where to store the tree builder</param>
         /// <param name="repo">Repository in which to store the object</param>
         /// <param name="source">Source tree to initialize the builder (optional)</param>
         /// <returns>0 on success; error code otherwise</returns>
@@ -395,7 +395,7 @@ namespace LibGit2
         /// <summary>
         /// Add or update an entry to the builder
         /// </summary>
-        /// <param name="@out">Pointer to store the entry (optional)</param>
+        /// <param name="out">Pointer to store the entry (optional)</param>
         /// <param name="bld">Tree builder</param>
         /// <param name="filename">Filename of the entry</param>
         /// <param name="id">SHA1 oid of the entry</param>
@@ -511,7 +511,7 @@ namespace LibGit2
         /// Create an in-memory copy of a tree. The copy must be explicitly
         /// free'd or it will leak.
         /// </summary>
-        /// <param name="@out">Pointer to store the copy of the tree</param>
+        /// <param name="out">Pointer to store the copy of the tree</param>
         /// <param name="source">Original tree to copy</param>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
         public static extern int git_tree_dup(out git_tree @out, git_tree source);
@@ -519,7 +519,7 @@ namespace LibGit2
         /// <summary>
         /// Create a tree based on another one with the specified modifications
         /// </summary>
-        /// <param name="@out">id of the new tree</param>
+        /// <param name="out">id of the new tree</param>
         /// <param name="repo">the repository in which to create the tree, must be the
         /// same as for `baseline`</param>
         /// <param name="baseline">the tree to base these changes on</param>

@@ -234,7 +234,7 @@ namespace LibGit2
         /// of the Git index file in 'index_path', without a repository
         /// to back it.
         /// </summary>
-        /// <param name="@out">the pointer for the new index</param>
+        /// <param name="out">the pointer for the new index</param>
         /// <param name="index_path">the path to the index file in disk</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>
@@ -255,7 +255,7 @@ namespace LibGit2
         /// <summary>
         /// Create an in-memory index object.
         /// </summary>
-        /// <param name="@out">the pointer for the new index</param>
+        /// <param name="out">the pointer for the new index</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This index object cannot be read/written to the filesystem,
@@ -416,7 +416,7 @@ namespace LibGit2
         /// <summary>
         /// Write the index as a tree
         /// </summary>
-        /// <param name="@out">Pointer where to store the OID of the written tree</param>
+        /// <param name="out">Pointer where to store the OID of the written tree</param>
         /// <param name="index">Index to write</param>
         /// <returns>0 on success, GIT_EUNMERGED when the index is not clean
         /// or an error code</returns>
@@ -440,7 +440,7 @@ namespace LibGit2
         /// <summary>
         /// Write the index as a tree to the given repository
         /// </summary>
-        /// <param name="@out">Pointer where to store OID of the the written tree</param>
+        /// <param name="out">Pointer where to store OID of the the written tree</param>
         /// <param name="index">Index to write</param>
         /// <param name="repo">Repository where to write the tree</param>
         /// <returns>0 on success, GIT_EUNMERGED when the index is not clean
@@ -606,7 +606,7 @@ namespace LibGit2
         /// <summary>
         /// Return the next index entry in-order from the iterator.
         /// </summary>
-        /// <param name="@out">Pointer to store the index entry in</param>
+        /// <param name="out">Pointer to store the index entry in</param>
         /// <param name="iterator">The iterator</param>
         /// <returns>0, GIT_ITEROVER on iteration completion or an error code</returns>
         public static git_result git_index_iterator_next(out IntPtr @out, git_index_iterator iterator)

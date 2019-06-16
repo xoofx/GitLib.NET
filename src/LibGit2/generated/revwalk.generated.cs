@@ -81,7 +81,7 @@ namespace LibGit2
         /// <summary>
         /// Allocate a new revision walker to iterate through a repo.
         /// </summary>
-        /// <param name="@out">pointer to the new revision walker</param>
+        /// <param name="out">pointer to the new revision walker</param>
         /// <param name="repo">the repo to walk through</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>
@@ -275,7 +275,7 @@ namespace LibGit2
         /// <summary>
         /// Get the next commit from the revision walk.
         /// </summary>
-        /// <param name="@out">Pointer where to store the oid of the next commit</param>
+        /// <param name="out">Pointer where to store the oid of the next commit</param>
         /// <param name="walk">the walker to pop the commit from.</param>
         /// <returns>0 if the next commit was found;
         /// GIT_ITEROVER if there are no commits left to iterate</returns>

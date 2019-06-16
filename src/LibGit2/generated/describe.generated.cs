@@ -188,7 +188,7 @@ namespace LibGit2
         /// <summary>
         /// Describe a commit
         /// </summary>
-        /// <param name="@out">pointer to store the result. You must free this once
+        /// <param name="out">pointer to store the result. You must free this once
         /// you're done with it.</param>
         /// <param name="repo">the repository in which to perform the describe</param>
         /// <param name="opts">the lookup options (or NULL for defaults)</param>
@@ -203,7 +203,7 @@ namespace LibGit2
         /// <summary>
         /// Print the describe result to a buffer
         /// </summary>
-        /// <param name="@out">The buffer to store the result</param>
+        /// <param name="out">The buffer to store the result</param>
         /// <param name="result">the result from `git_describe_commit()` or
         /// `git_describe_workdir()`.</param>
         /// <param name="opts">the formatting options (or NULL for defaults)</param>

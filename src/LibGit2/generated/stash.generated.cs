@@ -209,7 +209,7 @@ namespace LibGit2
         /// <summary>
         /// Save the local modifications to a new stash.
         /// </summary>
-        /// <param name="@out">Object id of the commit containing the stashed state.
+        /// <param name="out">Object id of the commit containing the stashed state.
         /// This commit is also the target of the direct reference refs/stash.</param>
         /// <param name="repo">The owning repository.</param>
         /// <param name="stasher">The identity of the person performing the stashing.</param>

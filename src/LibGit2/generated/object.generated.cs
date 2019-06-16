@@ -17,7 +17,7 @@ namespace LibGit2
         /// <summary>
         /// Lookup a reference to one of the objects in a repository.
         /// </summary>
-        /// <param name="@object">pointer to the looked-up object</param>
+        /// <param name="object">pointer to the looked-up object</param>
         /// <param name="repo">the repository to look up the object</param>
         /// <param name="id">the unique identifier for the object</param>
         /// <param name="type">the type of the object</param>
@@ -74,7 +74,7 @@ namespace LibGit2
         /// <summary>
         /// Lookup an object that represents a tree entry.
         /// </summary>
-        /// <param name="@out">buffer that receives a pointer to the object (which must be freed
+        /// <param name="out">buffer that receives a pointer to the object (which must be freed
         /// by the caller)</param>
         /// <param name="treeish">root object that can be peeled to a tree</param>
         /// <param name="path">relative path from the root object to the desired object</param>
@@ -100,7 +100,7 @@ namespace LibGit2
         /// <summary>
         /// Get a short abbreviated OID string for the object
         /// </summary>
-        /// <param name="@out">Buffer to write string into</param>
+        /// <param name="out">Buffer to write string into</param>
         /// <param name="obj">The object to get an ID for</param>
         /// <returns>0 on success, 
         /// &lt;
@@ -144,7 +144,7 @@ namespace LibGit2
         /// <summary>
         /// Close an open object
         /// </summary>
-        /// <param name="@object">the object to close</param>
+        /// <param name="object">the object to close</param>
         /// <remarks>
         /// This method instructs the library to close an existing
         /// object; note that git_objects are owned and cached by the repository
@@ -206,7 +206,7 @@ namespace LibGit2
         /// Recursively peel an object until an object of the specified type is met.
         /// </summary>
         /// <param name="peeled">Pointer to the peeled git_object</param>
-        /// <param name="@object">The object to be processed</param>
+        /// <param name="object">The object to be processed</param>
         /// <param name="target_type">The type of the requested object (a GIT_OBJECT_ value)</param>
         /// <returns>0 on success, GIT_EINVALIDSPEC, GIT_EPEEL, or an error code</returns>
         /// <remarks>

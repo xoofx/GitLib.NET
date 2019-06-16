@@ -77,7 +77,7 @@ namespace LibGit2
         /// <summary>
         /// Find a single object, as specified by a revision string.
         /// </summary>
-        /// <param name="@out">pointer to output object</param>
+        /// <param name="out">pointer to output object</param>
         /// <param name="repo">the repository to search in</param>
         /// <param name="spec">the textual specification for an object</param>
         /// <returns>0 on success, GIT_ENOTFOUND, GIT_EAMBIGUOUS, GIT_EINVALIDSPEC or an error code</returns>

@@ -498,7 +498,7 @@ namespace LibGit2
         /// Create a new plain-text username and password credential object.
         /// The supplied credential parameter will be internally duplicated.
         /// </summary>
-        /// <param name="@out">The newly created credential object.</param>
+        /// <param name="out">The newly created credential object.</param>
         /// <param name="username">The username of the credential.</param>
         /// <param name="password">The password of the credential.</param>
         /// <returns>0 for success or an error code for failure</returns>
@@ -515,7 +515,7 @@ namespace LibGit2
         /// Create a new passphrase-protected ssh key credential object.
         /// The supplied credential parameter will be internally duplicated.
         /// </summary>
-        /// <param name="@out">The newly created credential object.</param>
+        /// <param name="out">The newly created credential object.</param>
         /// <param name="username">username to use to authenticate</param>
         /// <param name="publickey">The path to the public key of the credential.</param>
         /// <param name="privatekey">The path to the private key of the credential.</param>
@@ -551,7 +551,7 @@ namespace LibGit2
         /// Create a new ssh key credential object used for querying an ssh-agent.
         /// The supplied credential parameter will be internally duplicated.
         /// </summary>
-        /// <param name="@out">The newly created credential object.</param>
+        /// <param name="out">The newly created credential object.</param>
         /// <param name="username">username to use to authenticate</param>
         /// <returns>0 for success or an error code for failure</returns>
         public static git_result git_cred_ssh_key_from_agent(out IntPtr @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string username)
@@ -566,7 +566,7 @@ namespace LibGit2
         /// <summary>
         /// Create an ssh key credential with a custom signing function.
         /// </summary>
-        /// <param name="@out">The newly created credential object.</param>
+        /// <param name="out">The newly created credential object.</param>
         /// <param name="username">username to use to authenticate</param>
         /// <param name="publickey">The bytes of the public key.</param>
         /// <param name="publickey_len">The length of the public key in bytes.</param>
@@ -613,7 +613,7 @@ namespace LibGit2
         /// <summary>
         /// Create a new ssh key credential object reading the keys from memory.
         /// </summary>
-        /// <param name="@out">The newly created credential object.</param>
+        /// <param name="out">The newly created credential object.</param>
         /// <param name="username">username to use to authenticate.</param>
         /// <param name="publickey">The public key of the credential.</param>
         /// <param name="privatekey">The private key of the credential.</param>

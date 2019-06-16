@@ -397,7 +397,7 @@ namespace LibGit2
         /// <summary>
         /// Add a remote with the default fetch refspec to the repository's configuration.
         /// </summary>
-        /// <param name="@out">the resulting remote</param>
+        /// <param name="out">the resulting remote</param>
         /// <param name="repo">the repository in which to create the remote</param>
         /// <param name="name">the remote's name</param>
         /// <param name="url">the remote's url</param>
@@ -433,7 +433,7 @@ namespace LibGit2
         /// <summary>
         /// Create a remote, with options.
         /// </summary>
-        /// <param name="@out">the resulting remote</param>
+        /// <param name="out">the resulting remote</param>
         /// <param name="url">the remote's url</param>
         /// <param name="opts">the remote creation options</param>
         /// <returns>0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
@@ -453,7 +453,7 @@ namespace LibGit2
         /// Add a remote with the provided fetch refspec (or default if NULL) to the repository's
         /// configuration.
         /// </summary>
-        /// <param name="@out">the resulting remote</param>
+        /// <param name="out">the resulting remote</param>
         /// <param name="repo">the repository in which to create the remote</param>
         /// <param name="name">the remote's name</param>
         /// <param name="url">the remote's url</param>
@@ -471,7 +471,7 @@ namespace LibGit2
         /// <summary>
         /// Create an anonymous remote
         /// </summary>
-        /// <param name="@out">pointer to the new remote objects</param>
+        /// <param name="out">pointer to the new remote objects</param>
         /// <param name="repo">the associated repository</param>
         /// <param name="url">the remote repository's URL</param>
         /// <returns>0 or an error code</returns>
@@ -491,7 +491,7 @@ namespace LibGit2
         /// <summary>
         /// Create a remote without a connected local repo
         /// </summary>
-        /// <param name="@out">pointer to the new remote objects</param>
+        /// <param name="out">pointer to the new remote objects</param>
         /// <param name="url">the remote repository's URL</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>
@@ -512,7 +512,7 @@ namespace LibGit2
         /// <summary>
         /// Get the information for a particular remote
         /// </summary>
-        /// <param name="@out">pointer to the new remote object</param>
+        /// <param name="out">pointer to the new remote object</param>
         /// <param name="repo">the associated repository</param>
         /// <param name="name">the remote's name</param>
         /// <returns>0, GIT_ENOTFOUND, GIT_EINVALIDSPEC or an error code</returns>
@@ -753,7 +753,7 @@ namespace LibGit2
         /// <summary>
         /// Get the remote repository's reference advertisement list
         /// </summary>
-        /// <param name="@out">pointer to the array</param>
+        /// <param name="out">pointer to the array</param>
         /// <param name="size">the number of remote heads</param>
         /// <param name="remote">the remote</param>
         /// <returns>0 on success, or an error code</returns>
@@ -822,7 +822,7 @@ namespace LibGit2
         /// <summary>
         /// Get a list of the configured remotes for a repo
         /// </summary>
-        /// <param name="@out">a string array which receives the names of the remotes</param>
+        /// <param name="out">a string array which receives the names of the remotes</param>
         /// <param name="repo">the repository to query</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>
@@ -1126,7 +1126,7 @@ namespace LibGit2
         /// <summary>
         /// Retrieve the name of the remote's default branch
         /// </summary>
-        /// <param name="@out">the buffern in which to store the reference name</param>
+        /// <param name="out">the buffern in which to store the reference name</param>
         /// <param name="remote">the remote</param>
         /// <returns>0, GIT_ENOTFOUND if the remote does not have any references
         /// or none of them point to HEAD's commit, or an error message.</returns>

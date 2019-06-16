@@ -93,7 +93,7 @@ namespace LibGit2
         /// <summary>
         /// List names of linked working trees
         /// </summary>
-        /// <param name="@out">pointer to the array of working tree names</param>
+        /// <param name="out">pointer to the array of working tree names</param>
         /// <param name="repo">the repo to use when listing working trees</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>
@@ -115,7 +115,7 @@ namespace LibGit2
         /// <summary>
         /// Lookup a working tree by its name for a given repository
         /// </summary>
-        /// <param name="@out">Output pointer to looked up worktree or `NULL`</param>
+        /// <param name="out">Output pointer to looked up worktree or `NULL`</param>
         /// <param name="repo">The repository containing worktrees</param>
         /// <param name="name">Name of the working tree to look up</param>
         /// <returns>0 or an error code</returns>
@@ -131,7 +131,7 @@ namespace LibGit2
         /// <summary>
         /// Open a worktree of a given repository
         /// </summary>
-        /// <param name="@out">Out-pointer for the newly allocated worktree</param>
+        /// <param name="out">Out-pointer for the newly allocated worktree</param>
         /// <param name="repo">Repository to look up worktree for</param>
         /// <remarks>
         /// If a repository is not the main tree but a worktree, this
@@ -183,7 +183,7 @@ namespace LibGit2
         /// <summary>
         /// Add a new working tree
         /// </summary>
-        /// <param name="@out">Output pointer containing new working tree</param>
+        /// <param name="out">Output pointer containing new working tree</param>
         /// <param name="repo">Repository to create working tree for</param>
         /// <param name="name">Name of the working tree</param>
         /// <param name="path">Path to create working tree at</param>

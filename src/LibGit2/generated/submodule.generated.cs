@@ -181,7 +181,7 @@ namespace LibGit2
         /// <summary>
         /// Lookup submodule information by name or path.
         /// </summary>
-        /// <param name="@out">Output ptr to submodule; pass NULL to just get return code</param>
+        /// <param name="out">Output ptr to submodule; pass NULL to just get return code</param>
         /// <param name="repo">The parent repository</param>
         /// <param name="name">The name of or path to the submodule; trailing slashes okay</param>
         /// <returns>0 on success, GIT_ENOTFOUND if submodule does not exist,
@@ -243,7 +243,7 @@ namespace LibGit2
         /// <summary>
         /// Set up a new git submodule for checkout.
         /// </summary>
-        /// <param name="@out">The newly created submodule ready to open for clone</param>
+        /// <param name="out">The newly created submodule ready to open for clone</param>
         /// <param name="repo">The repository in which you want to create the submodule</param>
         /// <param name="url">URL for the submodule's remote</param>
         /// <param name="path">Path at which the submodule should be created</param>
@@ -351,7 +351,7 @@ namespace LibGit2
         /// <summary>
         /// Resolve a submodule url relative to the given repository.
         /// </summary>
-        /// <param name="@out">buffer to store the absolute submodule url in</param>
+        /// <param name="out">buffer to store the absolute submodule url in</param>
         /// <param name="repo">Pointer to repository object</param>
         /// <param name="url">Relative url</param>
         /// <returns>0 or an error code</returns>
@@ -576,7 +576,7 @@ namespace LibGit2
         /// <summary>
         /// Set up the subrepository for a submodule in preparation for clone.
         /// </summary>
-        /// <param name="@out">Output pointer to the created git repository.</param>
+        /// <param name="out">Output pointer to the created git repository.</param>
         /// <param name="sm">The submodule to create a new subrepository from.</param>
         /// <param name="use_gitlink">Should the workdir contain a gitlink to
         /// the repo in .git/modules vs. repo directly in workdir.</param>

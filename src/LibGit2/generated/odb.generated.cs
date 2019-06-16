@@ -45,7 +45,7 @@ namespace LibGit2
         /// <summary>
         /// Create a new object database with no backends.
         /// </summary>
-        /// <param name="@out">location to store the database pointer, if opened.
+        /// <param name="out">location to store the database pointer, if opened.
         /// Set to NULL if the open failed.</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>
@@ -65,7 +65,7 @@ namespace LibGit2
         /// Create a new object database and automatically add
         /// the two default backends:
         /// </summary>
-        /// <param name="@out">location to store the database pointer, if opened.
+        /// <param name="out">location to store the database pointer, if opened.
         /// Set to NULL if the open failed.</param>
         /// <param name="objects_dir">path of the backends' "objects" directory.</param>
         /// <returns>0 or an error code</returns>
@@ -114,7 +114,7 @@ namespace LibGit2
         /// <summary>
         /// Read an object from the database.
         /// </summary>
-        /// <param name="@out">pointer where to store the read object</param>
+        /// <param name="out">pointer where to store the read object</param>
         /// <param name="db">database to search for the object in.</param>
         /// <param name="id">identity of the object to read.</param>
         /// <returns>- 0 if the object was read;
@@ -132,7 +132,7 @@ namespace LibGit2
         /// Read an object from the database, given a prefix
         /// of its identifier.
         /// </summary>
-        /// <param name="@out">pointer where to store the read object</param>
+        /// <param name="out">pointer where to store the read object</param>
         /// <param name="db">database to search for the object in.</param>
         /// <param name="short_id">a prefix of the id of the object to read.</param>
         /// <param name="len">the length of the prefix</param>
@@ -187,7 +187,7 @@ namespace LibGit2
         /// Determine if an object can be found in the object database by an
         /// abbreviated object ID.
         /// </summary>
-        /// <param name="@out">The full OID of the found object if just one is found.</param>
+        /// <param name="out">The full OID of the found object if just one is found.</param>
         /// <param name="db">The database to be searched for the given object.</param>
         /// <param name="short_id">A prefix of the id of the object to read.</param>
         /// <param name="len">The length of the prefix.</param>
@@ -273,7 +273,7 @@ namespace LibGit2
         /// <summary>
         /// Write an object directly into the ODB
         /// </summary>
-        /// <param name="@out">pointer to store the OID result of the write</param>
+        /// <param name="out">pointer to store the OID result of the write</param>
         /// <param name="odb">object database where to store the object</param>
         /// <param name="data">buffer with the data to store</param>
         /// <param name="len">size of the buffer</param>
@@ -300,7 +300,7 @@ namespace LibGit2
         /// </summary>
         /// <seealso cref="git_odb_stream"/>
         /// 
-        /// <param name="@out">pointer where to store the stream</param>
+        /// <param name="out">pointer where to store the stream</param>
         /// <param name="db">object database where the stream will write</param>
         /// <param name="size">final size of the object that will be written</param>
         /// <param name="type">type of the object that will be written</param>
@@ -344,7 +344,7 @@ namespace LibGit2
         /// <summary>
         /// Finish writing to an odb stream
         /// </summary>
-        /// <param name="@out">pointer to store the resulting object's id</param>
+        /// <param name="out">pointer to store the resulting object's id</param>
         /// <param name="stream">the stream</param>
         /// <returns>0 on success; an error code otherwise</returns>
         /// <remarks>
@@ -382,7 +382,7 @@ namespace LibGit2
         /// </summary>
         /// <seealso cref="git_odb_stream"/>
         /// 
-        /// <param name="@out">pointer where to store the stream</param>
+        /// <param name="out">pointer where to store the stream</param>
         /// <param name="len">pointer where to store the length of the object</param>
         /// <param name="type">pointer where to store the type of the object</param>
         /// <param name="db">object database where the stream will read from</param>
@@ -409,7 +409,7 @@ namespace LibGit2
         /// </summary>
         /// <seealso cref="git_odb_writepack"/>
         /// 
-        /// <param name="@out">pointer to the writepack functions</param>
+        /// <param name="out">pointer to the writepack functions</param>
         /// <param name="db">object database where the stream will read from</param>
         /// <param name="progress_cb">function to call with progress information.
         /// Be aware that this is called inline with network and indexing operations,
@@ -428,7 +428,7 @@ namespace LibGit2
         /// <summary>
         /// Determine the object-ID (sha1 hash) of a data buffer
         /// </summary>
-        /// <param name="@out">the resulting object-ID.</param>
+        /// <param name="out">the resulting object-ID.</param>
         /// <param name="data">data to hash</param>
         /// <param name="len">size of the data</param>
         /// <param name="type">of the data to hash</param>
@@ -454,7 +454,7 @@ namespace LibGit2
         /// the `-w` flag, however, with the --no-filters flag.
         /// If you need filters, see git_repository_hashfile.
         /// </summary>
-        /// <param name="@out">oid structure the result is written into.</param>
+        /// <param name="out">oid structure the result is written into.</param>
         /// <param name="path">file to read and determine object id for</param>
         /// <param name="type">the type of the object that will be hashed</param>
         /// <returns>0 or an error code</returns>
@@ -491,7 +491,7 @@ namespace LibGit2
         /// <summary>
         /// Close an ODB object
         /// </summary>
-        /// <param name="@object">object to close</param>
+        /// <param name="object">object to close</param>
         /// <remarks>
         /// This method must always be called once a `git_odb_object` is no
         /// longer needed, otherwise memory will leak.
@@ -502,7 +502,7 @@ namespace LibGit2
         /// <summary>
         /// Return the OID of an ODB object
         /// </summary>
-        /// <param name="@object">the object</param>
+        /// <param name="object">the object</param>
         /// <returns>a pointer to the OID</returns>
         /// <remarks>
         /// This is the OID from which the object was read from
@@ -513,7 +513,7 @@ namespace LibGit2
         /// <summary>
         /// Return the data of an ODB object
         /// </summary>
-        /// <param name="@object">the object</param>
+        /// <param name="object">the object</param>
         /// <returns>a pointer to the data</returns>
         /// <remarks>
         /// This is the uncompressed, raw data as read from the ODB,
@@ -525,7 +525,7 @@ namespace LibGit2
         /// <summary>
         /// Return the size of an ODB object
         /// </summary>
-        /// <param name="@object">the object</param>
+        /// <param name="object">the object</param>
         /// <returns>the size</returns>
         /// <remarks>
         /// This is the real size of the `data` buffer, not the
@@ -537,7 +537,7 @@ namespace LibGit2
         /// <summary>
         /// Return the type of an ODB object
         /// </summary>
-        /// <param name="@object">the object</param>
+        /// <param name="object">the object</param>
         /// <returns>the type</returns>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
         public static extern git_object_t git_odb_object_type(git_odb_object @object);
@@ -599,7 +599,7 @@ namespace LibGit2
         /// <summary>
         /// Lookup an ODB backend object by index
         /// </summary>
-        /// <param name="@out">output pointer to ODB backend at pos</param>
+        /// <param name="out">output pointer to ODB backend at pos</param>
         /// <param name="odb">object database</param>
         /// <param name="pos">index into object database backend list</param>
         /// <returns>0 on success; GIT_ENOTFOUND if pos is invalid; other errors 

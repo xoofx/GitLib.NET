@@ -384,7 +384,7 @@ namespace LibGit2
         /// <summary>
         /// Gather file status information and populate the `git_status_list`.
         /// </summary>
-        /// <param name="@out">Pointer to store the status results in</param>
+        /// <param name="out">Pointer to store the status results in</param>
         /// <param name="repo">Repository object</param>
         /// <param name="opts">Status options structure</param>
         /// <returns>0 on success or error code</returns>

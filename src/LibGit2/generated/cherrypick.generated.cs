@@ -61,7 +61,7 @@ namespace LibGit2
         /// Cherry-picks the given commit against the given "our" commit, producing an
         /// index that reflects the result of the cherry-pick.
         /// </summary>
-        /// <param name="@out">pointer to store the index result in</param>
+        /// <param name="out">pointer to store the index result in</param>
         /// <param name="repo">the repository that contains the given commits</param>
         /// <param name="cherrypick_commit">the commit to cherry-pick</param>
         /// <param name="our_commit">the commit to revert against (eg, HEAD)</param>

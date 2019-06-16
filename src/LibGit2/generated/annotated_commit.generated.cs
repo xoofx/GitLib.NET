@@ -19,9 +19,9 @@ namespace LibGit2
         /// The resulting git_annotated_commit must be freed with
         /// `git_annotated_commit_free`.
         /// </summary>
-        /// <param name="@out">pointer to store the git_annotated_commit result in</param>
+        /// <param name="out">pointer to store the git_annotated_commit result in</param>
         /// <param name="repo">repository that contains the given reference</param>
-        /// <param name="@ref">reference to use to lookup the git_annotated_commit</param>
+        /// <param name="ref">reference to use to lookup the git_annotated_commit</param>
         /// <returns>0 on success or error code</returns>
         public static git_result git_annotated_commit_from_ref(out git_annotated_commit @out, git_repository repo, git_reference @ref)
         {
@@ -37,7 +37,7 @@ namespace LibGit2
         /// The resulting git_annotated_commit must be freed with
         /// `git_annotated_commit_free`.
         /// </summary>
-        /// <param name="@out">pointer to store the git_annotated_commit result in</param>
+        /// <param name="out">pointer to store the git_annotated_commit result in</param>
         /// <param name="repo">repository that contains the given commit</param>
         /// <param name="branch_name">name of the (remote) branch</param>
         /// <param name="remote_url">url of the remote</param>
@@ -57,7 +57,7 @@ namespace LibGit2
         /// The resulting git_annotated_commit must be freed with
         /// `git_annotated_commit_free`.
         /// </summary>
-        /// <param name="@out">pointer to store the git_annotated_commit result in</param>
+        /// <param name="out">pointer to store the git_annotated_commit result in</param>
         /// <param name="repo">repository that contains the given commit</param>
         /// <param name="id">the commit object id to lookup</param>
         /// <returns>0 on success or error code</returns>
@@ -82,7 +82,7 @@ namespace LibGit2
         /// <summary>
         /// Creates a `git_annotated_comit` from a revision string.
         /// </summary>
-        /// <param name="@out">pointer to store the git_annotated_commit result in</param>
+        /// <param name="out">pointer to store the git_annotated_commit result in</param>
         /// <param name="repo">repository that contains the given commit</param>
         /// <param name="revspec">the extended sha syntax string to use to lookup the commit</param>
         /// <returns>0 on success or error code</returns>

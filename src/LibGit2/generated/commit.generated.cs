@@ -188,7 +188,7 @@ namespace LibGit2
         /// Get the committer of a commit, using the mailmap to map names and email
         /// addresses to canonical real names and email addresses.
         /// </summary>
-        /// <param name="@out">a pointer to store the resolved signature.</param>
+        /// <param name="out">a pointer to store the resolved signature.</param>
         /// <param name="commit">a previously loaded commit.</param>
         /// <param name="mailmap">the mailmap to resolve with. (may be NULL)</param>
         /// <returns>0 or an error code</returns>
@@ -208,7 +208,7 @@ namespace LibGit2
         /// Get the author of a commit, using the mailmap to map names and email
         /// addresses to canonical real names and email addresses.
         /// </summary>
-        /// <param name="@out">a pointer to store the resolved signature.</param>
+        /// <param name="out">a pointer to store the resolved signature.</param>
         /// <param name="commit">a previously loaded commit.</param>
         /// <param name="mailmap">the mailmap to resolve with. (may be NULL)</param>
         /// <returns>0 or an error code</returns>
@@ -269,7 +269,7 @@ namespace LibGit2
         /// <summary>
         /// Get the specified parent of the commit.
         /// </summary>
-        /// <param name="@out">Pointer where to store the parent commit</param>
+        /// <param name="out">Pointer where to store the parent commit</param>
         /// <param name="commit">a previously loaded commit.</param>
         /// <param name="n">the position of the parent (from 0 to `parentcount`)</param>
         /// <returns>0 or an error code</returns>
@@ -321,7 +321,7 @@ namespace LibGit2
         /// <summary>
         /// Get an arbitrary header field
         /// </summary>
-        /// <param name="@out">the buffer to fill; existing content will be
+        /// <param name="out">the buffer to fill; existing content will be
         /// overwritten</param>
         /// <param name="commit">the commit to look in</param>
         /// <param name="field">the header field to return</param>
@@ -436,7 +436,7 @@ namespace LibGit2
         /// <summary>
         /// Create a commit and write it into a buffer
         /// </summary>
-        /// <param name="@out">the buffer into which to write the commit object content</param>
+        /// <param name="out">the buffer into which to write the commit object content</param>
         /// <param name="repo">Repository where the referenced tree and parents live</param>
         /// <param name="author">Signature with author and author time of commit</param>
         /// <param name="committer">Signature with committer and * commit time of commit</param>
@@ -471,7 +471,7 @@ namespace LibGit2
         /// <summary>
         /// Create a commit object from the given buffer and signature
         /// </summary>
-        /// <param name="@out">the resulting commit id</param>
+        /// <param name="out">the resulting commit id</param>
         /// <param name="commit_content">the content of the unsigned commit object</param>
         /// <param name="signature">the signature to add to the commit</param>
         /// <param name="signature_field">which header field should contain this
@@ -495,7 +495,7 @@ namespace LibGit2
         /// Create an in-memory copy of a commit. The copy must be explicitly
         /// free'd or it will leak.
         /// </summary>
-        /// <param name="@out">Pointer to store the copy of the commit</param>
+        /// <param name="out">Pointer to store the copy of the commit</param>
         /// <param name="source">Original commit to copy</param>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
         public static extern int git_commit_dup(out git_commit @out, git_commit source);

@@ -50,7 +50,7 @@ namespace LibGit2
         /// <summary>
         /// Clean up excess whitespace and make sure there is a trailing newline in the message.
         /// </summary>
-        /// <param name="@out">The user-allocated git_buf which will be filled with the
+        /// <param name="out">The user-allocated git_buf which will be filled with the
         /// cleaned up message.</param>
         /// <param name="message">The message to be prettified.</param>
         /// <param name="strip_comments">Non-zero to remove comment lines, 0 to leave them in.</param>

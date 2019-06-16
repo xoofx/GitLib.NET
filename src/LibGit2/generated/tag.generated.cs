@@ -20,7 +20,7 @@ namespace LibGit2
         /// <summary>
         /// Lookup a tag object from the repository.
         /// </summary>
-        /// <param name="@out">pointer to the looked up tag</param>
+        /// <param name="out">pointer to the looked up tag</param>
         /// <param name="repo">the repo to use when locating the tag.</param>
         /// <param name="id">identity of the tag to locate.</param>
         /// <returns>0 or an error code</returns>
@@ -39,7 +39,7 @@ namespace LibGit2
         /// </summary>
         /// <seealso cref="git_object_lookup_prefix"/>
         /// 
-        /// <param name="@out">pointer to the looked up tag</param>
+        /// <param name="out">pointer to the looked up tag</param>
         /// <param name="repo">the repo to use when locating the tag.</param>
         /// <param name="id">identity of the tag to locate.</param>
         /// <param name="len">the length of the short identifier</param>
@@ -362,7 +362,7 @@ namespace LibGit2
         /// Create an in-memory copy of a tag. The copy must be explicitly
         /// free'd or it will leak.
         /// </summary>
-        /// <param name="@out">Pointer to store the copy of the tag</param>
+        /// <param name="out">Pointer to store the copy of the tag</param>
         /// <param name="source">Original tag to copy</param>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
         public static extern int git_tag_dup(out git_tag @out, git_tag source);

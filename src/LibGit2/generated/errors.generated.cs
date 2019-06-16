@@ -506,7 +506,7 @@ namespace LibGit2
         /// </summary>
         /// <param name="error_class">One of the `git_error_t` enum above describing the
         /// general subsystem that is responsible for the error.</param>
-        /// <param name="@string">The formatted error message to keep</param>
+        /// <param name="string">The formatted error message to keep</param>
         /// <remarks>
         /// This function is public so that custom ODB backends and the like can
         /// relay an error message through libgit2.  Most regular users of libgit2

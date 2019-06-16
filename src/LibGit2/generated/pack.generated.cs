@@ -37,7 +37,7 @@ namespace LibGit2
         /// <summary>
         /// Initialize a new packbuilder
         /// </summary>
-        /// <param name="@out">The new packbuilder object</param>
+        /// <param name="out">The new packbuilder object</param>
         /// <param name="repo">The repository</param>
         /// <returns>0 or an error code</returns>
         public static git_result git_packbuilder_new(out git_packbuilder @out, git_repository repo)

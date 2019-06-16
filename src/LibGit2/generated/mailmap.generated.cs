@@ -17,7 +17,7 @@ namespace LibGit2
         /// <summary>
         /// Allocate a new mailmap object.
         /// </summary>
-        /// <param name="@out">pointer to store the new mailmap</param>
+        /// <param name="out">pointer to store the new mailmap</param>
         /// <returns>0 on success, or an error code</returns>
         /// <remarks>
         /// This object is empty, so you'll have to add a mailmap file before you can do
@@ -61,7 +61,7 @@ namespace LibGit2
         /// <summary>
         /// Create a new mailmap instance containing a single mailmap file
         /// </summary>
-        /// <param name="@out">pointer to store the new mailmap</param>
+        /// <param name="out">pointer to store the new mailmap</param>
         /// <param name="buf">buffer to parse the mailmap from</param>
         /// <param name="len">the length of the input buffer</param>
         /// <returns>0 on success, or an error code</returns>
@@ -78,7 +78,7 @@ namespace LibGit2
         /// Create a new mailmap instance from a repository, loading mailmap files based
         /// on the repository's configuration.
         /// </summary>
-        /// <param name="@out">pointer to store the new mailmap</param>
+        /// <param name="out">pointer to store the new mailmap</param>
         /// <param name="repo">repository to load mailmap information from</param>
         /// <returns>0 on success, or an error code</returns>
         /// <remarks>
@@ -121,7 +121,7 @@ namespace LibGit2
         /// <summary>
         /// Resolve a signature to use real names and emails with a mailmap.
         /// </summary>
-        /// <param name="@out">new signature</param>
+        /// <param name="out">new signature</param>
         /// <param name="mm">mailmap to resolve with</param>
         /// <param name="sig">signature to resolve</param>
         /// <returns>0 or an error code</returns>

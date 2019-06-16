@@ -17,7 +17,7 @@ namespace LibGit2
         /// <summary>
         /// Create a new action signature.
         /// </summary>
-        /// <param name="@out">new signature, in case of error NULL</param>
+        /// <param name="out">new signature, in case of error NULL</param>
         /// <param name="name">name of the person</param>
         /// <param name="email">email of the person</param>
         /// <param name="time">time (in seconds from epoch) when the action happened</param>
@@ -41,7 +41,7 @@ namespace LibGit2
         /// <summary>
         /// Create a new action signature with a timestamp of 'now'.
         /// </summary>
-        /// <param name="@out">new signature, in case of error NULL</param>
+        /// <param name="out">new signature, in case of error NULL</param>
         /// <param name="name">name of the person</param>
         /// <param name="email">email of the person</param>
         /// <returns>0 or an error code</returns>
@@ -60,7 +60,7 @@ namespace LibGit2
         /// <summary>
         /// Create a new action signature with default user and now timestamp.
         /// </summary>
-        /// <param name="@out">new signature</param>
+        /// <param name="out">new signature</param>
         /// <param name="repo">repository pointer</param>
         /// <returns>0 on success, GIT_ENOTFOUND if config is missing, or error code</returns>
         /// <remarks>
@@ -87,7 +87,7 @@ namespace LibGit2
         /// `tzoffset` is the timezone offset in `hhmm` format (note the lack
         /// of a colon separator).
         /// </summary>
-        /// <param name="@out">new signature</param>
+        /// <param name="out">new signature</param>
         /// <param name="buf">signature string</param>
         /// <returns>0 on success, or an error code</returns>
         public static git_result git_signature_from_buffer(out IntPtr @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string buf)

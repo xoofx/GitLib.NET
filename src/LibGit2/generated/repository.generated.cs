@@ -382,7 +382,7 @@ namespace LibGit2
         /// <summary>
         /// Open a git repository.
         /// </summary>
-        /// <param name="@out">pointer to the repo which will be opened</param>
+        /// <param name="out">pointer to the repo which will be opened</param>
         /// <param name="path">the path to the repository</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>
@@ -402,7 +402,7 @@ namespace LibGit2
         /// <summary>
         /// Open working tree as a repository
         /// </summary>
-        /// <param name="@out">Output pointer containing opened repository</param>
+        /// <param name="out">Output pointer containing opened repository</param>
         /// <param name="wt">Working tree to open</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>
@@ -421,7 +421,7 @@ namespace LibGit2
         /// <summary>
         /// Create a "fake" repository to wrap an object database
         /// </summary>
-        /// <param name="@out">pointer to the repo</param>
+        /// <param name="out">pointer to the repo</param>
         /// <param name="odb">the object database to wrap</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>
@@ -445,7 +445,7 @@ namespace LibGit2
         /// is found, or when reaching a directory referenced in ceiling_dirs
         /// or when the filesystem changes (in case across_fs is true).
         /// </summary>
-        /// <param name="@out">A pointer to a user-allocated git_buf which will contain
+        /// <param name="out">A pointer to a user-allocated git_buf which will contain
         /// the found path.</param>
         /// <param name="start_path">The base path where the lookup starts.</param>
         /// <param name="across_fs">If true, then the lookup will not stop when a
@@ -472,7 +472,7 @@ namespace LibGit2
         /// <summary>
         /// Find and open a repository with extended controls.
         /// </summary>
-        /// <param name="@out">Pointer to the repo which will be opened.  This can
+        /// <param name="out">Pointer to the repo which will be opened.  This can
         /// actually be NULL if you only want to use the error code to
         /// see if a repo at this path could be opened.</param>
         /// <param name="path">Path to open as git repository.  If the flags
@@ -492,7 +492,7 @@ namespace LibGit2
         /// <summary>
         /// Open a bare repository on the serverside.
         /// </summary>
-        /// <param name="@out">Pointer to the repo which will be opened.</param>
+        /// <param name="out">Pointer to the repo which will be opened.</param>
         /// <param name="bare_path">Direct path to the bare repository</param>
         /// <returns>0 on success, or an error code</returns>
         /// <remarks>
@@ -526,7 +526,7 @@ namespace LibGit2
         /// <summary>
         /// Creates a new Git repository in the given folder.
         /// </summary>
-        /// <param name="@out">pointer to the repo which will be created or reinitialized</param>
+        /// <param name="out">pointer to the repo which will be created or reinitialized</param>
         /// <param name="path">the path to the repository</param>
         /// <param name="is_bare">if true, a Git repository without a working directory is
         /// created at the pointed path. If false, provided path will be
@@ -568,7 +568,7 @@ namespace LibGit2
         /// <summary>
         /// Create a new Git repository in the given folder with extended controls.
         /// </summary>
-        /// <param name="@out">Pointer to the repo which will be created or reinitialized.</param>
+        /// <param name="out">Pointer to the repo which will be created or reinitialized.</param>
         /// <param name="repo_path">The path to the repository.</param>
         /// <param name="opts">Pointer to git_repository_init_options struct.</param>
         /// <returns>0 or an error code on failure.</returns>
@@ -590,7 +590,7 @@ namespace LibGit2
         /// <summary>
         /// Retrieve and resolve the reference pointed at by HEAD.
         /// </summary>
-        /// <param name="@out">pointer to the reference which will be retrieved</param>
+        /// <param name="out">pointer to the reference which will be retrieved</param>
         /// <param name="repo">a repository object</param>
         /// <returns>0 on success, GIT_EUNBORNBRANCH when HEAD points to a non existing
         /// branch, GIT_ENOTFOUND when HEAD is missing; an error code otherwise</returns>
@@ -611,7 +611,7 @@ namespace LibGit2
         /// <summary>
         /// Retrieve the referenced HEAD for the worktree
         /// </summary>
-        /// <param name="@out">pointer to the reference which will be retrieved</param>
+        /// <param name="out">pointer to the reference which will be retrieved</param>
         /// <param name="repo">a repository object</param>
         /// <param name="name">name of the worktree to retrieve HEAD for</param>
         /// <returns>0 when successful, error-code otherwise</returns>
@@ -674,7 +674,7 @@ namespace LibGit2
         /// <summary>
         /// Get the location of a specific repository file or directory
         /// </summary>
-        /// <param name="@out">Buffer to store the path at</param>
+        /// <param name="out">Buffer to store the path at</param>
         /// <param name="repo">Repository to get path for</param>
         /// <param name="item">The repository item for which to retrieve the path</param>
         /// <returns>0, GIT_ENOTFOUND if the path cannot exist or an error code</returns>
@@ -776,7 +776,7 @@ namespace LibGit2
         /// <summary>
         /// Get the configuration file for this repository.
         /// </summary>
-        /// <param name="@out">Pointer to store the loaded configuration</param>
+        /// <param name="out">Pointer to store the loaded configuration</param>
         /// <param name="repo">A repository object</param>
         /// <returns>0, or an error code</returns>
         /// <remarks>
@@ -797,7 +797,7 @@ namespace LibGit2
         /// <summary>
         /// Get a snapshot of the repository's configuration
         /// </summary>
-        /// <param name="@out">Pointer to store the loaded configuration</param>
+        /// <param name="out">Pointer to store the loaded configuration</param>
         /// <param name="repo">the repository</param>
         /// <returns>0, or an error code</returns>
         /// <remarks>
@@ -818,7 +818,7 @@ namespace LibGit2
         /// <summary>
         /// Get the Object Database for this repository.
         /// </summary>
-        /// <param name="@out">Pointer to store the loaded ODB</param>
+        /// <param name="out">Pointer to store the loaded ODB</param>
         /// <param name="repo">A repository object</param>
         /// <returns>0, or an error code</returns>
         /// <remarks>
@@ -839,7 +839,7 @@ namespace LibGit2
         /// <summary>
         /// Get the Reference Database Backend for this repository.
         /// </summary>
-        /// <param name="@out">Pointer to store the loaded refdb</param>
+        /// <param name="out">Pointer to store the loaded refdb</param>
         /// <param name="repo">A repository object</param>
         /// <returns>0, or an error code</returns>
         /// <remarks>
@@ -860,7 +860,7 @@ namespace LibGit2
         /// <summary>
         /// Get the Index file for this repository.
         /// </summary>
-        /// <param name="@out">Pointer to store the loaded index</param>
+        /// <param name="out">Pointer to store the loaded index</param>
         /// <param name="repo">A repository object</param>
         /// <returns>0, or an error code</returns>
         /// <remarks>
@@ -881,7 +881,7 @@ namespace LibGit2
         /// <summary>
         /// Retrieve git's prepared message
         /// </summary>
-        /// <param name="@out">git_buf to write data into</param>
+        /// <param name="out">git_buf to write data into</param>
         /// <param name="repo">Repository to read prepared message from</param>
         /// <returns>0, GIT_ENOTFOUND if no message exists or an error code</returns>
         /// <remarks>
@@ -957,7 +957,7 @@ namespace LibGit2
         /// <summary>
         /// Calculate hash of file using repository filtering rules.
         /// </summary>
-        /// <param name="@out">Output value of calculated SHA</param>
+        /// <param name="out">Output value of calculated SHA</param>
         /// <param name="repo">Repository pointer</param>
         /// <param name="path">Path to file on disk whose contents should be hashed. If the
         /// repository is not NULL, this can be a relative path.</param>

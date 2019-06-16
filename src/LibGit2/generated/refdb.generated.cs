@@ -17,7 +17,7 @@ namespace LibGit2
         /// <summary>
         /// Create a new reference database with no backends.
         /// </summary>
-        /// <param name="@out">location to store the database pointer, if opened.
+        /// <param name="out">location to store the database pointer, if opened.
         /// Set to NULL if the open failed.</param>
         /// <param name="repo">the repository</param>
         /// <returns>0 or an error code</returns>
@@ -38,7 +38,7 @@ namespace LibGit2
         /// Create a new reference database and automatically add
         /// the default backends:
         /// </summary>
-        /// <param name="@out">location to store the database pointer, if opened.
+        /// <param name="out">location to store the database pointer, if opened.
         /// Set to NULL if the open failed.</param>
         /// <param name="repo">the repository</param>
         /// <returns>0 or an error code</returns>

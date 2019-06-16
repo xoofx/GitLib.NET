@@ -634,7 +634,7 @@ namespace LibGit2
         /// <summary>
         /// Find a merge base between two commits
         /// </summary>
-        /// <param name="@out">the OID of a merge base between 'one' and 'two'</param>
+        /// <param name="out">the OID of a merge base between 'one' and 'two'</param>
         /// <param name="repo">the repository where the commits exist</param>
         /// <param name="one">one of the commits</param>
         /// <param name="two">the other commit</param>
@@ -651,7 +651,7 @@ namespace LibGit2
         /// <summary>
         /// Find merge bases between two commits
         /// </summary>
-        /// <param name="@out">array in which to store the resulting ids</param>
+        /// <param name="out">array in which to store the resulting ids</param>
         /// <param name="repo">the repository where the commits exist</param>
         /// <param name="one">one of the commits</param>
         /// <param name="two">the other commit</param>
@@ -668,7 +668,7 @@ namespace LibGit2
         /// <summary>
         /// Find a merge base given a list of commits
         /// </summary>
-        /// <param name="@out">the OID of a merge base considering all the commits</param>
+        /// <param name="out">the OID of a merge base considering all the commits</param>
         /// <param name="repo">the repository where the commits exist</param>
         /// <param name="length">The number of commits in the provided `input_array`</param>
         /// <param name="input_array">oids of the commits</param>
@@ -685,7 +685,7 @@ namespace LibGit2
         /// <summary>
         /// Find all merge bases given a list of commits
         /// </summary>
-        /// <param name="@out">array in which to store the resulting ids</param>
+        /// <param name="out">array in which to store the resulting ids</param>
         /// <param name="repo">the repository where the commits exist</param>
         /// <param name="length">The number of commits in the provided `input_array`</param>
         /// <param name="input_array">oids of the commits</param>
@@ -702,7 +702,7 @@ namespace LibGit2
         /// <summary>
         /// Find a merge base in preparation for an octopus merge
         /// </summary>
-        /// <param name="@out">the OID of a merge base considering all the commits</param>
+        /// <param name="out">the OID of a merge base considering all the commits</param>
         /// <param name="repo">the repository where the commits exist</param>
         /// <param name="length">The number of commits in the provided `input_array`</param>
         /// <param name="input_array">oids of the commits</param>
@@ -722,7 +722,7 @@ namespace LibGit2
         /// `git_merge_file_result` that reflects the merge result.  The
         /// `git_merge_file_result` must be freed with `git_merge_file_result_free`.
         /// </summary>
-        /// <param name="@out">The git_merge_file_result to be filled in</param>
+        /// <param name="out">The git_merge_file_result to be filled in</param>
         /// <param name="ancestor">The contents of the ancestor file</param>
         /// <param name="ours">The contents of the file in "our" side</param>
         /// <param name="theirs">The contents of the file in "their" side</param>
@@ -747,7 +747,7 @@ namespace LibGit2
         /// reflects the merge result.  The `git_merge_file_result` must be freed with
         /// `git_merge_file_result_free`.
         /// </summary>
-        /// <param name="@out">The git_merge_file_result to be filled in</param>
+        /// <param name="out">The git_merge_file_result to be filled in</param>
         /// <param name="repo">The repository</param>
         /// <param name="ancestor">The index entry for the ancestor file (stage level 1)</param>
         /// <param name="ours">The index entry for our file (stage level 2)</param>
@@ -776,7 +776,7 @@ namespace LibGit2
         /// or checked out.  If the index is to be converted to a tree, the caller
         /// should resolve any conflicts that arose as part of the merge.
         /// </summary>
-        /// <param name="@out">pointer to store the index result in</param>
+        /// <param name="out">pointer to store the index result in</param>
         /// <param name="repo">repository that contains the given trees</param>
         /// <param name="ancestor_tree">the common ancestor between the trees (or null if none)</param>
         /// <param name="our_tree">the tree that reflects the destination tree</param>
@@ -801,7 +801,7 @@ namespace LibGit2
         /// or checked out.  If the index is to be converted to a tree, the caller
         /// should resolve any conflicts that arose as part of the merge.
         /// </summary>
-        /// <param name="@out">pointer to store the index result in</param>
+        /// <param name="out">pointer to store the index result in</param>
         /// <param name="repo">repository that contains the given trees</param>
         /// <param name="our_commit">the commit that reflects the destination tree</param>
         /// <param name="their_commit">the commit to merge in to `our_commit`</param>

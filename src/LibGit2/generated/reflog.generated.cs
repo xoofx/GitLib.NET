@@ -17,7 +17,7 @@ namespace LibGit2
         /// <summary>
         /// Read the reflog for the given reference
         /// </summary>
-        /// <param name="@out">pointer to reflog</param>
+        /// <param name="out">pointer to reflog</param>
         /// <param name="repo">the repostiory</param>
         /// <param name="name">reference to look up</param>
         /// <returns>0 or an error code</returns>

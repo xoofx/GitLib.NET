@@ -171,7 +171,7 @@ namespace LibGit2
         /// <summary>
         /// Clone a remote repository.
         /// </summary>
-        /// <param name="@out">pointer that will receive the resulting repository object</param>
+        /// <param name="out">pointer that will receive the resulting repository object</param>
         /// <param name="url">the remote repository to clone</param>
         /// <param name="local_path">local directory to clone to</param>
         /// <param name="options">configuration options for the clone.  If NULL, the

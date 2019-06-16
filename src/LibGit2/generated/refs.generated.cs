@@ -100,7 +100,7 @@ namespace LibGit2
         /// <summary>
         /// Lookup a reference by name in a repository.
         /// </summary>
-        /// <param name="@out">pointer to the looked-up reference</param>
+        /// <param name="out">pointer to the looked-up reference</param>
         /// <param name="repo">the repository to look up the reference</param>
         /// <param name="name">the long name for the reference (e.g. HEAD, refs/heads/master, refs/tags/v0.1.0, ...)</param>
         /// <returns>0 on success, GIT_ENOTFOUND, GIT_EINVALIDSPEC or an error code.</returns>
@@ -120,7 +120,7 @@ namespace LibGit2
         /// <summary>
         /// Lookup a reference by name and resolve immediately to OID.
         /// </summary>
-        /// <param name="@out">Pointer to oid to be filled in</param>
+        /// <param name="out">Pointer to oid to be filled in</param>
         /// <param name="repo">The repository in which to look up the reference</param>
         /// <param name="name">The long name for the reference (e.g. HEAD, refs/heads/master, refs/tags/v0.1.0, ...)</param>
         /// <returns>0 on success, GIT_ENOTFOUND, GIT_EINVALIDSPEC or an error code.</returns>
@@ -142,7 +142,7 @@ namespace LibGit2
         /// <summary>
         /// Lookup a reference by DWIMing its short name
         /// </summary>
-        /// <param name="@out">pointer in which to store the reference</param>
+        /// <param name="out">pointer in which to store the reference</param>
         /// <param name="repo">the repository in which to look</param>
         /// <param name="shorthand">the short name for the reference</param>
         /// <returns>0 or an error code</returns>
@@ -162,7 +162,7 @@ namespace LibGit2
         /// <summary>
         /// Conditionally create a new symbolic reference.
         /// </summary>
-        /// <param name="@out">Pointer to the newly created reference</param>
+        /// <param name="out">Pointer to the newly created reference</param>
         /// <param name="repo">Repository where that reference will live</param>
         /// <param name="name">The name of the reference</param>
         /// <param name="target">The target of the reference</param>
@@ -202,7 +202,7 @@ namespace LibGit2
         /// <summary>
         /// Create a new symbolic reference.
         /// </summary>
-        /// <param name="@out">Pointer to the newly created reference</param>
+        /// <param name="out">Pointer to the newly created reference</param>
         /// <param name="repo">Repository where that reference will live</param>
         /// <param name="name">The name of the reference</param>
         /// <param name="target">The target of the reference</param>
@@ -239,7 +239,7 @@ namespace LibGit2
         /// <summary>
         /// Create a new direct reference.
         /// </summary>
-        /// <param name="@out">Pointer to the newly created reference</param>
+        /// <param name="out">Pointer to the newly created reference</param>
         /// <param name="repo">Repository where that reference will live</param>
         /// <param name="name">The name of the reference</param>
         /// <param name="id">The object id pointed to by the reference.</param>
@@ -277,7 +277,7 @@ namespace LibGit2
         /// <summary>
         /// Conditionally create new direct reference
         /// </summary>
-        /// <param name="@out">Pointer to the newly created reference</param>
+        /// <param name="out">Pointer to the newly created reference</param>
         /// <param name="repo">Repository where that reference will live</param>
         /// <param name="name">The name of the reference</param>
         /// <param name="id">The object id pointed to by the reference.</param>
@@ -319,7 +319,7 @@ namespace LibGit2
         /// <summary>
         /// Get the OID pointed to by a direct reference.
         /// </summary>
-        /// <param name="@ref">The reference</param>
+        /// <param name="ref">The reference</param>
         /// <returns>a pointer to the oid if available, NULL otherwise</returns>
         /// <remarks>
         /// Only available if the reference is direct (i.e. an object id reference,
@@ -333,7 +333,7 @@ namespace LibGit2
         /// <summary>
         /// Return the peeled OID target of this reference.
         /// </summary>
-        /// <param name="@ref">The reference</param>
+        /// <param name="ref">The reference</param>
         /// <returns>a pointer to the oid if available, NULL otherwise</returns>
         /// <remarks>
         /// This peeled OID only applies to direct references that point to
@@ -345,7 +345,7 @@ namespace LibGit2
         /// <summary>
         /// Get full name to the reference pointed to by a symbolic reference.
         /// </summary>
-        /// <param name="@ref">The reference</param>
+        /// <param name="ref">The reference</param>
         /// <returns>a pointer to the name if available, NULL otherwise</returns>
         /// <remarks>
         /// Only available if the reference is symbolic.
@@ -357,7 +357,7 @@ namespace LibGit2
         /// <summary>
         /// Get the type of a reference.
         /// </summary>
-        /// <param name="@ref">The reference</param>
+        /// <param name="ref">The reference</param>
         /// <returns>the type</returns>
         /// <remarks>
         /// Either direct (GIT_REFERENCE_DIRECT) or symbolic (GIT_REFERENCE_SYMBOLIC)
@@ -368,7 +368,7 @@ namespace LibGit2
         /// <summary>
         /// Get the full name of a reference.
         /// </summary>
-        /// <param name="@ref">The reference</param>
+        /// <param name="ref">The reference</param>
         /// <returns>the full name for the ref</returns>
         /// <remarks>
         /// See `git_reference_symbolic_create()` for rules about valid names.
@@ -380,8 +380,8 @@ namespace LibGit2
         /// <summary>
         /// Resolve a symbolic reference to a direct reference.
         /// </summary>
-        /// <param name="@out">Pointer to the peeled reference</param>
-        /// <param name="@ref">The reference</param>
+        /// <param name="out">Pointer to the peeled reference</param>
+        /// <param name="ref">The reference</param>
         /// <returns>0 or an error code</returns>
         /// <remarks>
         /// This method iteratively peels a symbolic reference until it resolves to
@@ -401,7 +401,7 @@ namespace LibGit2
         /// <summary>
         /// Get the repository where a reference resides.
         /// </summary>
-        /// <param name="@ref">The reference</param>
+        /// <param name="ref">The reference</param>
         /// <returns>a pointer to the repo</returns>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
         public static extern git_repository git_reference_owner(git_reference @ref);
@@ -411,8 +411,8 @@ namespace LibGit2
         /// different symbolic target. The reference must be a symbolic reference,
         /// otherwise this will fail.
         /// </summary>
-        /// <param name="@out">Pointer to the newly created reference</param>
-        /// <param name="@ref">The reference</param>
+        /// <param name="out">Pointer to the newly created reference</param>
+        /// <param name="ref">The reference</param>
         /// <param name="target">The new target for the reference</param>
         /// <param name="log_message">The one line long message to be appended to the reflog</param>
         /// <returns>0 on success, GIT_EINVALIDSPEC or an error code</returns>
@@ -436,8 +436,8 @@ namespace LibGit2
         /// different OID target. The reference must be a direct reference, otherwise
         /// this will fail.
         /// </summary>
-        /// <param name="@out">Pointer to the newly created reference</param>
-        /// <param name="@ref">The reference</param>
+        /// <param name="out">Pointer to the newly created reference</param>
+        /// <param name="ref">The reference</param>
         /// <param name="id">The new target OID for the reference</param>
         /// <param name="log_message">The one line long message to be appended to the reflog</param>
         /// <returns>0 on success, GIT_EMODIFIED if the value of the reference
@@ -457,7 +457,7 @@ namespace LibGit2
         /// <summary>
         /// Rename an existing reference.
         /// </summary>
-        /// <param name="@ref">The reference to rename</param>
+        /// <param name="ref">The reference to rename</param>
         /// <param name="new_name">The new name for the reference</param>
         /// <param name="force">Overwrite an existing reference</param>
         /// <param name="log_message">The one line long message to be appended to the reflog</param>
@@ -482,7 +482,7 @@ namespace LibGit2
         /// <summary>
         /// Delete an existing reference.
         /// </summary>
-        /// <param name="@ref">The reference to remove</param>
+        /// <param name="ref">The reference to remove</param>
         /// <returns>0, GIT_EMODIFIED or an error code</returns>
         /// <remarks>
         /// This method works for both direct and symbolic references.  The reference
@@ -607,7 +607,7 @@ namespace LibGit2
         /// <summary>
         /// Free the given reference.
         /// </summary>
-        /// <param name="@ref">git_reference</param>
+        /// <param name="ref">git_reference</param>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
         public static extern void git_reference_free(git_reference @ref);
         
@@ -623,7 +623,7 @@ namespace LibGit2
         /// <summary>
         /// Create an iterator for the repo's references
         /// </summary>
-        /// <param name="@out">pointer in which to store the iterator</param>
+        /// <param name="out">pointer in which to store the iterator</param>
         /// <param name="repo">the repository</param>
         /// <returns>0 or an error code</returns>
         public static git_result git_reference_iterator_new(out git_reference_iterator @out, git_repository repo)
@@ -639,7 +639,7 @@ namespace LibGit2
         /// Create an iterator for the repo's references that match the
         /// specified glob
         /// </summary>
-        /// <param name="@out">pointer in which to store the iterator</param>
+        /// <param name="out">pointer in which to store the iterator</param>
         /// <param name="repo">the repository</param>
         /// <param name="glob">the glob to match against the reference names</param>
         /// <returns>0 or an error code</returns>
@@ -655,7 +655,7 @@ namespace LibGit2
         /// <summary>
         /// Get the next reference
         /// </summary>
-        /// <param name="@out">pointer in which to store the reference</param>
+        /// <param name="out">pointer in which to store the reference</param>
         /// <param name="iter">the iterator</param>
         /// <returns>0, GIT_ITEROVER if there are no more; or an error code</returns>
         public static git_result git_reference_next(out git_reference @out, git_reference_iterator iter)
@@ -670,7 +670,7 @@ namespace LibGit2
         /// <summary>
         /// Get the next reference's name
         /// </summary>
-        /// <param name="@out">pointer in which to store the string</param>
+        /// <param name="out">pointer in which to store the string</param>
         /// <param name="iter">the iterator</param>
         /// <returns>0, GIT_ITEROVER if there are no more; or an error code</returns>
         /// <remarks>
@@ -751,7 +751,7 @@ namespace LibGit2
         /// <summary>
         /// Check if a reference is a local branch.
         /// </summary>
-        /// <param name="@ref">A git reference</param>
+        /// <param name="ref">A git reference</param>
         /// <returns>1 when the reference lives in the refs/heads
         /// namespace; 0 otherwise.</returns>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
@@ -760,7 +760,7 @@ namespace LibGit2
         /// <summary>
         /// Check if a reference is a remote tracking branch
         /// </summary>
-        /// <param name="@ref">A git reference</param>
+        /// <param name="ref">A git reference</param>
         /// <returns>1 when the reference lives in the refs/remotes
         /// namespace; 0 otherwise.</returns>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
@@ -769,7 +769,7 @@ namespace LibGit2
         /// <summary>
         /// Check if a reference is a tag
         /// </summary>
-        /// <param name="@ref">A git reference</param>
+        /// <param name="ref">A git reference</param>
         /// <returns>1 when the reference lives in the refs/tags
         /// namespace; 0 otherwise.</returns>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
@@ -778,7 +778,7 @@ namespace LibGit2
         /// <summary>
         /// Check if a reference is a note
         /// </summary>
-        /// <param name="@ref">A git reference</param>
+        /// <param name="ref">A git reference</param>
         /// <returns>1 when the reference lives in the refs/notes
         /// namespace; 0 otherwise.</returns>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
@@ -812,8 +812,8 @@ namespace LibGit2
         /// <summary>
         /// Recursively peel reference until object of the specified type is found.
         /// </summary>
-        /// <param name="@out">Pointer to the peeled git_object</param>
-        /// <param name="@ref">The reference to be processed</param>
+        /// <param name="out">Pointer to the peeled git_object</param>
+        /// <param name="ref">The reference to be processed</param>
         /// <param name="type">The type of the requested object (GIT_OBJECT_COMMIT,
         /// GIT_OBJECT_TAG, GIT_OBJECT_TREE, GIT_OBJECT_BLOB or GIT_OBJECT_ANY).</param>
         /// <returns>0 on success, GIT_EAMBIGUOUS, GIT_ENOTFOUND or an error code</returns>
@@ -853,7 +853,7 @@ namespace LibGit2
         /// <summary>
         /// Get the reference's short name
         /// </summary>
-        /// <param name="@ref">a reference</param>
+        /// <param name="ref">a reference</param>
         /// <returns>the human-readable version of the name</returns>
         /// <remarks>
         /// This will transform the reference name into a name "human-readable"

@@ -201,7 +201,7 @@ namespace LibGit2
         /// process, call `git_rebase_next`.  When you have finished with this
         /// object, call `git_rebase_free`.
         /// </summary>
-        /// <param name="@out">Pointer to store the rebase object</param>
+        /// <param name="out">Pointer to store the rebase object</param>
         /// <param name="repo">The repository to perform the rebase</param>
         /// <param name="branch">The terminal commit to rebase, or NULL to rebase the
         /// current branch</param>
@@ -224,7 +224,7 @@ namespace LibGit2
         /// Opens an existing rebase that was previously started by either an
         /// invocation of `git_rebase_init` or by another client.
         /// </summary>
-        /// <param name="@out">Pointer to store the rebase object</param>
+        /// <param name="out">Pointer to store the rebase object</param>
         /// <param name="repo">The repository that has a rebase in-progress</param>
         /// <param name="opts">Options to specify how rebase is performed</param>
         /// <returns>Zero on success; -1 on failure.</returns>
