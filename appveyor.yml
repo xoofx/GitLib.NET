@@ -7,7 +7,7 @@ install:
 
     cd src
 
-    nuget restore LibGit2.sln
+    nuget restore LibGit2.NET.sln
 
     $env:appveyor_nuget_push = 'false'
 
@@ -19,7 +19,7 @@ install:
       }
     }
 build:
-  project: src/LibGit2.sln
+  project: src/LibGit2.NET.sln
   verbosity: minimal
 before_package:
 - cmd: >-
