@@ -46,11 +46,11 @@ namespace LibGit2
                 return address != IntPtr.Zero;
             }
 
-            private static bool IsWindows() => RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+            public static bool IsWindows() => RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
 
-            private static bool IsMacOS() => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
+            public static bool IsMacOS() => RuntimeInformation.IsOSPlatform(OSPlatform.OSX);
 
-            private static bool IsLinux() => RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+            public static bool IsLinux() => RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
 
             private sealed class Windows
             {

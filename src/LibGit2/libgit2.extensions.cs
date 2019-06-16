@@ -17,13 +17,16 @@ namespace LibGit2
     {
         private const string LibGit2Name = "git2-572e4d8";
 
-        
-        // TODO: Add support for preloading libraries for .NET Framework
-
+#if NET472
         static libgit2()
         {
-            
+            if (NativeLibrary.IsWindows())
+            {
+                var dllPath = Path.Combine(GetExecutingAssemblyDirectory(), "lib", "win32", IntPtr.Size == 4 ? "x86" : "x64", LibGit2Name + ".dll");
+                NativeLibrary.TryLoad(dllPath, out var _);
+            }
         }
+#endif        
         
         private static string GetExecutingAssemblyDirectory()
         {

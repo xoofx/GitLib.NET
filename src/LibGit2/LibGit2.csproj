@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net472;netcoreapp2.0</TargetFrameworks>
-    <VersionPrefix>0.1.0</VersionPrefix>
+    <VersionPrefix>0.0.281.0</VersionPrefix>
     <!--<VersionSuffix>alpha</VersionSuffix>
     <BuildNumber>001</BuildNumber>-->
     <PackageId>LibGit2.NET</PackageId>
@@ -29,11 +29,21 @@
   </PropertyGroup>
     
   <ItemGroup>
-    <Folder Include="generated\" />
-  </ItemGroup>
+    <Folder Include="build" />
+    <Folder Include="generated" />
 
-  <ItemGroup>
-    <PackageReference Include="LibGit2Sharp.NativeBinaries" Version="2.0.280-armpreview01" />
+    <Content Include="build\**\*">
+      <PackagePath>%(Identity)</PackagePath>
+      <Pack>true</Pack>
+    </Content>
+
+    <Content Include="buildMultiTargeting\**\*">
+      <PackagePath>%(Identity)</PackagePath>
+      <Pack>true</Pack>
+    </Content>
   </ItemGroup>
   
+  <ItemGroup>
+    <PackageReference Include="LibGit2Sharp.NativeBinaries" Version="2.0.278" />
+  </ItemGroup>
 </Project>
