@@ -78,6 +78,16 @@ typedef int git_result;",
             };
 
             var csCompilation = CSharpConverter.Convert(files, csOptions);
+
+            if (csCompilation.HasErrors)
+            {
+                foreach (var message in csCompilation.Diagnostics.Messages)
+                {
+                    Console.Error.WriteLine(message);
+                }
+                Console.Error.WriteLine("Unexpected parsing errors");
+                Environment.Exit(1);
+            }
             
             var fs = new PhysicalFileSystem();
             var subfs = new SubFileSystem(fs, fs.ConvertPathFromInternal(destFolder));
