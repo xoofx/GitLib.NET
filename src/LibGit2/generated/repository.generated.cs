@@ -353,9 +353,9 @@ namespace LibGit2
         {
             public uint version;
             
-            public uint flags;
+            public git_repository_init_flag_t flags;
             
-            public uint mode;
+            public git_repository_init_mode_t mode;
             
             [MarshalAs(UnmanagedType.LPUTF8Str)]
             public string workdir_path;
@@ -460,14 +460,14 @@ namespace LibGit2
         /// The method will automatically detect if the repository is bare
         /// (if there is a repository).
         /// </remarks>
-        public static git_result git_repository_discover(out git_buf @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string start_path, int across_fs, [MarshalAs(UnmanagedType.LPUTF8Str)] string ceiling_dirs)
+        public static git_result git_repository_discover(out git_buf @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string start_path, [MarshalAs(UnmanagedType.I4)] bool across_fs, [MarshalAs(UnmanagedType.LPUTF8Str)] string ceiling_dirs)
         {
             var __result__ = git_repository_discover__(out @out, start_path, across_fs, ceiling_dirs).Check();
             return __result__;
         }
         
         [DllImport(LibGit2Name, EntryPoint = "git_repository_discover", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_repository_discover__(out git_buf @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string start_path, int across_fs, [MarshalAs(UnmanagedType.LPUTF8Str)] string ceiling_dirs);
+        private static extern git_result git_repository_discover__(out git_buf @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string start_path, [MarshalAs(UnmanagedType.I4)] bool across_fs, [MarshalAs(UnmanagedType.LPUTF8Str)] string ceiling_dirs);
         
         /// <summary>
         /// Find and open a repository with extended controls.
@@ -487,7 +487,7 @@ namespace LibGit2
         /// or -1 if there was a repository but open failed for some reason
         /// (such as repo corruption or system errors).</returns>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_repository_open_ext(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, uint flags, [MarshalAs(UnmanagedType.LPUTF8Str)] string ceiling_dirs);
+        public static extern int git_repository_open_ext(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, git_repository_open_flag_t flags, [MarshalAs(UnmanagedType.LPUTF8Str)] string ceiling_dirs);
         
         /// <summary>
         /// Open a bare repository on the serverside.
@@ -537,14 +537,14 @@ namespace LibGit2
         /// TODO:
         /// - Reinit the repository
         /// </remarks>
-        public static git_result git_repository_init(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, uint is_bare)
+        public static git_result git_repository_init(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, [MarshalAs(UnmanagedType.I4)] bool is_bare)
         {
             var __result__ = git_repository_init__(out @out, path, is_bare).Check();
             return __result__;
         }
         
         [DllImport(LibGit2Name, EntryPoint = "git_repository_init", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_repository_init__(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, uint is_bare);
+        private static extern git_result git_repository_init__(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, [MarshalAs(UnmanagedType.I4)] bool is_bare);
         
         /// <summary>
         /// Initialize git_repository_init_options structure
@@ -556,14 +556,14 @@ namespace LibGit2
         /// Initializes a `git_repository_init_options` with default values. Equivalent to
         /// creating an instance with `GIT_REPOSITORY_INIT_OPTIONS_INIT`.
         /// </remarks>
-        public static git_result git_repository_init_init_options(ref git_repository_init_options opts, uint version)
+        public static git_result git_repository_init_init_options(ref git_repository_init_options opts, uint version = GIT_REPOSITORY_INIT_OPTIONS_VERSION)
         {
             var __result__ = git_repository_init_init_options__(ref opts, version).Check();
             return __result__;
         }
         
         [DllImport(LibGit2Name, EntryPoint = "git_repository_init_init_options", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_repository_init_init_options__(ref git_repository_init_options opts, uint version);
+        private static extern git_result git_repository_init_init_options__(ref git_repository_init_options opts, uint version = GIT_REPOSITORY_INIT_OPTIONS_VERSION);
         
         /// <summary>
         /// Create a new Git repository in the given folder with extended controls.
@@ -748,14 +748,14 @@ namespace LibGit2
         /// all the common workdir operations (checkout, status, index
         /// manipulation, etc).
         /// </remarks>
-        public static git_result git_repository_set_workdir(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string workdir, int update_gitlink)
+        public static git_result git_repository_set_workdir(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string workdir, [MarshalAs(UnmanagedType.I4)] bool update_gitlink)
         {
             var __result__ = git_repository_set_workdir__(repo, workdir, update_gitlink).Check();
             return __result__;
         }
         
         [DllImport(LibGit2Name, EntryPoint = "git_repository_set_workdir", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_repository_set_workdir__(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string workdir, int update_gitlink);
+        private static extern git_result git_repository_set_workdir__(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string workdir, [MarshalAs(UnmanagedType.I4)] bool update_gitlink);
         
         /// <summary>
         /// Check if a repository is bare
@@ -1069,7 +1069,7 @@ namespace LibGit2
         /// <param name="repo">Repository pointer</param>
         /// <returns>The state of the repository</returns>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_repository_state(git_repository repo);
+        public static extern git_repository_state_t git_repository_state(git_repository repo);
         
         /// <summary>
         /// Sets the active namespace for this Git Repository
@@ -1083,8 +1083,14 @@ namespace LibGit2
         /// This namespace affects all reference operations for the repo.
         /// See `man gitnamespaces`
         /// </remarks>
-        [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_repository_set_namespace(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string nmspace);
+        public static git_result git_repository_set_namespace(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string nmspace)
+        {
+            var __result__ = git_repository_set_namespace__(repo, nmspace).Check();
+            return __result__;
+        }
+        
+        [DllImport(LibGit2Name, EntryPoint = "git_repository_set_namespace", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_repository_set_namespace__(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string nmspace);
         
         /// <summary>
         /// Get the currently active namespace for this repository
@@ -1101,7 +1107,8 @@ namespace LibGit2
         /// <param name="repo">The repository</param>
         /// <returns>1 if shallow, zero if not</returns>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_repository_is_shallow(git_repository repo);
+        [return:MarshalAs(UnmanagedType.I4)]
+        public static extern bool git_repository_is_shallow(git_repository repo);
         
         /// <summary>
         /// Retrieve the configured identity to use for reflogs
@@ -1113,8 +1120,14 @@ namespace LibGit2
         /// The memory is owned by the repository and must not be freed by the
         /// user.
         /// </remarks>
-        [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_repository_ident(out string name, out string email, git_repository repo);
+        public static git_result git_repository_ident(out string name, out string email, git_repository repo)
+        {
+            var __result__ = git_repository_ident__(out name, out email, repo).Check();
+            return __result__;
+        }
+        
+        [DllImport(LibGit2Name, EntryPoint = "git_repository_ident", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_repository_ident__(out string name, out string email, git_repository repo);
         
         /// <summary>
         /// Set the identity to be used for writing reflogs
@@ -1127,7 +1140,13 @@ namespace LibGit2
         /// reflog. Pass NULL to unset. When unset, the identity will be taken
         /// from the repository's configuration.
         /// </remarks>
-        [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_repository_set_ident(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, [MarshalAs(UnmanagedType.LPUTF8Str)] string email);
+        public static git_result git_repository_set_ident(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, [MarshalAs(UnmanagedType.LPUTF8Str)] string email)
+        {
+            var __result__ = git_repository_set_ident__(repo, name, email).Check();
+            return __result__;
+        }
+        
+        [DllImport(LibGit2Name, EntryPoint = "git_repository_set_ident", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_repository_set_ident__(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, [MarshalAs(UnmanagedType.LPUTF8Str)] string email);
     }
 }

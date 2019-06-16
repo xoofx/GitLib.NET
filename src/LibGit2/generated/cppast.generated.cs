@@ -42,5 +42,7 @@ namespace LibGit2
             
             public static bool operator !=(git_result left, git_result right) => !left.Equals(right);
         }
+        
+        public const uint GIT_REPOSITORY_INIT_OPTIONS_VERSION = 1;
     }
 }

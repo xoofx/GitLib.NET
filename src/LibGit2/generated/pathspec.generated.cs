@@ -220,8 +220,14 @@ namespace LibGit2
         /// pathspecs with no match (if you used the `GIT_PATHSPEC_FIND_FAILURES`
         /// flag).  You must call `git_pathspec_match_list_free()` on this object.
         /// </remarks>
-        [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_pathspec_match_workdir(out git_pathspec_match_list @out, git_repository repo, uint flags, git_pathspec ps);
+        public static git_result git_pathspec_match_workdir(out git_pathspec_match_list @out, git_repository repo, uint flags, git_pathspec ps)
+        {
+            var __result__ = git_pathspec_match_workdir__(out @out, repo, flags, ps).Check();
+            return __result__;
+        }
+        
+        [DllImport(LibGit2Name, EntryPoint = "git_pathspec_match_workdir", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_pathspec_match_workdir__(out git_pathspec_match_list @out, git_repository repo, uint flags, git_pathspec ps);
         
         /// <summary>
         /// Match a pathspec against entries in an index.
@@ -242,8 +248,14 @@ namespace LibGit2
         /// pathspecs with no match (if you used the `GIT_PATHSPEC_FIND_FAILURES`
         /// flag).  You must call `git_pathspec_match_list_free()` on this object.
         /// </remarks>
-        [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_pathspec_match_index(out git_pathspec_match_list @out, git_index index, uint flags, git_pathspec ps);
+        public static git_result git_pathspec_match_index(out git_pathspec_match_list @out, git_index index, uint flags, git_pathspec ps)
+        {
+            var __result__ = git_pathspec_match_index__(out @out, index, flags, ps).Check();
+            return __result__;
+        }
+        
+        [DllImport(LibGit2Name, EntryPoint = "git_pathspec_match_index", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_pathspec_match_index__(out git_pathspec_match_list @out, git_index index, uint flags, git_pathspec ps);
         
         /// <summary>
         /// Match a pathspec against files in a tree.
@@ -261,8 +273,14 @@ namespace LibGit2
         /// pathspecs with no match (if you used the `GIT_PATHSPEC_FIND_FAILURES`
         /// flag).  You must call `git_pathspec_match_list_free()` on this object.
         /// </remarks>
-        [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_pathspec_match_tree(out git_pathspec_match_list @out, git_tree tree, uint flags, git_pathspec ps);
+        public static git_result git_pathspec_match_tree(out git_pathspec_match_list @out, git_tree tree, uint flags, git_pathspec ps)
+        {
+            var __result__ = git_pathspec_match_tree__(out @out, tree, flags, ps).Check();
+            return __result__;
+        }
+        
+        [DllImport(LibGit2Name, EntryPoint = "git_pathspec_match_tree", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_pathspec_match_tree__(out git_pathspec_match_list @out, git_tree tree, uint flags, git_pathspec ps);
         
         /// <summary>
         /// Match a pathspec against files in a diff list.
@@ -280,8 +298,14 @@ namespace LibGit2
         /// pathspecs with no match (if you used the `GIT_PATHSPEC_FIND_FAILURES`
         /// flag).  You must call `git_pathspec_match_list_free()` on this object.
         /// </remarks>
-        [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_pathspec_match_diff(out git_pathspec_match_list @out, git_diff diff, uint flags, git_pathspec ps);
+        public static git_result git_pathspec_match_diff(out git_pathspec_match_list @out, git_diff diff, uint flags, git_pathspec ps)
+        {
+            var __result__ = git_pathspec_match_diff__(out @out, diff, flags, ps).Check();
+            return __result__;
+        }
+        
+        [DllImport(LibGit2Name, EntryPoint = "git_pathspec_match_diff", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_pathspec_match_diff__(out git_pathspec_match_list @out, git_diff diff, uint flags, git_pathspec ps);
         
         /// <summary>
         /// Free memory associates with a git_pathspec_match_list
