@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net472;netcoreapp2.0</TargetFrameworks>
+    <VersionPrefix>0.1.0</VersionPrefix>
+    <!--<VersionSuffix>alpha</VersionSuffix>
+    <BuildNumber>001</BuildNumber>-->
+    <PackageId>LibGit2.NET</PackageId>
+    <Description>LibGit2.NET is a bare metal P/Invoke wrapper around libgit2 for .NET</Description>
+    <Copyright>Alexandre Mutel</Copyright>
+    <Authors>Alexandre Mutel</Authors>
+    <PackageTags>libgit2;git;pinvoke</PackageTags>
+    <PackageReleaseNotes>https://github.com/xoofx/LibGit2.NET/blob/master/changelog.md</PackageReleaseNotes>
+    <PackageIconUrl>https://raw.githubusercontent.com/xoofx/LibGit2.NET/master/img/libgit2_dotnet.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/xoofx/LibGit2.NET</PackageProjectUrl>
+    <PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/xoofx/LibGit2.NET</RepositoryUrl>
+    <LangVersion>7.3</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <VersionSuffix Condition="'$(VersionSuffix)' != '' AND '$(BuildNumber)' != ''">$(VersionSuffix)-$(BuildNumber)</VersionSuffix>
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <!--Add support for sourcelink-->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+    
+  <ItemGroup>
+    <Folder Include="generated\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LibGit2Sharp.NativeBinaries" Version="2.0.280-armpreview01" />
+  </ItemGroup>
+  
+</Project>
