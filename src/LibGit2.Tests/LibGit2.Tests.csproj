@@ -16,4 +16,8 @@
       <ProjectReference Include="..\LibGit2\LibGit2.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="generated" />
+    </ItemGroup>
+
 </Project>
