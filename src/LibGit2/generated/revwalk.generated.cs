@@ -287,7 +287,8 @@ namespace LibGit2
         /// times at 0.3s on the git.git repo).The revision walker is reset when the walk is over.
         /// </remarks>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_revwalk_next(out git_oid @out, git_revwalk walk);
+        [return:MarshalAs(UnmanagedType.Bool)]
+        public static extern bool git_revwalk_next(out git_oid @out, git_revwalk walk);
         
         /// <summary>
         /// Change the sorting mode when iterating through the
@@ -299,7 +300,7 @@ namespace LibGit2
         /// Changing the sorting mode resets the walker.
         /// </remarks>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void git_revwalk_sorting(git_revwalk walk, uint sort_mode);
+        public static extern void git_revwalk_sorting(git_revwalk walk, git_sort_t sort_mode);
         
         /// <summary>
         /// Push and hide the respective endpoints of the given range.

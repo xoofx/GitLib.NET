@@ -176,8 +176,14 @@ namespace LibGit2
         /// The generated reference must be freed by the user.The branch name will be checked for validity.
         /// See `git_tag_create()` for rules about valid names.
         /// </remarks>
-        [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_branch_lookup(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string branch_name, git_branch_t branch_type);
+        public static git_result git_branch_lookup(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string branch_name, git_branch_t branch_type)
+        {
+            var __result__ = git_branch_lookup__(out @out, repo, branch_name, branch_type).Check();
+            return __result__;
+        }
+        
+        [DllImport(LibGit2Name, EntryPoint = "git_branch_lookup", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_branch_lookup__(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string branch_name, git_branch_t branch_type);
         
         /// <summary>
         /// Return the name of the given local or remote branch.
@@ -193,8 +199,14 @@ namespace LibGit2
         /// to git_branch_lookup() then the reference is returned that
         /// was given to this function.
         /// </remarks>
-        [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_branch_name(out string @out, git_reference @ref);
+        public static git_result git_branch_name(out string @out, git_reference @ref)
+        {
+            var __result__ = git_branch_name__(out @out, @ref).Check();
+            return __result__;
+        }
+        
+        [DllImport(LibGit2Name, EntryPoint = "git_branch_name", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_branch_name__(out string @out, git_reference @ref);
         
         /// <summary>
         /// Return the reference supporting the remote tracking branch,
@@ -205,8 +217,14 @@ namespace LibGit2
         /// <param name="branch">Current underlying reference of the branch.</param>
         /// <returns>0 on success; GIT_ENOTFOUND when no remote tracking
         /// reference exists, otherwise an error code.</returns>
-        [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_branch_upstream(out git_reference @out, git_reference branch);
+        public static git_result git_branch_upstream(out git_reference @out, git_reference branch)
+        {
+            var __result__ = git_branch_upstream__(out @out, branch).Check();
+            return __result__;
+        }
+        
+        [DllImport(LibGit2Name, EntryPoint = "git_branch_upstream", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_branch_upstream__(out git_reference @out, git_reference branch);
         
         /// <summary>
         /// Set the upstream configuration for a given local branch
@@ -234,8 +252,14 @@ namespace LibGit2
         /// <param name="refname">reference name of the local branch.</param>
         /// <returns>0, GIT_ENOTFOUND when no remote tracking reference exists,
         /// otherwise an error code.</returns>
-        [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_branch_upstream_name(out git_buf @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string refname);
+        public static git_result git_branch_upstream_name(out git_buf @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string refname)
+        {
+            var __result__ = git_branch_upstream_name__(out @out, repo, refname).Check();
+            return __result__;
+        }
+        
+        [DllImport(LibGit2Name, EntryPoint = "git_branch_upstream_name", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_branch_upstream_name__(out git_buf @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string refname);
         
         /// <summary>
         /// Determine if the current local branch is pointed at by HEAD.
@@ -266,8 +290,14 @@ namespace LibGit2
         /// when no remote matching remote was found,
         /// GIT_EAMBIGUOUS when the branch maps to several remotes,
         /// otherwise an error code.</returns>
-        [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_branch_remote_name(out git_buf @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string canonical_branch_name);
+        public static git_result git_branch_remote_name(out git_buf @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string canonical_branch_name)
+        {
+            var __result__ = git_branch_remote_name__(out @out, repo, canonical_branch_name).Check();
+            return __result__;
+        }
+        
+        [DllImport(LibGit2Name, EntryPoint = "git_branch_remote_name", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_branch_remote_name__(out git_buf @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string canonical_branch_name);
         
         /// <summary>
         /// Retrieve the name of the upstream remote of a local branch

@@ -460,14 +460,14 @@ namespace LibGit2
         /// The method will automatically detect if the repository is bare
         /// (if there is a repository).
         /// </remarks>
-        public static git_result git_repository_discover(out git_buf @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string start_path, [MarshalAs(UnmanagedType.I4)] bool across_fs, [MarshalAs(UnmanagedType.LPUTF8Str)] string ceiling_dirs)
+        public static git_result git_repository_discover(out git_buf @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string start_path, [MarshalAs(UnmanagedType.Bool)] bool across_fs, [MarshalAs(UnmanagedType.LPUTF8Str)] string ceiling_dirs)
         {
             var __result__ = git_repository_discover__(out @out, start_path, across_fs, ceiling_dirs).Check();
             return __result__;
         }
         
         [DllImport(LibGit2Name, EntryPoint = "git_repository_discover", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_repository_discover__(out git_buf @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string start_path, [MarshalAs(UnmanagedType.I4)] bool across_fs, [MarshalAs(UnmanagedType.LPUTF8Str)] string ceiling_dirs);
+        private static extern git_result git_repository_discover__(out git_buf @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string start_path, [MarshalAs(UnmanagedType.Bool)] bool across_fs, [MarshalAs(UnmanagedType.LPUTF8Str)] string ceiling_dirs);
         
         /// <summary>
         /// Find and open a repository with extended controls.
@@ -537,14 +537,14 @@ namespace LibGit2
         /// TODO:
         /// - Reinit the repository
         /// </remarks>
-        public static git_result git_repository_init(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, [MarshalAs(UnmanagedType.I4)] bool is_bare)
+        public static git_result git_repository_init(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, [MarshalAs(UnmanagedType.Bool)] bool is_bare)
         {
             var __result__ = git_repository_init__(out @out, path, is_bare).Check();
             return __result__;
         }
         
         [DllImport(LibGit2Name, EntryPoint = "git_repository_init", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_repository_init__(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, [MarshalAs(UnmanagedType.I4)] bool is_bare);
+        private static extern git_result git_repository_init__(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, [MarshalAs(UnmanagedType.Bool)] bool is_bare);
         
         /// <summary>
         /// Initialize git_repository_init_options structure
@@ -669,7 +669,8 @@ namespace LibGit2
         /// apart from HEAD, which must be pointing to the unborn master branch.
         /// </remarks>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_repository_is_empty(git_repository repo);
+        [return:MarshalAs(UnmanagedType.Bool)]
+        public static extern bool git_repository_is_empty(git_repository repo);
         
         /// <summary>
         /// Get the location of a specific repository file or directory
@@ -748,14 +749,14 @@ namespace LibGit2
         /// all the common workdir operations (checkout, status, index
         /// manipulation, etc).
         /// </remarks>
-        public static git_result git_repository_set_workdir(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string workdir, [MarshalAs(UnmanagedType.I4)] bool update_gitlink)
+        public static git_result git_repository_set_workdir(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string workdir, [MarshalAs(UnmanagedType.Bool)] bool update_gitlink)
         {
             var __result__ = git_repository_set_workdir__(repo, workdir, update_gitlink).Check();
             return __result__;
         }
         
         [DllImport(LibGit2Name, EntryPoint = "git_repository_set_workdir", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_repository_set_workdir__(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string workdir, [MarshalAs(UnmanagedType.I4)] bool update_gitlink);
+        private static extern git_result git_repository_set_workdir__(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string workdir, [MarshalAs(UnmanagedType.Bool)] bool update_gitlink);
         
         /// <summary>
         /// Check if a repository is bare
@@ -763,7 +764,8 @@ namespace LibGit2
         /// <param name="repo">Repo to test</param>
         /// <returns>1 if the repository is bare, 0 otherwise.</returns>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_repository_is_bare(git_repository repo);
+        [return:MarshalAs(UnmanagedType.Bool)]
+        public static extern bool git_repository_is_bare(git_repository repo);
         
         /// <summary>
         /// Check if a repository is a linked work tree
@@ -771,7 +773,8 @@ namespace LibGit2
         /// <param name="repo">Repo to test</param>
         /// <returns>1 if the repository is a linked work tree, 0 otherwise.</returns>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_repository_is_worktree(git_repository repo);
+        [return:MarshalAs(UnmanagedType.Bool)]
+        public static extern bool git_repository_is_worktree(git_repository repo);
         
         /// <summary>
         /// Get the configuration file for this repository.
@@ -936,8 +939,14 @@ namespace LibGit2
         /// <remarks>
         /// Return a non-zero value from the callback to stop the loop.
         /// </remarks>
-        [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_repository_fetchhead_foreach(git_repository repo, git_repository_fetchhead_foreach_cb callback, IntPtr payload);
+        public static git_result git_repository_fetchhead_foreach(git_repository repo, git_repository_fetchhead_foreach_cb callback, IntPtr payload)
+        {
+            var __result__ = git_repository_fetchhead_foreach__(repo, callback, payload).Check();
+            return __result__;
+        }
+        
+        [DllImport(LibGit2Name, EntryPoint = "git_repository_fetchhead_foreach", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_repository_fetchhead_foreach__(git_repository repo, git_repository_fetchhead_foreach_cb callback, IntPtr payload);
         
         /// <summary>
         /// If a merge is in progress, invoke 'callback' for each commit ID in the
@@ -951,8 +960,14 @@ namespace LibGit2
         /// <remarks>
         /// Return a non-zero value from the callback to stop the loop.
         /// </remarks>
-        [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_repository_mergehead_foreach(git_repository repo, git_repository_mergehead_foreach_cb callback, IntPtr payload);
+        public static git_result git_repository_mergehead_foreach(git_repository repo, git_repository_mergehead_foreach_cb callback, IntPtr payload)
+        {
+            var __result__ = git_repository_mergehead_foreach__(repo, callback, payload).Check();
+            return __result__;
+        }
+        
+        [DllImport(LibGit2Name, EntryPoint = "git_repository_mergehead_foreach", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_repository_mergehead_foreach__(git_repository repo, git_repository_mergehead_foreach_cb callback, IntPtr payload);
         
         /// <summary>
         /// Calculate hash of file using repository filtering rules.
@@ -1107,7 +1122,7 @@ namespace LibGit2
         /// <param name="repo">The repository</param>
         /// <returns>1 if shallow, zero if not</returns>
         [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.I4)]
+        [return:MarshalAs(UnmanagedType.Bool)]
         public static extern bool git_repository_is_shallow(git_repository repo);
         
         /// <summary>

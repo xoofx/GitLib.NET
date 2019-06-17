@@ -62,16 +62,24 @@ typedef int git_result;",
                     // Mappings for repository.h
                     e => e.MapMacroToConst("GIT_REPOSITORY_INIT_OPTIONS_VERSION", "unsigned int"),
                     e => e.Map<CppParameter>("git_repository_open_ext::flags").Type("git_repository_open_flag_t"),
-                    e => e.Map<CppParameter>("git_repository_init::is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.I4),
-                    e => e.Map<CppParameter>("git_repository_discover::across_fs").Type("bool").MarshalAs(CSharpUnmanagedKind.I4),
+                    e => e.Map<CppParameter>("git_repository_init::is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
+                    e => e.Map<CppParameter>("git_repository_discover::across_fs").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
                     e => e.Map<CppParameter>("git_repository_init_init_options::version").InitValue("GIT_REPOSITORY_INIT_OPTIONS_VERSION"),
-                    e => e.Map<CppParameter>("git_repository_set_workdir::update_gitlink").Type("bool").MarshalAs(CSharpUnmanagedKind.I4),
+                    e => e.Map<CppParameter>("git_repository_set_workdir::update_gitlink").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
                     e => e.Map<CppField>("git_repository_init_options::flags").Type("git_repository_init_flag_t"),
                     e => e.Map<CppField>("git_repository_init_options::mode").Type("git_repository_init_mode_t"),
                     e => e.Map<CppFunction>("git_repository_state").Type("git_repository_state_t"),
-                    e => e.Map<CppFunction>("git_repository_is_shallow").Type("bool").MarshalAs(CSharpUnmanagedKind.I4),
                     e => e.Map<CppFunction>("git_repository_ident").Type("git_result"),
                     e => e.Map<CppFunction>("git_repository_set_ident").Type("git_result"),
+                    e => e.Map<CppFunction>("git_repository_fetchhead_foreach").Type("git_result"),
+                    e => e.Map<CppFunction>("git_repository_is_shallow").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
+                    e => e.Map<CppFunction>("git_repository_is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
+                    e => e.Map<CppFunction>("git_repository_is_worktree").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
+                    e => e.Map<CppFunction>("git_repository_is_empty").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
+                    
+                    // Mappings for revwalk.h
+                    e => e.Map<CppParameter>("git_revwalk_sorting::sort_mode").Type("git_sort_t"),
+                    e => e.Map<CppFunction>("git_revwalk_next").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
                     
                     e => e.Map<CppField>("git_strarray::strings").Private(),
                     e => e.Map<CppField>("git_strarray::count").Private(),
@@ -259,6 +267,7 @@ typedef int git_result;",
                          (returnText.Contains("0 on success") && returnText.Contains("0 on failure")) ||
                          (returnText.StartsWith("0") && (
                               returnText.Contains("or an error") ||
+                              returnText.Contains("error code") ||
                               returnText.Contains("-1 on error") ||
                               returnText.Contains("or error") ||
                               returnText.Contains("error code otherwise") ||

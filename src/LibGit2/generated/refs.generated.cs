@@ -726,8 +726,14 @@ namespace LibGit2
         /// <param name="refname">the reference's name</param>
         /// <returns>0 when no reflog can be found, 1 when it exists;
         /// otherwise an error code.</returns>
-        [DllImport(LibGit2Name, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_reference_has_log(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string refname);
+        public static git_result git_reference_has_log(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string refname)
+        {
+            var __result__ = git_reference_has_log__(repo, refname).Check();
+            return __result__;
+        }
+        
+        [DllImport(LibGit2Name, EntryPoint = "git_reference_has_log", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_reference_has_log__(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string refname);
         
         /// <summary>
         /// Ensure there is a reflog for a particular reference.
