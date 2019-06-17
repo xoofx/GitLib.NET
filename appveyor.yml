@@ -7,7 +7,7 @@ install:
 
     cd src
 
-    nuget restore LibGit2.NET.sln
+    nuget restore GitLib.NET.sln
 
     $env:appveyor_nuget_push = 'false'
 
@@ -19,11 +19,11 @@ install:
       }
     }
 build:
-  project: src/LibGit2.NET.sln
+  project: src/GitLib.NET.sln
   verbosity: minimal
 before_package:
 - cmd: >-
-     msbuild /t:pack /p:Configuration=Release LibGit2/LibGit2.csproj
+     msbuild /t:pack /p:Configuration=Release GitLib/GitLib.csproj
 artifacts:
 - path: src\**\*nupkg
   name: NuGet packages

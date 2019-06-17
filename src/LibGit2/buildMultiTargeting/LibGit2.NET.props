@@ -1,3 +1,0 @@
-<Project>
-  <Import Project="$(MSBuildThisFileDirectory)\..\build\LibGit2.NET.props" />
-</Project>

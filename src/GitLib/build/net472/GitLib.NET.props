@@ -1,0 +1,5 @@
+<Project>
+  <ItemGroup>
+    <ContentWithTargetPath Include="$([System.IO.Path]::GetDirectoryName(`$(libgit2_propsfile)`)\..\..\libgit2\LibGit2Sharp.dll.config" TargetPath="GitLib.dll.config" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>
