@@ -87,7 +87,9 @@ namespace GitLib.Tests
         [Test]
         public void Test_git_repository_head_detached()
         {
-            Assert.Fail($"Tests for method `{nameof(git_repository_head_detached)}` are not yet implemented");
+            git_repository_open(out var repo, RootPathOfThisRepository);
+            Assert.False(git_repository_head_detached(repo));
+            git_repository_free(repo);
         }
         
         [Test]

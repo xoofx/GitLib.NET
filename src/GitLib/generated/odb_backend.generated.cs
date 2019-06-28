@@ -63,17 +63,17 @@ namespace GitLib
             public write_delegate write;
             
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate int write_delegate(ref git_odb_stream stream, IntPtr buffer, size_t len);
+            public delegate int write_delegate(ref git_odb_stream stream, [MarshalAs(UnmanagedType.LPUTF8Str)] string buffer, size_t len);
             
             public finalize_write_delegate finalize_write;
             
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate int finalize_write_delegate(ref git_odb_stream stream, IntPtr buffer, size_t len);
+            public delegate int finalize_write_delegate(ref git_odb_stream stream, in git_oid oid);
             
             public free_delegate free;
             
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate void free_delegate(ref git_odb_stream stream, IntPtr buffer, size_t len);
+            public delegate void free_delegate(ref git_odb_stream stream);
         }
         
         /// <summary>
@@ -92,12 +92,12 @@ namespace GitLib
             public commit_delegate commit;
             
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate int commit_delegate(ref git_odb_writepack writepack, IntPtr data, size_t size, ref git_transfer_progress stats);
+            public delegate int commit_delegate(ref git_odb_writepack writepack, ref git_transfer_progress stats);
             
             public free_delegate free;
             
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate void free_delegate(ref git_odb_writepack writepack, IntPtr data, size_t size, ref git_transfer_progress stats);
+            public delegate void free_delegate(ref git_odb_writepack writepack);
         }
         
         /// <summary>

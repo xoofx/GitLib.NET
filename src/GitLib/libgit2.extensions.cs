@@ -63,6 +63,30 @@ namespace GitLib
                 return this;
             }
         }
+        
+        public readonly partial struct git_result_bool
+        {
+            public bool Success => Value >= 0;
+
+            public bool Failure => Value < 0;
+
+            public git_error_code ErrorCode => (git_error_code) Value;
+
+            public git_result_bool Check()
+            {
+                if (Failure)
+                {
+                    var errorMessage = git_error_last().ToString();
+                    throw new GitException(ErrorCode, errorMessage);
+                }
+                return this;
+            }
+
+            public static implicit operator bool(git_result_bool result)
+            {
+                return result.Value > 0;
+            }
+        }
 
         public partial struct size_t
         {

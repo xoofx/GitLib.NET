@@ -72,8 +72,14 @@ namespace GitLib
         /// buffer of size `size` and copy the external data into it.Currently, this will never shrink a buffer, only expand it.If the allocation fails, this will return an error and the buffer will be
         /// marked as invalid for future operations, invaliding the contents.
         /// </remarks>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_buf_grow(ref git_buf buffer, size_t target_size);
+        public static git_result git_buf_grow(ref git_buf buffer, size_t target_size)
+        {
+            var __result__ = git_buf_grow__(ref buffer, target_size).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_buf_grow", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_buf_grow__(ref git_buf buffer, size_t target_size);
         
         /// <summary>
         /// Set buffer to a copy of some raw data.
@@ -82,8 +88,14 @@ namespace GitLib
         /// <param name="data">The data to copy into the buffer</param>
         /// <param name="datalen">The length of the data to copy into the buffer</param>
         /// <returns>0 on success, -1 on allocation failure</returns>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_buf_set(ref git_buf buffer, IntPtr data, size_t datalen);
+        public static git_result git_buf_set(ref git_buf buffer, IntPtr data, size_t datalen)
+        {
+            var __result__ = git_buf_set__(ref buffer, data, datalen).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_buf_set", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_buf_set__(ref git_buf buffer, IntPtr data, size_t datalen);
         
         /// <summary>
         /// Check quickly if buffer looks like it contains binary data

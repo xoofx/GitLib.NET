@@ -336,8 +336,14 @@ namespace GitLib
         /// <param name="rebase">The rebase that is in-progress</param>
         /// <returns>Zero on success; GIT_ENOTFOUND if a rebase is not in progress,
         /// -1 on other errors.</returns>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_rebase_abort(git_rebase rebase);
+        public static git_result git_rebase_abort(git_rebase rebase)
+        {
+            var __result__ = git_rebase_abort__(rebase).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_rebase_abort", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_rebase_abort__(git_rebase rebase);
         
         /// <summary>
         /// Finishes a rebase that is currently in progress once all patches have
@@ -346,8 +352,14 @@ namespace GitLib
         /// <param name="rebase">The rebase that is in-progress</param>
         /// <param name="signature">The identity that is finishing the rebase (optional)</param>
         /// <returns>Zero on success; -1 on error</returns>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_rebase_finish(git_rebase rebase, in git_signature signature);
+        public static git_result git_rebase_finish(git_rebase rebase, in git_signature signature)
+        {
+            var __result__ = git_rebase_finish__(rebase, signature).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_rebase_finish", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_rebase_finish__(git_rebase rebase, in git_signature signature);
         
         /// <summary>
         /// Frees the `git_rebase` object.

@@ -1426,12 +1426,12 @@ namespace GitLib
             public close_delegate close;
             
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate int close_delegate(ref git_writestream stream, [MarshalAs(UnmanagedType.LPUTF8Str)] string buffer, size_t len);
+            public delegate int close_delegate(ref git_writestream stream);
             
             public free_delegate free;
             
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate void free_delegate(ref git_writestream stream, [MarshalAs(UnmanagedType.LPUTF8Str)] string buffer, size_t len);
+            public delegate void free_delegate(ref git_writestream stream);
         }
         
         /// <summary>

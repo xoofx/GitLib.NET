@@ -61,8 +61,14 @@ namespace GitLib
         /// set true in the `git_diff_delta` structure.It is okay to pass NULL for either of the output parameters; if you pass
         /// NULL for the `git_patch`, then the text diff will not be calculated.
         /// </remarks>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_patch_from_diff(out git_patch @out, git_diff diff, size_t idx);
+        public static git_result git_patch_from_diff(out git_patch @out, git_diff diff, size_t idx)
+        {
+            var __result__ = git_patch_from_diff__(out @out, diff, idx).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_patch_from_diff", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_patch_from_diff__(out git_patch @out, git_diff diff, size_t idx);
         
         /// <summary>
         /// Directly generate a patch from the difference between two blobs.
@@ -183,8 +189,14 @@ namespace GitLib
         /// include the `total_context` line count in case you want the total number
         /// of lines of diff output that will be generated.All outputs are optional. Pass NULL if you don't need a particular count.
         /// </remarks>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_patch_line_stats(ref size_t total_context, ref size_t total_additions, ref size_t total_deletions, git_patch patch);
+        public static git_result git_patch_line_stats(ref size_t total_context, ref size_t total_additions, ref size_t total_deletions, git_patch patch)
+        {
+            var __result__ = git_patch_line_stats__(ref total_context, ref total_additions, ref total_deletions, patch).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_patch_line_stats", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_patch_line_stats__(ref size_t total_context, ref size_t total_additions, ref size_t total_deletions, git_patch patch);
         
         /// <summary>
         /// Get the information about a hunk in a patch
@@ -201,8 +213,14 @@ namespace GitLib
         /// information about that hunk.  Any of the output pointers can be passed
         /// as NULL if you don't care about that particular piece of information.
         /// </remarks>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_patch_get_hunk(out IntPtr @out, ref size_t lines_in_hunk, git_patch patch, size_t hunk_idx);
+        public static git_result git_patch_get_hunk(out IntPtr @out, ref size_t lines_in_hunk, git_patch patch, size_t hunk_idx)
+        {
+            var __result__ = git_patch_get_hunk__(out @out, ref lines_in_hunk, patch, hunk_idx).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_patch_get_hunk", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_patch_get_hunk__(out IntPtr @out, ref size_t lines_in_hunk, git_patch patch, size_t hunk_idx);
         
         /// <summary>
         /// Get the number of lines in a hunk.

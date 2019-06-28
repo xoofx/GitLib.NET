@@ -196,7 +196,7 @@ namespace GitLib
             public update_tips_delegate update_tips;
             
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate int update_tips_delegate(git_remote_completion_type type, IntPtr data);
+            public delegate int update_tips_delegate([MarshalAs(UnmanagedType.LPUTF8Str)] string refname, in git_oid a, in git_oid b, IntPtr data);
             
             /// <summary>
             /// Function to call with progress information during pack

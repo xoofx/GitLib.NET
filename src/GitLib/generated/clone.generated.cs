@@ -184,7 +184,13 @@ namespace GitLib
         /// git's defaults. You can use the options in the callback to
         /// customize how these are created.
         /// </remarks>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_clone(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string url, [MarshalAs(UnmanagedType.LPUTF8Str)] string local_path, in git_clone_options options);
+        public static git_result git_clone(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string url, [MarshalAs(UnmanagedType.LPUTF8Str)] string local_path, in git_clone_options options)
+        {
+            var __result__ = git_clone__(out @out, url, local_path, options).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_clone", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_clone__(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string url, [MarshalAs(UnmanagedType.LPUTF8Str)] string local_path, in git_clone_options options);
     }
 }

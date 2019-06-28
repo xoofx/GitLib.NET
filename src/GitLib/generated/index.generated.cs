@@ -304,8 +304,14 @@ namespace GitLib
         /// capabilities will be read from the config of the owner object,
         /// looking at `core.ignorecase`, `core.filemode`, `core.symlinks`.
         /// </remarks>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_index_set_caps(git_index index, int caps);
+        public static git_result git_index_set_caps(git_index index, int caps)
+        {
+            var __result__ = git_index_set_caps__(index, caps).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_index_set_caps", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_index_set_caps__(git_index index, int caps);
         
         /// <summary>
         /// Get index on-disk version.
@@ -331,8 +337,14 @@ namespace GitLib
         /// write an index with version 3 instead, if necessary to accurately
         /// represent the index.
         /// </remarks>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_index_set_version(git_index index, uint version);
+        public static git_result git_index_set_version(git_index index, uint version)
+        {
+            var __result__ = git_index_set_version__(index, version).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_index_set_version", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_index_set_version__(git_index index, uint version);
         
         /// <summary>
         /// Update the contents of an existing index object in memory by reading

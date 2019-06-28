@@ -486,8 +486,14 @@ namespace GitLib
         /// <returns>0 on success, GIT_ENOTFOUND if no repository could be found,
         /// or -1 if there was a repository but open failed for some reason
         /// (such as repo corruption or system errors).</returns>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_repository_open_ext(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, git_repository_open_flag_t flags, [MarshalAs(UnmanagedType.LPUTF8Str)] string ceiling_dirs);
+        public static git_result git_repository_open_ext(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, git_repository_open_flag_t flags, [MarshalAs(UnmanagedType.LPUTF8Str)] string ceiling_dirs)
+        {
+            var __result__ = git_repository_open_ext__(out @out, path, flags, ceiling_dirs).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_repository_open_ext", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_repository_open_ext__(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, git_repository_open_flag_t flags, [MarshalAs(UnmanagedType.LPUTF8Str)] string ceiling_dirs);
         
         /// <summary>
         /// Open a bare repository on the serverside.
@@ -615,8 +621,14 @@ namespace GitLib
         /// <param name="repo">a repository object</param>
         /// <param name="name">name of the worktree to retrieve HEAD for</param>
         /// <returns>0 when successful, error-code otherwise</returns>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_repository_head_for_worktree(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name);
+        public static git_result git_repository_head_for_worktree(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name)
+        {
+            var __result__ = git_repository_head_for_worktree__(out @out, repo, name).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_repository_head_for_worktree", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_repository_head_for_worktree__(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name);
         
         /// <summary>
         /// Check if a repository's HEAD is detached
@@ -628,8 +640,14 @@ namespace GitLib
         /// A repository's HEAD is detached when it points directly to a commit
         /// instead of a branch.
         /// </remarks>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_repository_head_detached(git_repository repo);
+        public static git_result_bool git_repository_head_detached(git_repository repo)
+        {
+            var __result__ = git_repository_head_detached__(repo).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_repository_head_detached", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result_bool git_repository_head_detached__(git_repository repo);
         
         /// <summary>
         /// Check if a worktree's HEAD is detached
@@ -642,8 +660,14 @@ namespace GitLib
         /// A worktree's HEAD is detached when it points directly to a
         /// commit instead of a branch.
         /// </remarks>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_repository_head_detached_for_worktree(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name);
+        public static git_result_bool git_repository_head_detached_for_worktree(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name)
+        {
+            var __result__ = git_repository_head_detached_for_worktree__(repo, name).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_repository_head_detached_for_worktree", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result_bool git_repository_head_detached_for_worktree__(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name);
         
         /// <summary>
         /// Check if the current branch is unborn
@@ -655,8 +679,14 @@ namespace GitLib
         /// An unborn branch is one named from HEAD but which doesn't exist in
         /// the refs namespace, because it doesn't have any commit to point to.
         /// </remarks>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_repository_head_unborn(git_repository repo);
+        public static git_result_bool git_repository_head_unborn(git_repository repo)
+        {
+            var __result__ = git_repository_head_unborn__(repo).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_repository_head_unborn", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result_bool git_repository_head_unborn__(git_repository repo);
         
         /// <summary>
         /// Check if a repository is empty
@@ -668,9 +698,14 @@ namespace GitLib
         /// An empty repository has just been initialized and contains no references
         /// apart from HEAD, which must be pointing to the unborn master branch.
         /// </remarks>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.Bool)]
-        public static extern bool git_repository_is_empty(git_repository repo);
+        public static git_result_bool git_repository_is_empty(git_repository repo)
+        {
+            var __result__ = git_repository_is_empty__(repo).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_repository_is_empty", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result_bool git_repository_is_empty__(git_repository repo);
         
         /// <summary>
         /// Get the location of a specific repository file or directory
@@ -910,8 +945,14 @@ namespace GitLib
         /// <remarks>
         /// Remove the message that `git_repository_message` retrieves.
         /// </remarks>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_repository_message_remove(git_repository repo);
+        public static git_result git_repository_message_remove(git_repository repo)
+        {
+            var __result__ = git_repository_message_remove__(repo).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_repository_message_remove", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_repository_message_remove__(git_repository repo);
         
         /// <summary>
         /// Remove all the metadata associated with an ongoing command like merge,

@@ -43,6 +43,30 @@ namespace GitLib
             public static bool operator !=(git_result left, git_result right) => !left.Equals(right);
         }
         
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
+        public readonly partial struct git_result_bool : IEquatable<git_result_bool>
+        {
+            public git_result_bool(int value) => this.Value = value;
+            
+            public readonly int Value;
+            
+            public bool Equals(git_result_bool other) =>  Value.Equals(other.Value);
+            
+            public override bool Equals(object obj) => obj is git_result_bool other && Equals(other);
+            
+            public override int GetHashCode() => Value.GetHashCode();
+            
+            public override string ToString() => Value.ToString();
+            
+            public static implicit operator int(git_result_bool from) => from.Value;
+            
+            public static implicit operator git_result_bool(int from) => new git_result_bool(from);
+            
+            public static bool operator ==(git_result_bool left, git_result_bool right) => left.Equals(right);
+            
+            public static bool operator !=(git_result_bool left, git_result_bool right) => !left.Equals(right);
+        }
+        
         public const uint GIT_REPOSITORY_INIT_OPTIONS_VERSION = 1;
     }
 }

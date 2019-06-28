@@ -175,8 +175,14 @@ namespace GitLib
         /// <returns>0 on success, any non-zero return value from a callback
         /// function, or a negative value to indicate an error (use
         /// `git_error_last` for a detailed error message).</returns>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_submodule_update(git_submodule submodule, int init, ref git_submodule_update_options options);
+        public static git_result git_submodule_update(git_submodule submodule, int init, ref git_submodule_update_options options)
+        {
+            var __result__ = git_submodule_update__(submodule, init, ref options).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_submodule_update", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_submodule_update__(git_submodule submodule, int init, ref git_submodule_update_options options);
         
         /// <summary>
         /// Lookup submodule information by name or path.
@@ -638,8 +644,14 @@ namespace GitLib
         /// Call this to reread cached submodule information for this submodule if
         /// you have reason to believe that it has changed.
         /// </remarks>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_submodule_reload(git_submodule submodule, int force);
+        public static git_result git_submodule_reload(git_submodule submodule, int force)
+        {
+            var __result__ = git_submodule_reload__(submodule, force).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_submodule_reload", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_submodule_reload__(git_submodule submodule, int force);
         
         /// <summary>
         /// Get the status for a submodule.
@@ -657,8 +669,14 @@ namespace GitLib
         /// How deeply it examines the working directory to do this will depend
         /// on the `git_submodule_ignore_t` value for the submodule.
         /// </remarks>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_submodule_status(ref uint status, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, git_submodule_ignore_t ignore);
+        public static git_result git_submodule_status(ref uint status, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, git_submodule_ignore_t ignore)
+        {
+            var __result__ = git_submodule_status__(ref status, repo, name, ignore).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_submodule_status", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_submodule_status__(ref uint status, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, git_submodule_ignore_t ignore);
         
         /// <summary>
         /// Get the locations of submodule information.
@@ -676,7 +694,13 @@ namespace GitLib
         /// This can be useful if you want to know if the submodule is present in the
         /// working directory at this point in time, etc.
         /// </remarks>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_submodule_location(ref uint location_status, git_submodule submodule);
+        public static git_result git_submodule_location(ref uint location_status, git_submodule submodule)
+        {
+            var __result__ = git_submodule_location__(ref location_status, submodule).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_submodule_location", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_submodule_location__(ref uint location_status, git_submodule submodule);
     }
 }

@@ -195,8 +195,14 @@ namespace GitLib
         /// matches were found, other value 
         /// &lt;
         /// 0 if there was a read error.</returns>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_odb_exists_prefix(out git_oid @out, git_odb db, in git_oid short_id, size_t len);
+        public static git_result git_odb_exists_prefix(out git_oid @out, git_odb db, in git_oid short_id, size_t len)
+        {
+            var __result__ = git_odb_exists_prefix__(out @out, db, short_id, len).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_odb_exists_prefix", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_odb_exists_prefix__(out git_oid @out, git_odb db, in git_oid short_id, size_t len);
         
         /// <summary>
         /// Determine if one or more objects can be found in the object database

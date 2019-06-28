@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,10 +12,17 @@ using Zio.FileSystems;
 
 namespace GitLib.CodeGen
 {
-    class Program
+    public partial class Program
     {
         private CppTypedef _gitResultType;
-        
+        private CppTypedef _gitResultBoolType;
+        private readonly Dictionary<string, List<string>> _gitResultFunctionsDetectedButNotRegistered;
+
+        private Program()
+        {
+            _gitResultFunctionsDetectedButNotRegistered = new Dictionary<string, List<string>>();
+        }
+
         static void Main(string[] args)
         {
             var program = new Program();
@@ -49,7 +57,9 @@ namespace GitLib.CodeGen
 
                 PreHeaderText = @"
 // A result integer from a git function. 0 if successful, < 0 if an error.
-typedef int git_result;",
+typedef int git_result;
+typedef int git_result_bool;
+",
                 
                 DispatchOutputPerInclude = true,
                 DefaultMarshalForString = new CSharpMarshalAttribute(CSharpUnmanagedKind.LPUTF8Str),
@@ -72,10 +82,10 @@ typedef int git_result;",
                     e => e.Map<CppFunction>("git_repository_ident").Type("git_result"),
                     e => e.Map<CppFunction>("git_repository_set_ident").Type("git_result"),
                     e => e.Map<CppFunction>("git_repository_fetchhead_foreach").Type("git_result"),
+                    
                     e => e.Map<CppFunction>("git_repository_is_shallow").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
                     e => e.Map<CppFunction>("git_repository_is_bare").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
                     e => e.Map<CppFunction>("git_repository_is_worktree").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
-                    e => e.Map<CppFunction>("git_repository_is_empty").Type("bool").MarshalAs(CSharpUnmanagedKind.Bool),
                     
                     // Mappings for revwalk.h
                     e => e.Map<CppParameter>("git_revwalk_sorting::sort_mode").Type("git_sort_t"),
@@ -184,6 +194,8 @@ typedef int git_result;",
                 var codeWriter = new CodeWriter(new CodeWriterOptions(subfs));
                 testGeneratedCompilation.DumpTo(codeWriter);
             }
+            
+            ReportFunctionWithPossibleGitResultNotRegistered();
         }
 
         private static string ToPascalCase(string name)
@@ -252,49 +264,70 @@ typedef int git_result;",
             return false;
         }
 
+        private void ReportFunctionWithPossibleGitResultNotRegistered()
+        {
+            if (_gitResultFunctionsDetectedButNotRegistered.Count == 0) return;
+            
+            Console.WriteLine($"// The following functions are possible returning a git_result but are not registered a such");
+            
+            foreach (var keyPair in _gitResultFunctionsDetectedButNotRegistered.OrderBy(x => x.Key))
+            {
+                Console.WriteLine($"// {keyPair.Key}");
+                foreach (var functionName in keyPair.Value.OrderBy(x => x))
+                {
+                    Console.WriteLine($"\"{functionName}\",");
+                }
+            }
+        }
+
         private void ProcessCppFunctions(CSharpConverter converter, CppElement cppFunctionElement)
         {
             var cppFunction = (CppFunction) cppFunctionElement;
+
+            // We are only looking for functions returning an int
+            if (!cppFunction.ReturnType.Equals(CppPrimitiveType.Int)) return;
             
-            for (var i = cppFunction.Comment.Children.Count - 1; i >= 0; i--)
+            // If the function is not registered as a git_result, we will try to detect if it is a potential one
+            if (!_gitResultFunctions.Contains(cppFunction.Name) && !_gitResultFunctionsWithBoolReturned.Contains(cppFunction.Name))
             {
-                var csComment = cppFunction.Comment.Children[i];
-                if (csComment is CppCommentBlockCommand blockCommand && blockCommand.CommandName == "return")
+                if (cppFunction.Comment == null) return;
+
+                // Start from the bottom of the comments to catch "return" more quickly
+                for (int i = cppFunction.Comment.Children.Count - 1; i >= 0; i--)
                 {
-                    var returnText = blockCommand.ChildrenToString().Trim().Replace("\r\n", " ").Replace("\n", " ");
-
-                    if (((returnText.Contains("Zero on success") && returnText.Contains("-1 on failure")) ||
-                         (returnText.Contains("0 on success") && returnText.Contains("0 on failure")) ||
-                         (returnText.StartsWith("0") && (
-                              returnText.Contains("or an error") ||
-                              returnText.Contains("error code") ||
-                              returnText.Contains("-1 on error") ||
-                              returnText.Contains("or error") ||
-                              returnText.Contains("error code otherwise") ||
-                              returnText.Contains("other errors") ||
-                              (returnText.Contains("or ") && returnText.Contains("on error"))))))
+                    var csComment = cppFunction.Comment.Children[i];
+                    if (csComment is CppCommentBlockCommand blockCommand && blockCommand.CommandName == "return")
                     {
-
-                        if (_gitResultType == null)
+                        var returnText = blockCommand.ChildrenToString().Trim().Replace("\r\n", " ")
+                            .Replace("\n", " ");
+                        if ((returnText.StartsWith("Zero") || returnText.StartsWith("0")) &&
+                            (returnText.Contains("failure") || returnText.Contains("error")))
                         {
-                            foreach (var typedef in converter.CurrentCppCompilation.Typedefs)
+                            var includeName = Path.GetFileName(cppFunction.Span.Start.File);
+
+                            if (!_gitResultFunctionsDetectedButNotRegistered.TryGetValue(includeName,
+                                out var functionList))
                             {
-                                if (typedef.Name == "git_result")
-                                {
-                                    _gitResultType = typedef;
-                                    break;
-                                }
+                                functionList = new List<string>();
+                                _gitResultFunctionsDetectedButNotRegistered.Add(includeName, functionList);
                             }
-                        }
 
-                        if (_gitResultType != null)
-                        {
-                            cppFunction.ReturnType = _gitResultType;
+                            functionList.Add(cppFunction.Name);
                         }
                     }
-
-                    break;
                 }
+            }
+            else
+            {
+                if (_gitResultType == null)
+                {
+                    _gitResultType = (CppTypedef) converter.CurrentCppCompilation.FindByName("git_result");
+                    _gitResultBoolType = (CppTypedef) converter.CurrentCppCompilation.FindByName("git_result_bool");
+                    Debug.Assert(_gitResultType != null);
+                    Debug.Assert(_gitResultBoolType != null);
+                }
+
+                cppFunction.ReturnType = _gitResultFunctionsWithBoolReturned.Contains(cppFunction.Name) ? _gitResultBoolType : _gitResultType;
             }
         }
 
@@ -315,7 +348,7 @@ typedef int git_result;",
                     }
                 }
 
-                var isGitResultMethod = csMethod.ReturnType.CppElement == _gitResultType;
+                var isGitResultMethod = csMethod.ReturnType.CppElement == _gitResultType || csMethod.ReturnType.CppElement == _gitResultBoolType;
                 
                 if (hasGitStrarray || isGitResultMethod)
                 {

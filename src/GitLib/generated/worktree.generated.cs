@@ -158,8 +158,14 @@ namespace GitLib
         /// the linked parent repository and the linked working copy to be
         /// present.
         /// </remarks>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_worktree_validate(git_worktree wt);
+        public static git_result git_worktree_validate(git_worktree wt)
+        {
+            var __result__ = git_worktree_validate__(wt).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_worktree_validate", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_worktree_validate__(git_worktree wt);
         
         /// <summary>
         /// Initialize git_worktree_add_options structure
@@ -222,8 +228,14 @@ namespace GitLib
         /// <param name="wt">Worktree to unlock</param>
         /// <returns>0 on success, 1 if worktree was not locked, error-code
         /// otherwise</returns>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_worktree_unlock(git_worktree wt);
+        public static git_result git_worktree_unlock(git_worktree wt)
+        {
+            var __result__ = git_worktree_unlock__(wt).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_worktree_unlock", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_worktree_unlock__(git_worktree wt);
         
         /// <summary>
         /// Check if worktree is locked
@@ -237,8 +249,14 @@ namespace GitLib
         /// A worktree may be locked if the linked working tree is stored
         /// on a portable device which is not available.
         /// </remarks>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_worktree_is_locked(ref git_buf reason, git_worktree wt);
+        public static git_result git_worktree_is_locked(ref git_buf reason, git_worktree wt)
+        {
+            var __result__ = git_worktree_is_locked__(ref reason, wt).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_worktree_is_locked", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_worktree_is_locked__(ref git_buf reason, git_worktree wt);
         
         /// <summary>
         /// Retrieve the name of the worktree

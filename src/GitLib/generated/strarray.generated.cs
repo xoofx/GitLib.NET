@@ -52,7 +52,13 @@ namespace GitLib
         /// Note: target is overwritten and hence should be empty, otherwise its
         /// contents are leaked.  Call git_strarray_free() if necessary.
         /// </remarks>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_strarray_copy(ref git_strarray tgt, in git_strarray src);
+        public static git_result git_strarray_copy(ref git_strarray tgt, in git_strarray src)
+        {
+            var __result__ = git_strarray_copy__(ref tgt, src).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_strarray_copy", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_strarray_copy__(ref git_strarray tgt, in git_strarray src);
     }
 }

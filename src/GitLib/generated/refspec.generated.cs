@@ -101,8 +101,14 @@ namespace GitLib
         /// <param name="spec">the refspec</param>
         /// <param name="name">the name of the reference to transform</param>
         /// <returns>0, GIT_EBUFS or another error</returns>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_refspec_transform(out git_buf @out, git_refspec spec, [MarshalAs(UnmanagedType.LPUTF8Str)] string name);
+        public static git_result git_refspec_transform(out git_buf @out, git_refspec spec, [MarshalAs(UnmanagedType.LPUTF8Str)] string name)
+        {
+            var __result__ = git_refspec_transform__(out @out, spec, name).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_refspec_transform", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_refspec_transform__(out git_buf @out, git_refspec spec, [MarshalAs(UnmanagedType.LPUTF8Str)] string name);
         
         /// <summary>
         /// Transform a target reference to its source reference following the refspec's rules
@@ -111,7 +117,13 @@ namespace GitLib
         /// <param name="spec">the refspec</param>
         /// <param name="name">the name of the reference to transform</param>
         /// <returns>0, GIT_EBUFS or another error</returns>
-        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_refspec_rtransform(out git_buf @out, git_refspec spec, [MarshalAs(UnmanagedType.LPUTF8Str)] string name);
+        public static git_result git_refspec_rtransform(out git_buf @out, git_refspec spec, [MarshalAs(UnmanagedType.LPUTF8Str)] string name)
+        {
+            var __result__ = git_refspec_rtransform__(out @out, spec, name).Check();
+            return __result__;
+        }
+        
+        [DllImport(GitLibName, EntryPoint = "git_refspec_rtransform", CallingConvention = CallingConvention.Cdecl)]
+        private static extern git_result git_refspec_rtransform__(out git_buf @out, git_refspec spec, [MarshalAs(UnmanagedType.LPUTF8Str)] string name);
     }
 }
