@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class AnnotatedCommitTests : GitLibTestsBase
     {
+        public AnnotatedCommitTests() : base("annotated_commit") {}
+        
         private void Check()
         {
             Test_git_annotated_commit_from_ref();

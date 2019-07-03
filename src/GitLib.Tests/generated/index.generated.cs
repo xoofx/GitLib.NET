@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class IndexTests : GitLibTestsBase
     {
+        public IndexTests() : base("index") {}
+        
         private void Check()
         {
             Test_git_index_open();

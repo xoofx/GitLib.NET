@@ -78,7 +78,7 @@ namespace GitLib
             /// <summary>
             /// The URL of the proxy.
             /// </summary>
-            [MarshalAs(UnmanagedType.LPUTF8Str)]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
             public string url;
             
             /// <summary>

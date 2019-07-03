@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class MergeTests : GitLibTestsBase
     {
+        public MergeTests() : base("merge") {}
+        
         private void Check()
         {
             Test_git_merge_file_init_input();

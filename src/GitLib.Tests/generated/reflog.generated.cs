@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class ReflogTests : GitLibTestsBase
     {
+        public ReflogTests() : base("reflog") {}
+        
         private void Check()
         {
             Test_git_reflog_read();

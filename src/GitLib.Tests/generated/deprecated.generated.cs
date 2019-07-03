@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class DeprecatedTests : GitLibTestsBase
     {
+        public DeprecatedTests() : base("deprecated") {}
+        
         private void Check()
         {
             Test_git_buf_free();

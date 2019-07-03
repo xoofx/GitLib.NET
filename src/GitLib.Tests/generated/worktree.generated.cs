@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class WorktreeTests : GitLibTestsBase
     {
+        public WorktreeTests() : base("worktree") {}
+        
         private void Check()
         {
             Test_git_worktree_list();

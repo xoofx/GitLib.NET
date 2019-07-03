@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class FilterTests : GitLibTestsBase
     {
+        public FilterTests() : base("filter") {}
+        
         private void Check()
         {
             Test_git_filter_list_load();

@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class StashTests : GitLibTestsBase
     {
+        public StashTests() : base("stash") {}
+        
         private void Check()
         {
             Test_git_stash_save();

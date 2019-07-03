@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class TransactionTests : GitLibTestsBase
     {
+        public TransactionTests() : base("transaction") {}
+        
         private void Check()
         {
             Test_git_transaction_new();

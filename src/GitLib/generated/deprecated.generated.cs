@@ -65,7 +65,7 @@ namespace GitLib
         /// function at this time.@deprecated Use git_error_set_str
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void giterr_set_str(int error_class, [MarshalAs(UnmanagedType.LPUTF8Str)] string @string);
+        public static extern void giterr_set_str(int error_class, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string @string);
         
         /// <summary>
         /// Indicates that an out-of-memory situation occured.  This is an alias

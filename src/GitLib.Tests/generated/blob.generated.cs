@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class BlobTests : GitLibTestsBase
     {
+        public BlobTests() : base("blob") {}
+        
         private void Check()
         {
             Test_git_blob_lookup();

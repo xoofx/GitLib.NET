@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class Libgit2Tests : GitLibTestsBase
     {
+        public Libgit2Tests() : base("libgit2") {}
+        
         private void Check()
         {
         }

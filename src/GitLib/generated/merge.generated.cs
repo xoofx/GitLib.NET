@@ -365,7 +365,7 @@ namespace GitLib
             /// <summary>
             /// Pointer to the contents of the file.
             /// </summary>
-            [MarshalAs(UnmanagedType.LPUTF8Str)]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
             public string ptr;
             
             /// <summary>
@@ -376,7 +376,7 @@ namespace GitLib
             /// <summary>
             /// File name of the conflicted file, or `NULL` to not merge the path.
             /// </summary>
-            [MarshalAs(UnmanagedType.LPUTF8Str)]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
             public string path;
             
             /// <summary>
@@ -397,21 +397,21 @@ namespace GitLib
             /// Label for the ancestor file side of the conflict which will be prepended
             /// to labels in diff3-format merge files.
             /// </summary>
-            [MarshalAs(UnmanagedType.LPUTF8Str)]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
             public string ancestor_label;
             
             /// <summary>
             /// Label for our file side of the conflict which will be prepended
             /// to labels in merge files.
             /// </summary>
-            [MarshalAs(UnmanagedType.LPUTF8Str)]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
             public string our_label;
             
             /// <summary>
             /// Label for their file side of the conflict which will be prepended
             /// to labels in merge files.
             /// </summary>
-            [MarshalAs(UnmanagedType.LPUTF8Str)]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
             public string their_label;
             
             /// <summary>
@@ -455,7 +455,7 @@ namespace GitLib
             /// The path that the resultant merge file should use, or NULL if a
             /// filename conflict would occur.
             /// </summary>
-            [MarshalAs(UnmanagedType.LPUTF8Str)]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
             public string path;
             
             /// <summary>
@@ -466,7 +466,7 @@ namespace GitLib
             /// <summary>
             /// The contents of the merge.
             /// </summary>
-            [MarshalAs(UnmanagedType.LPUTF8Str)]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
             public string ptr;
             
             /// <summary>
@@ -524,7 +524,7 @@ namespace GitLib
             /// Default merge driver to be used when both sides of a merge have
             /// changed.  The default is the `text` driver.
             /// </summary>
-            [MarshalAs(UnmanagedType.LPUTF8Str)]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
             public string default_driver;
             
             /// <summary>

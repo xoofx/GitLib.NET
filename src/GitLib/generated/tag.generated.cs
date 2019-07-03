@@ -15,7 +15,7 @@ namespace GitLib
     public static partial class libgit2
     {
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_tag_foreach_cb([MarshalAs(UnmanagedType.LPUTF8Str)] string name, ref git_oid oid, IntPtr payload);
+        public delegate int git_tag_foreach_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, ref git_oid oid, IntPtr payload);
         
         /// <summary>
         /// Lookup a tag object from the repository.
@@ -121,7 +121,7 @@ namespace GitLib
         /// <param name="tag">a previously loaded tag.</param>
         /// <returns>name of the tag</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.LPUTF8Str)]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
         public static extern string git_tag_name(git_tag tag);
         
         /// <summary>
@@ -138,7 +138,7 @@ namespace GitLib
         /// <param name="tag">a previously loaded tag.</param>
         /// <returns>message of the tag or NULL when unspecified</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.LPUTF8Str)]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
         public static extern string git_tag_message(git_tag tag);
         
         /// <summary>
@@ -173,14 +173,14 @@ namespace GitLib
         /// @
         /// {" which have special meaning to revparse.
         /// </remarks>
-        public static git_result git_tag_create(ref git_oid oid, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string tag_name, git_object target, in git_signature tagger, [MarshalAs(UnmanagedType.LPUTF8Str)] string message, int force)
+        public static git_result git_tag_create(ref git_oid oid, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string tag_name, git_object target, in git_signature tagger, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message, int force)
         {
             var __result__ = git_tag_create__(ref oid, repo, tag_name, target, tagger, message, force).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_tag_create", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_tag_create__(ref git_oid oid, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string tag_name, git_object target, in git_signature tagger, [MarshalAs(UnmanagedType.LPUTF8Str)] string message, int force);
+        private static extern git_result git_tag_create__(ref git_oid oid, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string tag_name, git_object target, in git_signature tagger, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message, int force);
         
         /// <summary>
         /// Create a new tag in the object database pointing to a git_object
@@ -199,14 +199,14 @@ namespace GitLib
         /// The message will not be cleaned up. This can be achieved
         /// through `git_message_prettify()`.
         /// </remarks>
-        public static git_result git_tag_annotation_create(ref git_oid oid, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string tag_name, git_object target, in git_signature tagger, [MarshalAs(UnmanagedType.LPUTF8Str)] string message)
+        public static git_result git_tag_annotation_create(ref git_oid oid, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string tag_name, git_object target, in git_signature tagger, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message)
         {
             var __result__ = git_tag_annotation_create__(ref oid, repo, tag_name, target, tagger, message).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_tag_annotation_create", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_tag_annotation_create__(ref git_oid oid, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string tag_name, git_object target, in git_signature tagger, [MarshalAs(UnmanagedType.LPUTF8Str)] string message);
+        private static extern git_result git_tag_annotation_create__(ref git_oid oid, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string tag_name, git_object target, in git_signature tagger, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message);
         
         /// <summary>
         /// Create a new tag in the repository from a buffer
@@ -216,14 +216,14 @@ namespace GitLib
         /// <param name="buffer">Raw tag data</param>
         /// <param name="force">Overwrite existing tags</param>
         /// <returns>0 on success; error code otherwise</returns>
-        public static git_result git_tag_create_frombuffer(ref git_oid oid, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string buffer, int force)
+        public static git_result git_tag_create_frombuffer(ref git_oid oid, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string buffer, int force)
         {
             var __result__ = git_tag_create_frombuffer__(ref oid, repo, buffer, force).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_tag_create_frombuffer", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_tag_create_frombuffer__(ref git_oid oid, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string buffer, int force);
+        private static extern git_result git_tag_create_frombuffer__(ref git_oid oid, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string buffer, int force);
         
         /// <summary>
         /// Create a new lightweight tag pointing at a target object
@@ -248,14 +248,14 @@ namespace GitLib
         /// already exists with the given name, it'll be replaced.The tag name will be checked for validity.
         /// See `git_tag_create()` for rules about valid names.
         /// </remarks>
-        public static git_result git_tag_create_lightweight(ref git_oid oid, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string tag_name, git_object target, int force)
+        public static git_result git_tag_create_lightweight(ref git_oid oid, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string tag_name, git_object target, int force)
         {
             var __result__ = git_tag_create_lightweight__(ref oid, repo, tag_name, target, force).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_tag_create_lightweight", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_tag_create_lightweight__(ref git_oid oid, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string tag_name, git_object target, int force);
+        private static extern git_result git_tag_create_lightweight__(ref git_oid oid, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string tag_name, git_object target, int force);
         
         /// <summary>
         /// Delete an existing tag reference.
@@ -268,14 +268,14 @@ namespace GitLib
         /// The tag name will be checked for validity.
         /// See `git_tag_create()` for rules about valid names.
         /// </remarks>
-        public static git_result git_tag_delete(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string tag_name)
+        public static git_result git_tag_delete(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string tag_name)
         {
             var __result__ = git_tag_delete__(repo, tag_name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_tag_delete", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_tag_delete__(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string tag_name);
+        private static extern git_result git_tag_delete__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string tag_name);
         
         /// <summary>
         /// Fill a list with all the tags in the Repository
@@ -318,7 +318,7 @@ namespace GitLib
         /// should be free'd manually when no longer needed, using
         /// `git_strarray_free`.
         /// </remarks>
-        public static git_result git_tag_list_match(out string[] tag_names, [MarshalAs(UnmanagedType.LPUTF8Str)] string pattern, git_repository repo)
+        public static git_result git_tag_list_match(out string[] tag_names, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string pattern, git_repository repo)
         {
             git_strarray tag_names__;
             var __result__ = git_tag_list_match__(out tag_names__, pattern, repo).Check();
@@ -328,7 +328,7 @@ namespace GitLib
         }
         
         [DllImport(GitLibName, EntryPoint = "git_tag_list_match", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_tag_list_match__(out git_strarray tag_names, [MarshalAs(UnmanagedType.LPUTF8Str)] string pattern, git_repository repo);
+        private static extern git_result git_tag_list_match__(out git_strarray tag_names, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string pattern, git_repository repo);
         
         /// <summary>
         /// Call callback `cb' for each tag in the repository

@@ -129,7 +129,7 @@ namespace GitLib
             /// is set to false.  If `notes.rewriteRef` is also NULL, notes will
             /// not be rewritten.
             /// </summary>
-            [MarshalAs(UnmanagedType.LPUTF8Str)]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
             public string rewrite_notes_ref;
             
             /// <summary>
@@ -172,7 +172,7 @@ namespace GitLib
             /// The executable the user has requested be run.  This will only
             /// be populated for operations of type `GIT_REBASE_OPERATION_EXEC`.
             /// </summary>
-            [MarshalAs(UnmanagedType.LPUTF8Str)]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
             public string exec;
         }
         
@@ -320,14 +320,14 @@ namespace GitLib
         /// the index, GIT_EAPPLIED if the current commit has already
         /// been applied to the upstream and there is nothing to commit,
         /// -1 on failure.</returns>
-        public static git_result git_rebase_commit(ref git_oid id, git_rebase rebase, in git_signature author, in git_signature committer, [MarshalAs(UnmanagedType.LPUTF8Str)] string message_encoding, [MarshalAs(UnmanagedType.LPUTF8Str)] string message)
+        public static git_result git_rebase_commit(ref git_oid id, git_rebase rebase, in git_signature author, in git_signature committer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message_encoding, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message)
         {
             var __result__ = git_rebase_commit__(ref id, rebase, author, committer, message_encoding, message).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_rebase_commit", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_rebase_commit__(ref git_oid id, git_rebase rebase, in git_signature author, in git_signature committer, [MarshalAs(UnmanagedType.LPUTF8Str)] string message_encoding, [MarshalAs(UnmanagedType.LPUTF8Str)] string message);
+        private static extern git_result git_rebase_commit__(ref git_oid id, git_rebase rebase, in git_signature author, in git_signature committer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message_encoding, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message);
         
         /// <summary>
         /// Aborts a rebase that is currently in progress, resetting the repository

@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class RefsTests : GitLibTestsBase
     {
+        public RefsTests() : base("refs") {}
+        
         private void Check()
         {
             Test_git_reference_lookup();

@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class CherrypickTests : GitLibTestsBase
     {
+        public CherrypickTests() : base("cherrypick") {}
+        
         private void Check()
         {
             Test_git_cherrypick_init_options();

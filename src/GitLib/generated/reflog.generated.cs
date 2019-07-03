@@ -27,14 +27,14 @@ namespace GitLib
         /// be returned.The reflog must be freed manually by using
         /// git_reflog_free().
         /// </remarks>
-        public static git_result git_reflog_read(out git_reflog @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name)
+        public static git_result git_reflog_read(out git_reflog @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
         {
             var __result__ = git_reflog_read__(out @out, repo, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_reflog_read", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_reflog_read__(out git_reflog @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name);
+        private static extern git_result git_reflog_read__(out git_reflog @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
         
         /// <summary>
         /// Write an existing in-memory reflog object back to disk
@@ -62,14 +62,14 @@ namespace GitLib
         /// <remarks>
         /// `msg` is optional and can be NULL.
         /// </remarks>
-        public static git_result git_reflog_append(git_reflog reflog, in git_oid id, in git_signature committer, [MarshalAs(UnmanagedType.LPUTF8Str)] string msg)
+        public static git_result git_reflog_append(git_reflog reflog, in git_oid id, in git_signature committer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string msg)
         {
             var __result__ = git_reflog_append__(reflog, id, committer, msg).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_reflog_append", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_reflog_append__(git_reflog reflog, in git_oid id, in git_signature committer, [MarshalAs(UnmanagedType.LPUTF8Str)] string msg);
+        private static extern git_result git_reflog_append__(git_reflog reflog, in git_oid id, in git_signature committer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string msg);
         
         /// <summary>
         /// Rename a reflog
@@ -82,14 +82,14 @@ namespace GitLib
         /// The reflog to be renamed is expected to already existThe new name will be checked for validity.
         /// See `git_reference_create_symbolic()` for rules about valid names.
         /// </remarks>
-        public static git_result git_reflog_rename(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string old_name, [MarshalAs(UnmanagedType.LPUTF8Str)] string name)
+        public static git_result git_reflog_rename(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string old_name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
         {
             var __result__ = git_reflog_rename__(repo, old_name, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_reflog_rename", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_reflog_rename__(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string old_name, [MarshalAs(UnmanagedType.LPUTF8Str)] string name);
+        private static extern git_result git_reflog_rename__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string old_name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
         
         /// <summary>
         /// Delete the reflog for the given reference
@@ -97,14 +97,14 @@ namespace GitLib
         /// <param name="repo">the repository</param>
         /// <param name="name">the reflog to delete</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_reflog_delete(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name)
+        public static git_result git_reflog_delete(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
         {
             var __result__ = git_reflog_delete__(repo, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_reflog_delete", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_reflog_delete__(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name);
+        private static extern git_result git_reflog_delete__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
         
         /// <summary>
         /// Get the number of log entries in a reflog
@@ -181,7 +181,7 @@ namespace GitLib
         /// <param name="entry">a reflog entry</param>
         /// <returns>the log msg</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.LPUTF8Str)]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
         public static extern string git_reflog_entry_message(git_reflog_entry entry);
         
         /// <summary>

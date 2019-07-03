@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class CloneTests : GitLibTestsBase
     {
+        public CloneTests() : base("clone") {}
+        
         private void Check()
         {
             Test_git_clone_init_options();

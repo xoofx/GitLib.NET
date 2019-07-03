@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class NetTests : GitLibTestsBase
     {
+        public NetTests() : base("net") {}
+        
         private void Check()
         {
         }

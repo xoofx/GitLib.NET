@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class NotesTests : GitLibTestsBase
     {
+        public NotesTests() : base("notes") {}
+        
         private void Check()
         {
             Test_git_note_iterator_new();

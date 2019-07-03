@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class BlameTests : GitLibTestsBase
     {
+        public BlameTests() : base("blame") {}
+        
         private void Check()
         {
             Test_git_blame_init_options();

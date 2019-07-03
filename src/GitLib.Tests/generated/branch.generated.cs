@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class BranchTests : GitLibTestsBase
     {
+        public BranchTests() : base("branch") {}
+        
         private void Check()
         {
             Test_git_branch_create();

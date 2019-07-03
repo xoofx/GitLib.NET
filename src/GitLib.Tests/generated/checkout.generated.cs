@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class CheckoutTests : GitLibTestsBase
     {
+        public CheckoutTests() : base("checkout") {}
+        
         private void Check()
         {
             Test_git_checkout_init_options();

@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class OdbBackendTests : GitLibTestsBase
     {
+        public OdbBackendTests() : base("odb_backend") {}
+        
         private void Check()
         {
             Test_git_odb_backend_pack();

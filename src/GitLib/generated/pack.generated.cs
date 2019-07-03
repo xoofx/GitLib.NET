@@ -74,14 +74,14 @@ namespace GitLib
         /// For an optimal pack it's mandatory to insert objects in recency order,
         /// commits followed by trees and blobs.
         /// </remarks>
-        public static git_result git_packbuilder_insert(git_packbuilder pb, in git_oid id, [MarshalAs(UnmanagedType.LPUTF8Str)] string name)
+        public static git_result git_packbuilder_insert(git_packbuilder pb, in git_oid id, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
         {
             var __result__ = git_packbuilder_insert__(pb, id, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_packbuilder_insert", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_packbuilder_insert__(git_packbuilder pb, in git_oid id, [MarshalAs(UnmanagedType.LPUTF8Str)] string name);
+        private static extern git_result git_packbuilder_insert__(git_packbuilder pb, in git_oid id, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
         
         /// <summary>
         /// Insert a root tree object
@@ -148,14 +148,14 @@ namespace GitLib
         /// <remarks>
         /// Insert the object as well as any object it references.
         /// </remarks>
-        public static git_result git_packbuilder_insert_recur(git_packbuilder pb, in git_oid id, [MarshalAs(UnmanagedType.LPUTF8Str)] string name)
+        public static git_result git_packbuilder_insert_recur(git_packbuilder pb, in git_oid id, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
         {
             var __result__ = git_packbuilder_insert_recur__(pb, id, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_packbuilder_insert_recur", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_packbuilder_insert_recur__(git_packbuilder pb, in git_oid id, [MarshalAs(UnmanagedType.LPUTF8Str)] string name);
+        private static extern git_result git_packbuilder_insert_recur__(git_packbuilder pb, in git_oid id, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
         
         /// <summary>
         /// Write the contents of the packfile to an in-memory buffer
@@ -178,14 +178,14 @@ namespace GitLib
         /// <param name="progress_cb">function to call with progress information from the indexer (optional)</param>
         /// <param name="progress_cb_payload">payload for the progress callback (optional)</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_packbuilder_write(git_packbuilder pb, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, uint mode, git_transfer_progress_cb progress_cb, IntPtr progress_cb_payload)
+        public static git_result git_packbuilder_write(git_packbuilder pb, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, uint mode, git_transfer_progress_cb progress_cb, IntPtr progress_cb_payload)
         {
             var __result__ = git_packbuilder_write__(pb, path, mode, progress_cb, progress_cb_payload).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_packbuilder_write", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_packbuilder_write__(git_packbuilder pb, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, uint mode, git_transfer_progress_cb progress_cb, IntPtr progress_cb_payload);
+        private static extern git_result git_packbuilder_write__(git_packbuilder pb, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, uint mode, git_transfer_progress_cb progress_cb, IntPtr progress_cb_payload);
         
         /// <summary>
         /// Get the packfile's hash

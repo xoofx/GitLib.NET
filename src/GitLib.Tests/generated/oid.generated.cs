@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class OidTests : GitLibTestsBase
     {
+        public OidTests() : base("oid") {}
+        
         private void Check()
         {
             Test_git_oid_fromstr();

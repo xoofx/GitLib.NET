@@ -357,24 +357,24 @@ namespace GitLib
             
             public git_repository_init_mode_t mode;
             
-            [MarshalAs(UnmanagedType.LPUTF8Str)]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
             public string workdir_path;
             
-            [MarshalAs(UnmanagedType.LPUTF8Str)]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
             public string description;
             
-            [MarshalAs(UnmanagedType.LPUTF8Str)]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
             public string template_path;
             
-            [MarshalAs(UnmanagedType.LPUTF8Str)]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
             public string initial_head;
             
-            [MarshalAs(UnmanagedType.LPUTF8Str)]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
             public string origin_url;
         }
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_repository_fetchhead_foreach_cb([MarshalAs(UnmanagedType.LPUTF8Str)] string ref_name, [MarshalAs(UnmanagedType.LPUTF8Str)] string remote_url, in git_oid oid, uint is_merge, IntPtr payload);
+        public delegate int git_repository_fetchhead_foreach_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string ref_name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string remote_url, in git_oid oid, uint is_merge, IntPtr payload);
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate int git_repository_mergehead_foreach_cb(in git_oid oid, IntPtr payload);
@@ -390,14 +390,14 @@ namespace GitLib
         /// folder, or an existing work dir.The method will automatically detect if 'path' is a normal
         /// or bare repository or fail is 'path' is neither.
         /// </remarks>
-        public static git_result git_repository_open(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string path)
+        public static git_result git_repository_open(out git_repository @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path)
         {
             var __result__ = git_repository_open__(out @out, path).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_repository_open", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_repository_open__(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string path);
+        private static extern git_result git_repository_open__(out git_repository @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path);
         
         /// <summary>
         /// Open working tree as a repository
@@ -460,14 +460,14 @@ namespace GitLib
         /// The method will automatically detect if the repository is bare
         /// (if there is a repository).
         /// </remarks>
-        public static git_result git_repository_discover(out git_buf @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string start_path, [MarshalAs(UnmanagedType.Bool)] bool across_fs, [MarshalAs(UnmanagedType.LPUTF8Str)] string ceiling_dirs)
+        public static git_result git_repository_discover(out git_buf @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string start_path, [MarshalAs(UnmanagedType.Bool)] bool across_fs, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string ceiling_dirs)
         {
             var __result__ = git_repository_discover__(out @out, start_path, across_fs, ceiling_dirs).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_repository_discover", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_repository_discover__(out git_buf @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string start_path, [MarshalAs(UnmanagedType.Bool)] bool across_fs, [MarshalAs(UnmanagedType.LPUTF8Str)] string ceiling_dirs);
+        private static extern git_result git_repository_discover__(out git_buf @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string start_path, [MarshalAs(UnmanagedType.Bool)] bool across_fs, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string ceiling_dirs);
         
         /// <summary>
         /// Find and open a repository with extended controls.
@@ -486,14 +486,14 @@ namespace GitLib
         /// <returns>0 on success, GIT_ENOTFOUND if no repository could be found,
         /// or -1 if there was a repository but open failed for some reason
         /// (such as repo corruption or system errors).</returns>
-        public static git_result git_repository_open_ext(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, git_repository_open_flag_t flags, [MarshalAs(UnmanagedType.LPUTF8Str)] string ceiling_dirs)
+        public static git_result git_repository_open_ext(out git_repository @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, git_repository_open_flag_t flags, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string ceiling_dirs)
         {
             var __result__ = git_repository_open_ext__(out @out, path, flags, ceiling_dirs).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_repository_open_ext", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_repository_open_ext__(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, git_repository_open_flag_t flags, [MarshalAs(UnmanagedType.LPUTF8Str)] string ceiling_dirs);
+        private static extern git_result git_repository_open_ext__(out git_repository @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, git_repository_open_flag_t flags, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string ceiling_dirs);
         
         /// <summary>
         /// Open a bare repository on the serverside.
@@ -506,14 +506,14 @@ namespace GitLib
         /// if you're e.g. hosting git repositories and need to access them
         /// efficiently
         /// </remarks>
-        public static git_result git_repository_open_bare(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string bare_path)
+        public static git_result git_repository_open_bare(out git_repository @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string bare_path)
         {
             var __result__ = git_repository_open_bare__(out @out, bare_path).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_repository_open_bare", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_repository_open_bare__(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string bare_path);
+        private static extern git_result git_repository_open_bare__(out git_repository @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string bare_path);
         
         /// <summary>
         /// Free a previously allocated repository
@@ -543,14 +543,14 @@ namespace GitLib
         /// TODO:
         /// - Reinit the repository
         /// </remarks>
-        public static git_result git_repository_init(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, [MarshalAs(UnmanagedType.Bool)] bool is_bare)
+        public static git_result git_repository_init(out git_repository @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, [MarshalAs(UnmanagedType.Bool)] bool is_bare)
         {
             var __result__ = git_repository_init__(out @out, path, is_bare).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_repository_init", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_repository_init__(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, [MarshalAs(UnmanagedType.Bool)] bool is_bare);
+        private static extern git_result git_repository_init__(out git_repository @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, [MarshalAs(UnmanagedType.Bool)] bool is_bare);
         
         /// <summary>
         /// Initialize git_repository_init_options structure
@@ -584,14 +584,14 @@ namespace GitLib
         /// auto-detect the case sensitivity of the file system and if the
         /// file system supports file mode bits correctly.
         /// </remarks>
-        public static git_result git_repository_init_ext(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string repo_path, ref git_repository_init_options opts)
+        public static git_result git_repository_init_ext(out git_repository @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string repo_path, ref git_repository_init_options opts)
         {
             var __result__ = git_repository_init_ext__(out @out, repo_path, ref opts).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_repository_init_ext", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_repository_init_ext__(out git_repository @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string repo_path, ref git_repository_init_options opts);
+        private static extern git_result git_repository_init_ext__(out git_repository @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string repo_path, ref git_repository_init_options opts);
         
         /// <summary>
         /// Retrieve and resolve the reference pointed at by HEAD.
@@ -621,14 +621,14 @@ namespace GitLib
         /// <param name="repo">a repository object</param>
         /// <param name="name">name of the worktree to retrieve HEAD for</param>
         /// <returns>0 when successful, error-code otherwise</returns>
-        public static git_result git_repository_head_for_worktree(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name)
+        public static git_result git_repository_head_for_worktree(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
         {
             var __result__ = git_repository_head_for_worktree__(out @out, repo, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_repository_head_for_worktree", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_repository_head_for_worktree__(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name);
+        private static extern git_result git_repository_head_for_worktree__(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
         
         /// <summary>
         /// Check if a repository's HEAD is detached
@@ -660,14 +660,14 @@ namespace GitLib
         /// A worktree's HEAD is detached when it points directly to a
         /// commit instead of a branch.
         /// </remarks>
-        public static git_result_bool git_repository_head_detached_for_worktree(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name)
+        public static git_result_bool git_repository_head_detached_for_worktree(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
         {
             var __result__ = git_repository_head_detached_for_worktree__(repo, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_repository_head_detached_for_worktree", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result_bool git_repository_head_detached_for_worktree__(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name);
+        private static extern git_result_bool git_repository_head_detached_for_worktree__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
         
         /// <summary>
         /// Check if the current branch is unborn
@@ -740,7 +740,7 @@ namespace GitLib
         /// or of the repository itself for bare repositories.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.LPUTF8Str)]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
         public static extern string git_repository_path(git_repository repo);
         
         /// <summary>
@@ -753,7 +753,7 @@ namespace GitLib
         /// NULL.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.LPUTF8Str)]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
         public static extern string git_repository_workdir(git_repository repo);
         
         /// <summary>
@@ -766,7 +766,7 @@ namespace GitLib
         /// path is returned.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.LPUTF8Str)]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
         public static extern string git_repository_commondir(git_repository repo);
         
         /// <summary>
@@ -784,14 +784,14 @@ namespace GitLib
         /// all the common workdir operations (checkout, status, index
         /// manipulation, etc).
         /// </remarks>
-        public static git_result git_repository_set_workdir(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string workdir, [MarshalAs(UnmanagedType.Bool)] bool update_gitlink)
+        public static git_result git_repository_set_workdir(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string workdir, [MarshalAs(UnmanagedType.Bool)] bool update_gitlink)
         {
             var __result__ = git_repository_set_workdir__(repo, workdir, update_gitlink).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_repository_set_workdir", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_repository_set_workdir__(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string workdir, [MarshalAs(UnmanagedType.Bool)] bool update_gitlink);
+        private static extern git_result git_repository_set_workdir__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string workdir, [MarshalAs(UnmanagedType.Bool)] bool update_gitlink);
         
         /// <summary>
         /// Check if a repository is bare
@@ -1031,14 +1031,14 @@ namespace GitLib
         /// filtering triggers that failure, then this function will return an
         /// error and not calculate the hash of the file.
         /// </remarks>
-        public static git_result git_repository_hashfile(out git_oid @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, git_object_t type, [MarshalAs(UnmanagedType.LPUTF8Str)] string as_path)
+        public static git_result git_repository_hashfile(out git_oid @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, git_object_t type, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string as_path)
         {
             var __result__ = git_repository_hashfile__(out @out, repo, path, type, as_path).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_repository_hashfile", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_repository_hashfile__(out git_oid @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, git_object_t type, [MarshalAs(UnmanagedType.LPUTF8Str)] string as_path);
+        private static extern git_result git_repository_hashfile__(out git_oid @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, git_object_t type, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string as_path);
         
         /// <summary>
         /// Make the repository HEAD point to the specified reference.
@@ -1054,14 +1054,14 @@ namespace GitLib
         /// will then be attached to an unborn branch.Otherwise, the HEAD will be detached and will directly point to
         /// the Commit.
         /// </remarks>
-        public static git_result git_repository_set_head(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string refname)
+        public static git_result git_repository_set_head(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname)
         {
             var __result__ = git_repository_set_head__(repo, refname).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_repository_set_head", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_repository_set_head__(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string refname);
+        private static extern git_result git_repository_set_head__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname);
         
         /// <summary>
         /// Make the repository HEAD directly point to the Commit.
@@ -1139,14 +1139,14 @@ namespace GitLib
         /// This namespace affects all reference operations for the repo.
         /// See `man gitnamespaces`
         /// </remarks>
-        public static git_result git_repository_set_namespace(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string nmspace)
+        public static git_result git_repository_set_namespace(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string nmspace)
         {
             var __result__ = git_repository_set_namespace__(repo, nmspace).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_repository_set_namespace", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_repository_set_namespace__(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string nmspace);
+        private static extern git_result git_repository_set_namespace__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string nmspace);
         
         /// <summary>
         /// Get the currently active namespace for this repository
@@ -1154,7 +1154,7 @@ namespace GitLib
         /// <param name="repo">The repo</param>
         /// <returns>the active namespace, or NULL if there isn't one</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.LPUTF8Str)]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
         public static extern string git_repository_get_namespace(git_repository repo);
         
         /// <summary>
@@ -1196,13 +1196,13 @@ namespace GitLib
         /// reflog. Pass NULL to unset. When unset, the identity will be taken
         /// from the repository's configuration.
         /// </remarks>
-        public static git_result git_repository_set_ident(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, [MarshalAs(UnmanagedType.LPUTF8Str)] string email)
+        public static git_result git_repository_set_ident(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string email)
         {
             var __result__ = git_repository_set_ident__(repo, name, email).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_repository_set_ident", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_repository_set_ident__(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, [MarshalAs(UnmanagedType.LPUTF8Str)] string email);
+        private static extern git_result git_repository_set_ident__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string email);
     }
 }

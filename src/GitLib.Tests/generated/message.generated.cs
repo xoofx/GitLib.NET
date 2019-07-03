@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class MessageTests : GitLibTestsBase
     {
+        public MessageTests() : base("message") {}
+        
         private void Check()
         {
             Test_git_message_prettify();

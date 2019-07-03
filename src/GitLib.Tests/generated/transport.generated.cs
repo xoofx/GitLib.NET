@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class TransportTests : GitLibTestsBase
     {
+        public TransportTests() : base("transport") {}
+        
         private void Check()
         {
             Test_git_cred_has_username();

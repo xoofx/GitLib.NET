@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class TreeTests : GitLibTestsBase
     {
+        public TreeTests() : base("tree") {}
+        
         private void Check()
         {
             Test_git_tree_lookup();

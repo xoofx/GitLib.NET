@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class PathspecTests : GitLibTestsBase
     {
+        public PathspecTests() : base("pathspec") {}
+        
         private void Check()
         {
             Test_git_pathspec_new();

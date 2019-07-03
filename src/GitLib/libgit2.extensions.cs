@@ -119,7 +119,7 @@ namespace GitLib
                     if (index < 0 || index > count) throw new ArgumentOutOfRangeException();
                     unsafe
                     {
-                        return UTF8Marshaller.FromNative(((IntPtr*)strings)[index]);
+                        return UTF8MarshallerRelaxed.FromNative(((IntPtr*)strings)[index]);
                     }
                 }
             }
@@ -156,7 +156,7 @@ namespace GitLib
                 };
                 for (int i = 0; i < array.Length; i++)
                 {
-                    ((IntPtr*) nativeArray.strings)[i] = UTF8Marshaller.ToNative(array[i]);
+                    ((IntPtr*) nativeArray.strings)[i] = UTF8MarshallerRelaxed.ToNative(array[i]);
                 }
 
                 return nativeArray;
@@ -170,7 +170,7 @@ namespace GitLib
             {
                 for (int i = 0; i < count; i++)
                 {
-                    UTF8Marshaller.Free(((IntPtr*) strings)[i]);
+                    UTF8MarshallerRelaxed.FreeNative(((IntPtr*) strings)[i]);
                 }
 
                 count = 0;
@@ -239,14 +239,16 @@ namespace GitLib
             }
         }
 
-        public partial struct git_oid
+        public partial struct git_oid : IEquatable<git_oid>
         {
+            const int Size = 20; 
+
             public override string ToString()
             {
                 unsafe
                 {
-                    var builder = new StringBuilder();
-                    for (int i = 0; i < 20; i++)
+                    var builder = new StringBuilder(Size*2);
+                    for (int i = 0; i < Size; i++)
                     {
                         var b = id[i];
                         builder.Append(b.ToString("x2"));
@@ -254,13 +256,51 @@ namespace GitLib
                     return builder.ToString();
                 }
             }
+
+            public bool Equals(git_oid other)
+            {
+                unsafe
+                {
+                    for (int i = 0; i < Size; i++)
+                    {
+                        if (id[i] != other.id[i]) return false;
+                    }
+                    return true;
+                }
+            }
+
+            public override bool Equals(object obj)
+            {
+                return obj is git_oid other && Equals(other);
+            }
+
+            public override int GetHashCode()
+            {
+                unsafe
+                {
+                    fixed (byte* pInt = id)
+                    {
+                        return *(int*) pInt;
+                    }
+                }
+            }
+
+            public static bool operator ==(git_oid left, git_oid right)
+            {
+                return left.Equals(right);
+            }
+
+            public static bool operator !=(git_oid left, git_oid right)
+            {
+                return !left.Equals(right);
+            }
         }
 
         public partial struct git_error
         {
             public override string ToString()
             {
-                return UTF8Marshaller.FromNative(message);
+                return UTF8MarshallerRelaxed.FromNative(message);
             }
         }
     }

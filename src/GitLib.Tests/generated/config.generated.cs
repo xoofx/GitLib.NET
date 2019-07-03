@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class ConfigTests : GitLibTestsBase
     {
+        public ConfigTests() : base("config") {}
+        
         private void Check()
         {
             Test_git_config_entry_free();

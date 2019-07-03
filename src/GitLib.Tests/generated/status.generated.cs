@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class StatusTests : GitLibTestsBase
     {
+        public StatusTests() : base("status") {}
+        
         private void Check()
         {
             Test_git_status_init_options();

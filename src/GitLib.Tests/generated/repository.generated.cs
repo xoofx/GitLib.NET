@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class RepositoryTests : GitLibTestsBase
     {
+        public RepositoryTests() : base("repository") {}
+        
         private void Check()
         {
             Test_git_repository_open();

@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class RebaseTests : GitLibTestsBase
     {
+        public RebaseTests() : base("rebase") {}
+        
         private void Check()
         {
             Test_git_rebase_init_options();

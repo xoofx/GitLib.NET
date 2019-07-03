@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class AttrTests : GitLibTestsBase
     {
+        public AttrTests() : base("attr") {}
+        
         private void Check()
         {
             Test_git_attr_value();

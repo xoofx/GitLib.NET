@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class RevparseTests : GitLibTestsBase
     {
+        public RevparseTests() : base("revparse") {}
+        
         private void Check()
         {
             Test_git_revparse_single();

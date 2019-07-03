@@ -80,14 +80,14 @@ namespace GitLib
         /// <param name="path">relative path from the root object to the desired object</param>
         /// <param name="type">type of object desired</param>
         /// <returns>0 on success, or an error code</returns>
-        public static git_result git_object_lookup_bypath(out git_object @out, git_object treeish, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, git_object_t type)
+        public static git_result git_object_lookup_bypath(out git_object @out, git_object treeish, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, git_object_t type)
         {
             var __result__ = git_object_lookup_bypath__(out @out, treeish, path, type).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_object_lookup_bypath", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_object_lookup_bypath__(out git_object @out, git_object treeish, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, git_object_t type);
+        private static extern git_result git_object_lookup_bypath__(out git_object @out, git_object treeish, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, git_object_t type);
         
         /// <summary>
         /// Get the id (SHA1) of a repository object
@@ -167,7 +167,7 @@ namespace GitLib
         /// should not be free()'ed.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.LPUTF8Str)]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
         public static extern string git_object_type2string(git_object_t type);
         
         /// <summary>
@@ -176,7 +176,7 @@ namespace GitLib
         /// <param name="str">the string to convert.</param>
         /// <returns>the corresponding git_object_t.</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern git_object_t git_object_string2type([MarshalAs(UnmanagedType.LPUTF8Str)] string str);
+        public static extern git_object_t git_object_string2type([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string str);
         
         /// <summary>
         /// Determine if the given git_object_t is a valid loose object type.

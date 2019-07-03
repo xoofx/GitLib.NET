@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class PatchTests : GitLibTestsBase
     {
+        public PatchTests() : base("patch") {}
+        
         private void Check()
         {
             Test_git_patch_from_diff();

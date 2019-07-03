@@ -1367,10 +1367,10 @@ namespace GitLib
         }
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_transport_message_cb([MarshalAs(UnmanagedType.LPUTF8Str)] string str, int len, IntPtr payload);
+        public delegate int git_transport_message_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string str, int len, IntPtr payload);
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_transport_certificate_check_cb(ref git_cert cert, int valid, [MarshalAs(UnmanagedType.LPUTF8Str)] string host, IntPtr payload);
+        public delegate int git_transport_certificate_check_cb(ref git_cert cert, int valid, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string host, IntPtr payload);
         
         /// <summary>
         /// Parent type for `git_cert_hostkey` and `git_cert_x509`.
@@ -1421,7 +1421,7 @@ namespace GitLib
             public write_delegate write;
             
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate int write_delegate(ref git_writestream stream, [MarshalAs(UnmanagedType.LPUTF8Str)] string buffer, size_t len);
+            public delegate int write_delegate(ref git_writestream stream, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string buffer, size_t len);
             
             public close_delegate close;
             

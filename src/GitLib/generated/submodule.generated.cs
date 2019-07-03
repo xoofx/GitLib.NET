@@ -137,7 +137,7 @@ namespace GitLib
         }
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_submodule_cb(git_submodule sm, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, IntPtr payload);
+        public delegate int git_submodule_cb(git_submodule sm, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, IntPtr payload);
         
         /// <summary>
         /// Initialize git_submodule_update_options structure
@@ -205,14 +205,14 @@ namespace GitLib
         /// There may or may not be anything else at that path, but nothing that
         /// looks like a submodule.  In this case, this returns GIT_ENOTFOUND.You must call `git_submodule_free` when done with the submodule.
         /// </remarks>
-        public static git_result git_submodule_lookup(out git_submodule @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name)
+        public static git_result git_submodule_lookup(out git_submodule @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
         {
             var __result__ = git_submodule_lookup__(out @out, repo, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_submodule_lookup", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_submodule_lookup__(out git_submodule @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name);
+        private static extern git_result git_submodule_lookup__(out git_submodule @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
         
         /// <summary>
         /// Release a submodule
@@ -267,14 +267,14 @@ namespace GitLib
         /// `git_submodule_add_finalize()` to wrap up adding the new submodule and
         /// .gitmodules to the index to be ready to commit.You must call `git_submodule_free` on the submodule object when done.
         /// </remarks>
-        public static git_result git_submodule_add_setup(out git_submodule @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string url, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, int use_gitlink)
+        public static git_result git_submodule_add_setup(out git_submodule @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, int use_gitlink)
         {
             var __result__ = git_submodule_add_setup__(out @out, repo, url, path, use_gitlink).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_submodule_add_setup", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_submodule_add_setup__(out git_submodule @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string url, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, int use_gitlink);
+        private static extern git_result git_submodule_add_setup__(out git_submodule @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, int use_gitlink);
         
         /// <summary>
         /// Resolve the setup of a new git submodule.
@@ -329,7 +329,7 @@ namespace GitLib
         /// <param name="submodule">Pointer to submodule object</param>
         /// <returns>Pointer to the submodule name</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.LPUTF8Str)]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
         public static extern string git_submodule_name(git_submodule submodule);
         
         /// <summary>
@@ -342,7 +342,7 @@ namespace GitLib
         /// two are actually not required to match.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.LPUTF8Str)]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
         public static extern string git_submodule_path(git_submodule submodule);
         
         /// <summary>
@@ -351,7 +351,7 @@ namespace GitLib
         /// <param name="submodule">Pointer to submodule object</param>
         /// <returns>Pointer to the submodule url</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.LPUTF8Str)]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
         public static extern string git_submodule_url(git_submodule submodule);
         
         /// <summary>
@@ -361,14 +361,14 @@ namespace GitLib
         /// <param name="repo">Pointer to repository object</param>
         /// <param name="url">Relative url</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_submodule_resolve_url(out git_buf @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string url)
+        public static git_result git_submodule_resolve_url(out git_buf @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url)
         {
             var __result__ = git_submodule_resolve_url__(out @out, repo, url).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_submodule_resolve_url", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_submodule_resolve_url__(out git_buf @out, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string url);
+        private static extern git_result git_submodule_resolve_url__(out git_buf @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url);
         
         /// <summary>
         /// Get the branch for the submodule.
@@ -376,7 +376,7 @@ namespace GitLib
         /// <param name="submodule">Pointer to submodule object</param>
         /// <returns>Pointer to the submodule branch</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.LPUTF8Str)]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
         public static extern string git_submodule_branch(git_submodule submodule);
         
         /// <summary>
@@ -392,14 +392,14 @@ namespace GitLib
         /// After calling this, you may wish to call `git_submodule_sync()` to
         /// write the changes to the checked out submodule repository.
         /// </remarks>
-        public static git_result git_submodule_set_branch(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, [MarshalAs(UnmanagedType.LPUTF8Str)] string branch)
+        public static git_result git_submodule_set_branch(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string branch)
         {
             var __result__ = git_submodule_set_branch__(repo, name, branch).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_submodule_set_branch", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_submodule_set_branch__(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, [MarshalAs(UnmanagedType.LPUTF8Str)] string branch);
+        private static extern git_result git_submodule_set_branch__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string branch);
         
         /// <summary>
         /// Set the URL for the submodule in the configuration
@@ -414,14 +414,14 @@ namespace GitLib
         /// After calling this, you may wish to call `git_submodule_sync()` to
         /// write the changes to the checked out submodule repository.
         /// </remarks>
-        public static git_result git_submodule_set_url(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, [MarshalAs(UnmanagedType.LPUTF8Str)] string url)
+        public static git_result git_submodule_set_url(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url)
         {
             var __result__ = git_submodule_set_url__(repo, name, url).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_submodule_set_url", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_submodule_set_url__(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, [MarshalAs(UnmanagedType.LPUTF8Str)] string url);
+        private static extern git_result git_submodule_set_url__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url);
         
         /// <summary>
         /// Get the OID for the submodule in the index.
@@ -487,14 +487,14 @@ namespace GitLib
         /// <remarks>
         /// This does not affect any currently-loaded instances.
         /// </remarks>
-        public static git_result git_submodule_set_ignore(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, git_submodule_ignore_t ignore)
+        public static git_result git_submodule_set_ignore(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, git_submodule_ignore_t ignore)
         {
             var __result__ = git_submodule_set_ignore__(repo, name, ignore).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_submodule_set_ignore", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_submodule_set_ignore__(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, git_submodule_ignore_t ignore);
+        private static extern git_result git_submodule_set_ignore__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, git_submodule_ignore_t ignore);
         
         /// <summary>
         /// Get the update rule that will be used for the submodule.
@@ -519,14 +519,14 @@ namespace GitLib
         /// <remarks>
         /// This setting won't affect any existing instances.
         /// </remarks>
-        public static git_result git_submodule_set_update(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, git_submodule_update_t update)
+        public static git_result git_submodule_set_update(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, git_submodule_update_t update)
         {
             var __result__ = git_submodule_set_update__(repo, name, update).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_submodule_set_update", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_submodule_set_update__(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, git_submodule_update_t update);
+        private static extern git_result git_submodule_set_update__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, git_submodule_update_t update);
         
         /// <summary>
         /// Read the fetchRecurseSubmodules rule for a submodule.
@@ -553,7 +553,7 @@ namespace GitLib
         /// This setting won't affect any existing instances.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_submodule_set_fetch_recurse_submodules(git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, git_submodule_recurse_t fetch_recurse_submodules);
+        public static extern int git_submodule_set_fetch_recurse_submodules(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, git_submodule_recurse_t fetch_recurse_submodules);
         
         /// <summary>
         /// Copy submodule info into ".git/config" file.
@@ -669,14 +669,14 @@ namespace GitLib
         /// How deeply it examines the working directory to do this will depend
         /// on the `git_submodule_ignore_t` value for the submodule.
         /// </remarks>
-        public static git_result git_submodule_status(ref uint status, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, git_submodule_ignore_t ignore)
+        public static git_result git_submodule_status(ref uint status, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, git_submodule_ignore_t ignore)
         {
             var __result__ = git_submodule_status__(ref status, repo, name, ignore).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_submodule_status", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_submodule_status__(ref uint status, git_repository repo, [MarshalAs(UnmanagedType.LPUTF8Str)] string name, git_submodule_ignore_t ignore);
+        private static extern git_result git_submodule_status__(ref uint status, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, git_submodule_ignore_t ignore);
         
         /// <summary>
         /// Get the locations of submodule information.

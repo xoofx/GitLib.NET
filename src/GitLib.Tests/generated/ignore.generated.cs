@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class IgnoreTests : GitLibTestsBase
     {
+        public IgnoreTests() : base("ignore") {}
+        
         private void Check()
         {
             Test_git_ignore_add_rule();

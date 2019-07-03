@@ -92,7 +92,7 @@ namespace GitLib
         public const git_trace_level_t GIT_TRACE_TRACE = git_trace_level_t.GIT_TRACE_TRACE;
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void git_trace_callback(git_trace_level_t level, [MarshalAs(UnmanagedType.LPUTF8Str)] string msg);
+        public delegate void git_trace_callback(git_trace_level_t level, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string msg);
         
         /// <summary>
         /// Sets the system tracing configuration to the specified level with the

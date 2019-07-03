@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class RevwalkTests : GitLibTestsBase
     {
+        public RevwalkTests() : base("revwalk") {}
+        
         private void Check()
         {
             Test_git_revwalk_new();

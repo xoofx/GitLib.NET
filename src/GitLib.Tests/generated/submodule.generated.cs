@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class SubmoduleTests : GitLibTestsBase
     {
+        public SubmoduleTests() : base("submodule") {}
+        
         private void Check()
         {
             Test_git_submodule_update_init_options();

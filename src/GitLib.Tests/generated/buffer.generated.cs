@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class BufferTests : GitLibTestsBase
     {
+        public BufferTests() : base("buffer") {}
+        
         private void Check()
         {
             Test_git_buf_dispose();

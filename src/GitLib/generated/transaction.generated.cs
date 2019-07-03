@@ -43,14 +43,14 @@ namespace GitLib
         /// Lock the specified reference. This is the first step to updating a
         /// reference.
         /// </remarks>
-        public static git_result git_transaction_lock_ref(git_transaction tx, [MarshalAs(UnmanagedType.LPUTF8Str)] string refname)
+        public static git_result git_transaction_lock_ref(git_transaction tx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname)
         {
             var __result__ = git_transaction_lock_ref__(tx, refname).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_transaction_lock_ref", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_transaction_lock_ref__(git_transaction tx, [MarshalAs(UnmanagedType.LPUTF8Str)] string refname);
+        private static extern git_result git_transaction_lock_ref__(git_transaction tx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname);
         
         /// <summary>
         /// Set the target of a reference
@@ -65,14 +65,14 @@ namespace GitLib
         /// Set the target of the specified reference. This reference must be
         /// locked.
         /// </remarks>
-        public static git_result git_transaction_set_target(git_transaction tx, [MarshalAs(UnmanagedType.LPUTF8Str)] string refname, in git_oid target, in git_signature sig, [MarshalAs(UnmanagedType.LPUTF8Str)] string msg)
+        public static git_result git_transaction_set_target(git_transaction tx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname, in git_oid target, in git_signature sig, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string msg)
         {
             var __result__ = git_transaction_set_target__(tx, refname, target, sig, msg).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_transaction_set_target", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_transaction_set_target__(git_transaction tx, [MarshalAs(UnmanagedType.LPUTF8Str)] string refname, in git_oid target, in git_signature sig, [MarshalAs(UnmanagedType.LPUTF8Str)] string msg);
+        private static extern git_result git_transaction_set_target__(git_transaction tx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname, in git_oid target, in git_signature sig, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string msg);
         
         /// <summary>
         /// Set the target of a reference
@@ -87,14 +87,14 @@ namespace GitLib
         /// Set the target of the specified reference. This reference must be
         /// locked.
         /// </remarks>
-        public static git_result git_transaction_set_symbolic_target(git_transaction tx, [MarshalAs(UnmanagedType.LPUTF8Str)] string refname, [MarshalAs(UnmanagedType.LPUTF8Str)] string target, in git_signature sig, [MarshalAs(UnmanagedType.LPUTF8Str)] string msg)
+        public static git_result git_transaction_set_symbolic_target(git_transaction tx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string target, in git_signature sig, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string msg)
         {
             var __result__ = git_transaction_set_symbolic_target__(tx, refname, target, sig, msg).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_transaction_set_symbolic_target", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_transaction_set_symbolic_target__(git_transaction tx, [MarshalAs(UnmanagedType.LPUTF8Str)] string refname, [MarshalAs(UnmanagedType.LPUTF8Str)] string target, in git_signature sig, [MarshalAs(UnmanagedType.LPUTF8Str)] string msg);
+        private static extern git_result git_transaction_set_symbolic_target__(git_transaction tx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string target, in git_signature sig, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string msg);
         
         /// <summary>
         /// Set the reflog of a reference
@@ -107,14 +107,14 @@ namespace GitLib
         /// Set the specified reference's reflog. If this is combined with
         /// setting the target, that update won't be written to the reflog.
         /// </remarks>
-        public static git_result git_transaction_set_reflog(git_transaction tx, [MarshalAs(UnmanagedType.LPUTF8Str)] string refname, git_reflog reflog)
+        public static git_result git_transaction_set_reflog(git_transaction tx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname, git_reflog reflog)
         {
             var __result__ = git_transaction_set_reflog__(tx, refname, reflog).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_transaction_set_reflog", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_transaction_set_reflog__(git_transaction tx, [MarshalAs(UnmanagedType.LPUTF8Str)] string refname, git_reflog reflog);
+        private static extern git_result git_transaction_set_reflog__(git_transaction tx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname, git_reflog reflog);
         
         /// <summary>
         /// Remove a reference
@@ -122,14 +122,14 @@ namespace GitLib
         /// <param name="tx">the transaction</param>
         /// <param name="refname">the reference to remove</param>
         /// <returns>0, GIT_ENOTFOUND if the reference is not among the locked ones, or an error code</returns>
-        public static git_result git_transaction_remove(git_transaction tx, [MarshalAs(UnmanagedType.LPUTF8Str)] string refname)
+        public static git_result git_transaction_remove(git_transaction tx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname)
         {
             var __result__ = git_transaction_remove__(tx, refname).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_transaction_remove", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_transaction_remove__(git_transaction tx, [MarshalAs(UnmanagedType.LPUTF8Str)] string refname);
+        private static extern git_result git_transaction_remove__(git_transaction tx, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname);
         
         /// <summary>
         /// Commit the changes from the transaction

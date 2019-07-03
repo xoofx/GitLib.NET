@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class SignatureTests : GitLibTestsBase
     {
+        public SignatureTests() : base("signature") {}
+        
         private void Check()
         {
             Test_git_signature_new();

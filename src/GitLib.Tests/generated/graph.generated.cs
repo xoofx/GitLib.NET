@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class GraphTests : GitLibTestsBase
     {
+        public GraphTests() : base("graph") {}
+        
         private void Check()
         {
             Test_git_graph_ahead_behind();

@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class ResetTests : GitLibTestsBase
     {
+        public ResetTests() : base("reset") {}
+        
         private void Check()
         {
             Test_git_reset();

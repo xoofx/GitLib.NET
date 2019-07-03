@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class TypesTests : GitLibTestsBase
     {
+        public TypesTests() : base("types") {}
+        
         private void Check()
         {
         }

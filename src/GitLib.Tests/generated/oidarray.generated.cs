@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class OidarrayTests : GitLibTestsBase
     {
+        public OidarrayTests() : base("oidarray") {}
+        
         private void Check()
         {
             Test_git_oidarray_free();

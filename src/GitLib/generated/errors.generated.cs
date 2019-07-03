@@ -516,7 +516,7 @@ namespace GitLib
         /// to the particular thread that this libgit2 call is made from.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern void git_error_set_str(int error_class, [MarshalAs(UnmanagedType.LPUTF8Str)] string @string);
+        public static extern void git_error_set_str(int error_class, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string @string);
         
         /// <summary>
         /// Set the error message to a special value for memory allocation failure.

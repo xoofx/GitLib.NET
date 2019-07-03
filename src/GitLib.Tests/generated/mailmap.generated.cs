@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class MailmapTests : GitLibTestsBase
     {
+        public MailmapTests() : base("mailmap") {}
+        
         private void Check()
         {
             Test_git_mailmap_new();

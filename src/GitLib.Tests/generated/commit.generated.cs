@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class CommitTests : GitLibTestsBase
     {
+        public CommitTests() : base("commit") {}
+        
         private void Check()
         {
             Test_git_commit_lookup();

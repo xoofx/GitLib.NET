@@ -204,7 +204,7 @@ namespace GitLib
         public delegate int git_stash_apply_progress_cb(git_stash_apply_progress_t progress, IntPtr payload);
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_stash_cb(size_t index, [MarshalAs(UnmanagedType.LPUTF8Str)] string message, in git_oid stash_id, IntPtr payload);
+        public delegate int git_stash_cb(size_t index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message, in git_oid stash_id, IntPtr payload);
         
         /// <summary>
         /// Save the local modifications to a new stash.
@@ -217,14 +217,14 @@ namespace GitLib
         /// <param name="flags">Flags to control the stashing process. (see GIT_STASH_* above)</param>
         /// <returns>0 on success, GIT_ENOTFOUND where there's nothing to stash,
         /// or error code.</returns>
-        public static git_result git_stash_save(out git_oid @out, git_repository repo, in git_signature stasher, [MarshalAs(UnmanagedType.LPUTF8Str)] string message, uint flags)
+        public static git_result git_stash_save(out git_oid @out, git_repository repo, in git_signature stasher, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message, uint flags)
         {
             var __result__ = git_stash_save__(out @out, repo, stasher, message, flags).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_stash_save", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_stash_save__(out git_oid @out, git_repository repo, in git_signature stasher, [MarshalAs(UnmanagedType.LPUTF8Str)] string message, uint flags);
+        private static extern git_result git_stash_save__(out git_oid @out, git_repository repo, in git_signature stasher, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message, uint flags);
         
         /// <summary>
         /// Initialize git_stash_apply_options structure

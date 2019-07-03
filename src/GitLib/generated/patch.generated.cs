@@ -88,14 +88,14 @@ namespace GitLib
         /// standard `git_patch` accessor functions to read the patch data, and
         /// you must call `git_patch_free()` on the patch when done.
         /// </remarks>
-        public static git_result git_patch_from_blobs(out git_patch @out, git_blob old_blob, [MarshalAs(UnmanagedType.LPUTF8Str)] string old_as_path, git_blob new_blob, [MarshalAs(UnmanagedType.LPUTF8Str)] string new_as_path, in git_diff_options opts)
+        public static git_result git_patch_from_blobs(out git_patch @out, git_blob old_blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string old_as_path, git_blob new_blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string new_as_path, in git_diff_options opts)
         {
             var __result__ = git_patch_from_blobs__(out @out, old_blob, old_as_path, new_blob, new_as_path, opts).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_patch_from_blobs", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_patch_from_blobs__(out git_patch @out, git_blob old_blob, [MarshalAs(UnmanagedType.LPUTF8Str)] string old_as_path, git_blob new_blob, [MarshalAs(UnmanagedType.LPUTF8Str)] string new_as_path, in git_diff_options opts);
+        private static extern git_result git_patch_from_blobs__(out git_patch @out, git_blob old_blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string old_as_path, git_blob new_blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string new_as_path, in git_diff_options opts);
         
         /// <summary>
         /// Directly generate a patch from the difference between a blob and a buffer.
@@ -116,14 +116,14 @@ namespace GitLib
         /// use the standard `git_patch` accessor functions to read the patch
         /// data, and you must call `git_patch_free()` on the patch when done.
         /// </remarks>
-        public static git_result git_patch_from_blob_and_buffer(out git_patch @out, git_blob old_blob, [MarshalAs(UnmanagedType.LPUTF8Str)] string old_as_path, IntPtr buffer, size_t buffer_len, [MarshalAs(UnmanagedType.LPUTF8Str)] string buffer_as_path, in git_diff_options opts)
+        public static git_result git_patch_from_blob_and_buffer(out git_patch @out, git_blob old_blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string old_as_path, IntPtr buffer, size_t buffer_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string buffer_as_path, in git_diff_options opts)
         {
             var __result__ = git_patch_from_blob_and_buffer__(out @out, old_blob, old_as_path, buffer, buffer_len, buffer_as_path, opts).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_patch_from_blob_and_buffer", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_patch_from_blob_and_buffer__(out git_patch @out, git_blob old_blob, [MarshalAs(UnmanagedType.LPUTF8Str)] string old_as_path, IntPtr buffer, size_t buffer_len, [MarshalAs(UnmanagedType.LPUTF8Str)] string buffer_as_path, in git_diff_options opts);
+        private static extern git_result git_patch_from_blob_and_buffer__(out git_patch @out, git_blob old_blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string old_as_path, IntPtr buffer, size_t buffer_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string buffer_as_path, in git_diff_options opts);
         
         /// <summary>
         /// Directly generate a patch from the difference between two buffers.
@@ -145,14 +145,14 @@ namespace GitLib
         /// use the standard `git_patch` accessor functions to read the patch
         /// data, and you must call `git_patch_free()` on the patch when done.
         /// </remarks>
-        public static git_result git_patch_from_buffers(out git_patch @out, IntPtr old_buffer, size_t old_len, [MarshalAs(UnmanagedType.LPUTF8Str)] string old_as_path, IntPtr new_buffer, size_t new_len, [MarshalAs(UnmanagedType.LPUTF8Str)] string new_as_path, in git_diff_options opts)
+        public static git_result git_patch_from_buffers(out git_patch @out, IntPtr old_buffer, size_t old_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string old_as_path, IntPtr new_buffer, size_t new_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string new_as_path, in git_diff_options opts)
         {
             var __result__ = git_patch_from_buffers__(out @out, old_buffer, old_len, old_as_path, new_buffer, new_len, new_as_path, opts).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_patch_from_buffers", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_patch_from_buffers__(out git_patch @out, IntPtr old_buffer, size_t old_len, [MarshalAs(UnmanagedType.LPUTF8Str)] string old_as_path, IntPtr new_buffer, size_t new_len, [MarshalAs(UnmanagedType.LPUTF8Str)] string new_as_path, in git_diff_options opts);
+        private static extern git_result git_patch_from_buffers__(out git_patch @out, IntPtr old_buffer, size_t old_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string old_as_path, IntPtr new_buffer, size_t new_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string new_as_path, in git_diff_options opts);
         
         /// <summary>
         /// Free a git_patch object.

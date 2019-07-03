@@ -85,7 +85,7 @@ namespace GitLib
         /// <param name="opts">Optional structure containing additional options. See
         /// `git_indexer_options` above.</param>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_indexer_new(out git_indexer @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string path, uint mode, git_odb odb, ref git_indexer_options opts);
+        public static extern int git_indexer_new(out git_indexer @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, uint mode, git_odb odb, ref git_indexer_options opts);
         
         /// <summary>
         /// Add data to the indexer

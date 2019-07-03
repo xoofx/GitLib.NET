@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class ObjectTests : GitLibTestsBase
     {
+        public ObjectTests() : base("object") {}
+        
         private void Check()
         {
             Test_git_object_lookup();

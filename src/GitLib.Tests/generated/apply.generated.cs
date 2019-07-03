@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class ApplyTests : GitLibTestsBase
     {
+        public ApplyTests() : base("apply") {}
+        
         private void Check()
         {
             Test_git_apply_to_tree();

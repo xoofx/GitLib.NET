@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class TraceTests : GitLibTestsBase
     {
+        public TraceTests() : base("trace") {}
+        
         private void Check()
         {
             Test_git_trace_set();

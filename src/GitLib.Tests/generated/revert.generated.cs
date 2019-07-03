@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class RevertTests : GitLibTestsBase
     {
+        public RevertTests() : base("revert") {}
+        
         private void Check()
         {
             Test_git_revert_init_options();

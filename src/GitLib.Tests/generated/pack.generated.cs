@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class PackTests : GitLibTestsBase
     {
+        public PackTests() : base("pack") {}
+        
         private void Check()
         {
             Test_git_packbuilder_new();

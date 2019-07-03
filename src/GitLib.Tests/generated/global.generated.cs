@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class GlobalTests : GitLibTestsBase
     {
+        public GlobalTests() : base("global") {}
+        
         private void Check()
         {
             Test_git_libgit2_init();

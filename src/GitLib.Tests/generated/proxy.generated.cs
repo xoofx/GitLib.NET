@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class ProxyTests : GitLibTestsBase
     {
+        public ProxyTests() : base("proxy") {}
+        
         private void Check()
         {
             Test_git_proxy_init_options();

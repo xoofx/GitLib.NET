@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class DiffTests : GitLibTestsBase
     {
+        public DiffTests() : base("diff") {}
+        
         private void Check()
         {
             Test_git_diff_init_options();

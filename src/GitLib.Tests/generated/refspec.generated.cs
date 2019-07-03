@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class RefspecTests : GitLibTestsBase
     {
+        public RefspecTests() : base("refspec") {}
+        
         private void Check()
         {
             Test_git_refspec_parse();

@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class CppastTests : GitLibTestsBase
     {
+        public CppastTests() : base("cppast") {}
+        
         private void Check()
         {
         }

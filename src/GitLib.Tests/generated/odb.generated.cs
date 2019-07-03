@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class OdbTests : GitLibTestsBase
     {
+        public OdbTests() : base("odb") {}
+        
         private void Check()
         {
             Test_git_odb_new();

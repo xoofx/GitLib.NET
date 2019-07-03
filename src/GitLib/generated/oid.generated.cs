@@ -59,14 +59,14 @@ namespace GitLib
         /// the hex sequence and have at least the number of bytes
         /// needed for an oid encoded in hex (40 bytes).</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_oid_fromstr(out git_oid @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string str)
+        public static git_result git_oid_fromstr(out git_oid @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string str)
         {
             var __result__ = git_oid_fromstr__(out @out, str).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_oid_fromstr", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_oid_fromstr__(out git_oid @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string str);
+        private static extern git_result git_oid_fromstr__(out git_oid @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string str);
         
         /// <summary>
         /// Parse a hex formatted null-terminated string into a git_oid.
@@ -74,14 +74,14 @@ namespace GitLib
         /// <param name="out">oid structure the result is written into.</param>
         /// <param name="str">input hex string; must be null-terminated.</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_oid_fromstrp(out git_oid @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string str)
+        public static git_result git_oid_fromstrp(out git_oid @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string str)
         {
             var __result__ = git_oid_fromstrp__(out @out, str).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_oid_fromstrp", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_oid_fromstrp__(out git_oid @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string str);
+        private static extern git_result git_oid_fromstrp__(out git_oid @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string str);
         
         /// <summary>
         /// Parse N characters of a hex formatted object id into a git_oid.
@@ -94,14 +94,14 @@ namespace GitLib
         /// If N is odd, the last byte's high nibble will be read in and the
         /// low nibble set to zero.
         /// </remarks>
-        public static git_result git_oid_fromstrn(out git_oid @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string str, size_t length)
+        public static git_result git_oid_fromstrn(out git_oid @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string str, size_t length)
         {
             var __result__ = git_oid_fromstrn__(out @out, str, length).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_oid_fromstrn", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_oid_fromstrn__(out git_oid @out, [MarshalAs(UnmanagedType.LPUTF8Str)] string str, size_t length);
+        private static extern git_result git_oid_fromstrn__(out git_oid @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string str, size_t length);
         
         /// <summary>
         /// Copy an already raw oid into a git_oid structure.
@@ -235,7 +235,7 @@ namespace GitLib
         /// <param name="str">input hex string of an object id.</param>
         /// <returns>0 in case of a match, -1 otherwise.</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_oid_streq(in git_oid id, [MarshalAs(UnmanagedType.LPUTF8Str)] string str);
+        public static extern int git_oid_streq(in git_oid id, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string str);
         
         /// <summary>
         /// Compare an oid to an hex formatted object id.
@@ -247,7 +247,7 @@ namespace GitLib
         /// 0 if id sorts before str,
         /// 0 if id matches str, &gt;0 if id sorts after str.</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_oid_strcmp(in git_oid id, [MarshalAs(UnmanagedType.LPUTF8Str)] string str);
+        public static extern int git_oid_strcmp(in git_oid id, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string str);
         
         /// <summary>
         /// Check is an oid is all zeros.
@@ -294,7 +294,7 @@ namespace GitLib
         /// GIT_ERROR_INVALID error
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_oid_shorten_add(git_oid_shorten os, [MarshalAs(UnmanagedType.LPUTF8Str)] string text_id);
+        public static extern int git_oid_shorten_add(git_oid_shorten os, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string text_id);
         
         /// <summary>
         /// Free an OID shortener instance

@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class CommonTests : GitLibTestsBase
     {
+        public CommonTests() : base("common") {}
+        
         private void Check()
         {
             Test_git_libgit2_version();

@@ -62,7 +62,7 @@ typedef int git_result_bool;
 ",
                 
                 DispatchOutputPerInclude = true,
-                DefaultMarshalForString = new CSharpMarshalAttribute(CSharpUnmanagedKind.LPUTF8Str),
+                DefaultMarshalForString = new CSharpMarshalAttribute(CSharpUnmanagedKind.CustomMarshaler) { MarshalTypeRef = "typeof(UTF8MarshallerStrict)" },
 
                 MappingRules =
                 {
@@ -147,6 +147,8 @@ typedef int git_result_bool;
                     var csTest = new CSharpClass($"{name}Tests") {Modifiers = CSharpModifiers.Partial};
                     csTest.BaseTypes.Add(new CSharpFreeType("GitLibTestsBase"));
                     ns.Members.Add(csTest);
+                    
+                    csTest.Members.Add(new CSharpLineElement($"public {csTest.Name}() : base(\"{nameWithoutGenerated}\") {{}}"));
 
                     var csCheckMethod = new CSharpMethod() {Name = "Check", Visibility = CSharpVisibility.Private, ReturnType = CSharpPrimitiveType.Void};
                     csTest.Members.Add(csCheckMethod);
@@ -333,145 +335,161 @@ typedef int git_result_bool;
 
         private void ProcessCSharpMethods(CSharpConverter converter, CSharpElement element)
         {
-            if (_gitResultType != null && element is CSharpMethod csMethod)
+            if (element is CSharpMethod csMethod)
             {
-                bool hasGitStrarray = false;
-                if (!KeepRefForStrArrayMethods.Contains(csMethod.Name))
+                // If method is returning a string, don't try to release the memory
+                if (csMethod.ReturnType is CSharpTypeWithAttributes typeWithAttr && typeWithAttr.ElementType == CSharpPrimitiveType.String)
                 {
-                    foreach (var csParam in csMethod.Parameters)
+                    csMethod.ReturnType = new CSharpTypeWithAttributes(CSharpPrimitiveType.String)
                     {
-                        if (IsStrArray(csParam, out _))
+                        Attributes =
                         {
-                            hasGitStrarray = true;
-                            break;
-                        }
-                    }
-                }
-
-                var isGitResultMethod = csMethod.ReturnType.CppElement == _gitResultType || csMethod.ReturnType.CppElement == _gitResultBoolType;
-                
-                if (hasGitStrarray || isGitResultMethod)
-                {
-                    var csWrapMethod = csMethod.Wrap();
-
-                    StrArrayParam[] strArrayParams = null; 
-                    var hasInStrArray = false;
-                    if (hasGitStrarray)
-                    {
-                        strArrayParams = new StrArrayParam[csWrapMethod.Parameters.Count];
-                        for (var i = 0; i < csWrapMethod.Parameters.Count; i++)
-                        {
-                            var csParam = csWrapMethod.Parameters[i];
-                            if (IsStrArray(csParam, out var refKind))
-                            {
-                                strArrayParams[i] = new StrArrayParam(csParam, refKind);
-                                if (refKind == CSharpRefKind.Out)
-                                {
-                                    csParam.ParameterType = new CSharpRefType(refKind, new CSharpArrayType(CSharpPrimitiveType.String));
-                                }
-                                else if (refKind == CSharpRefKind.In)
-                                {
-                                    csParam.ParameterType = new CSharpArrayType(CSharpPrimitiveType.String);
-                                    hasInStrArray = true;
-                                }
-                            }
-                        }
-                    }                         
-                    
-                    csWrapMethod.Body = (writer, sharpElement) =>
-                    {
-                        if (strArrayParams != null)
-                        {
-                            for (var i = 0; i < csWrapMethod.Parameters.Count; i++)
-                            {
-                                var strArrayParam = strArrayParams[i];
-                                if (strArrayParam != null)
-                                {
-                                    var csParam = strArrayParam.CsParameter;
-                                    if (strArrayParam.RefKind == CSharpRefKind.In)
-                                    {
-                                        writer.WriteLine($"var {csParam.Name}__ = git_strarray.Allocate({csParam.Name});");
-                                    }
-                                    else
-                                    {
-                                        writer.WriteLine($"git_strarray {csParam.Name}__;");
-                                    }
-                                }
-                            }
-                        }
-
-                        bool isVoidReturn = (csMethod.ReturnType is CSharpPrimitiveType cSharpPrimitiveType && cSharpPrimitiveType.Kind == CSharpPrimitiveKind.Void);
-                        if (!isVoidReturn)
-                        {
-                            writer.Write("var __result__ = ");
-                        }
-
-                        writer.Write(csMethod.Name).Write("(");
-                        for (var i = 0; i < csMethod.Parameters.Count; i++)
-                        {
-                            var p = csMethod.Parameters[i];
-                            if (i > 0) writer.Write(", ");
-                            if (strArrayParams != null && strArrayParams[i] != null)
-                            {
-                                var strArrayParam = strArrayParams[i];
-                                strArrayParam.RefKind.DumpTo(writer);
-                                writer.Write($"{strArrayParam.CsParameter.Name}__");
-                            }
-                            else
-                            {
-                                p.DumpArgTo(writer);
-                            }
-                        }
-
-                        writer.Write(")");
-
-                        if (hasInStrArray)
-                        {
-                            writer.WriteLine(";");
-                            for (var i = 0; i < csWrapMethod.Parameters.Count; i++)
-                            {
-                                var strParamArray = strArrayParams[i];
-                                if (strParamArray != null && strParamArray.RefKind == CSharpRefKind.In)
-                                {
-                                    writer.WriteLine($"{strParamArray.CsParameter.Name}__.Free();");
-                                }
-                            }                            
-                        }
-                        
-                        if (isGitResultMethod)
-                        {
-                            if (hasInStrArray)
-                            {
-                                writer.WriteLine("__result__.Check();");
-                            }
-                            else
-                            {
-                                writer.WriteLine(".Check();");
-                            }
-                        }
-                        else
-                        {
-                            writer.WriteLine(";");
-                        }
-
-                        if (strArrayParams != null)
-                        {
-                            for (var i = 0; i < csWrapMethod.Parameters.Count; i++)
-                            {
-                                var strParamArray = strArrayParams[i];
-                                if (strParamArray != null && strParamArray.RefKind == CSharpRefKind.Out)
-                                {
-                                    writer.WriteLine($"{strParamArray.CsParameter.Name} = {strParamArray.CsParameter.Name}__.ToArray();");
-                                    writer.WriteLine($"git_strarray_free(ref {strParamArray.CsParameter.Name}__);");
-                                }
-                            }
-                        }
-
-                        if (!isVoidReturn)
-                        {
-                            writer.WriteLine("return __result__;");
+                            new CSharpMarshalAttribute(CSharpUnmanagedKind.CustomMarshaler) {MarshalTypeRef = "typeof(UTF8MarshallerRelaxedNoCleanup)"}
                         }
                     };
+                    return;
+                }
+                
+                if (_gitResultType != null)
+                {
+                    bool hasGitStrarray = false;
+                    if (!KeepRefForStrArrayMethods.Contains(csMethod.Name))
+                    {
+                        foreach (var csParam in csMethod.Parameters)
+                        {
+                            if (IsStrArray(csParam, out _))
+                            {
+                                hasGitStrarray = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    var isGitResultMethod = csMethod.ReturnType.CppElement == _gitResultType || csMethod.ReturnType.CppElement == _gitResultBoolType;
+
+                    if (hasGitStrarray || isGitResultMethod)
+                    {
+                        var csWrapMethod = csMethod.Wrap();
+
+                        StrArrayParam[] strArrayParams = null;
+                        var hasInStrArray = false;
+                        if (hasGitStrarray)
+                        {
+                            strArrayParams = new StrArrayParam[csWrapMethod.Parameters.Count];
+                            for (var i = 0; i < csWrapMethod.Parameters.Count; i++)
+                            {
+                                var csParam = csWrapMethod.Parameters[i];
+                                if (IsStrArray(csParam, out var refKind))
+                                {
+                                    strArrayParams[i] = new StrArrayParam(csParam, refKind);
+                                    if (refKind == CSharpRefKind.Out)
+                                    {
+                                        csParam.ParameterType = new CSharpRefType(refKind, new CSharpArrayType(CSharpPrimitiveType.String));
+                                    }
+                                    else if (refKind == CSharpRefKind.In)
+                                    {
+                                        csParam.ParameterType = new CSharpArrayType(CSharpPrimitiveType.String);
+                                        hasInStrArray = true;
+                                    }
+                                }
+                            }
+                        }
+
+                        csWrapMethod.Body = (writer, sharpElement) =>
+                        {
+                            if (strArrayParams != null)
+                            {
+                                for (var i = 0; i < csWrapMethod.Parameters.Count; i++)
+                                {
+                                    var strArrayParam = strArrayParams[i];
+                                    if (strArrayParam != null)
+                                    {
+                                        var csParam = strArrayParam.CsParameter;
+                                        if (strArrayParam.RefKind == CSharpRefKind.In)
+                                        {
+                                            writer.WriteLine($"var {csParam.Name}__ = git_strarray.Allocate({csParam.Name});");
+                                        }
+                                        else
+                                        {
+                                            writer.WriteLine($"git_strarray {csParam.Name}__;");
+                                        }
+                                    }
+                                }
+                            }
+
+                            bool isVoidReturn = (csMethod.ReturnType is CSharpPrimitiveType cSharpPrimitiveType && cSharpPrimitiveType.Kind == CSharpPrimitiveKind.Void);
+                            if (!isVoidReturn)
+                            {
+                                writer.Write("var __result__ = ");
+                            }
+
+                            writer.Write(csMethod.Name).Write("(");
+                            for (var i = 0; i < csMethod.Parameters.Count; i++)
+                            {
+                                var p = csMethod.Parameters[i];
+                                if (i > 0) writer.Write(", ");
+                                if (strArrayParams != null && strArrayParams[i] != null)
+                                {
+                                    var strArrayParam = strArrayParams[i];
+                                    strArrayParam.RefKind.DumpTo(writer);
+                                    writer.Write($"{strArrayParam.CsParameter.Name}__");
+                                }
+                                else
+                                {
+                                    p.DumpArgTo(writer);
+                                }
+                            }
+
+                            writer.Write(")");
+
+                            if (hasInStrArray)
+                            {
+                                writer.WriteLine(";");
+                                for (var i = 0; i < csWrapMethod.Parameters.Count; i++)
+                                {
+                                    var strParamArray = strArrayParams[i];
+                                    if (strParamArray != null && strParamArray.RefKind == CSharpRefKind.In)
+                                    {
+                                        writer.WriteLine($"{strParamArray.CsParameter.Name}__.Free();");
+                                    }
+                                }
+                            }
+
+                            if (isGitResultMethod)
+                            {
+                                if (hasInStrArray)
+                                {
+                                    writer.WriteLine("__result__.Check();");
+                                }
+                                else
+                                {
+                                    writer.WriteLine(".Check();");
+                                }
+                            }
+                            else
+                            {
+                                writer.WriteLine(";");
+                            }
+
+                            if (strArrayParams != null)
+                            {
+                                for (var i = 0; i < csWrapMethod.Parameters.Count; i++)
+                                {
+                                    var strParamArray = strArrayParams[i];
+                                    if (strParamArray != null && strParamArray.RefKind == CSharpRefKind.Out)
+                                    {
+                                        writer.WriteLine($"{strParamArray.CsParameter.Name} = {strParamArray.CsParameter.Name}__.ToArray();");
+                                        writer.WriteLine($"git_strarray_free(ref {strParamArray.CsParameter.Name}__);");
+                                    }
+                                }
+                            }
+
+                            if (!isVoidReturn)
+                            {
+                                writer.WriteLine("return __result__;");
+                            }
+                        };
+                    }
                 }
             }
         }

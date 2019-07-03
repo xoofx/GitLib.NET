@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class StrarrayTests : GitLibTestsBase
     {
+        public StrarrayTests() : base("strarray") {}
+        
         private void Check()
         {
             Test_git_strarray_free();

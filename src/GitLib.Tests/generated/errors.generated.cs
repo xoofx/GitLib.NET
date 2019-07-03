@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class ErrorsTests : GitLibTestsBase
     {
+        public ErrorsTests() : base("errors") {}
+        
         private void Check()
         {
             Test_git_error_last();

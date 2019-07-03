@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class TagTests : GitLibTestsBase
     {
+        public TagTests() : base("tag") {}
+        
         private void Check()
         {
             Test_git_tag_lookup();

@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class DescribeTests : GitLibTestsBase
     {
+        public DescribeTests() : base("describe") {}
+        
         private void Check()
         {
             Test_git_describe_init_options();

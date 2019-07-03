@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class IndexerTests : GitLibTestsBase
     {
+        public IndexerTests() : base("indexer") {}
+        
         private void Check()
         {
             Test_git_indexer_init_options();

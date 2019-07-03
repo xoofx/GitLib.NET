@@ -45,19 +45,28 @@ namespace GitLib.Tests
         [Test]
         public void Test_git_repository_open_bare()
         {
-            Assert.Fail($"Tests for method `{nameof(git_repository_open_bare)}` are not yet implemented");
+            var folder = GetOrCreateTestFolder();
+            git_repository_init(out var repo, folder, true);
+            git_repository_free(repo);
+            git_repository_open_bare(out var bareRepo, folder);
+            Assert.True(git_repository_is_bare(bareRepo));
+            git_repository_free(bareRepo);
         }
         
         [Test]
         public void Test_git_repository_free()
         {
-            Assert.Fail($"Tests for method `{nameof(git_repository_free)}` are not yet implemented");
+            git_repository_open(out var repo, RootPathOfThisRepository);
+            git_repository_free(repo);
         }
         
         [Test]
         public void Test_git_repository_init()
         {
-            Assert.Fail($"Tests for method `{nameof(git_repository_init)}` are not yet implemented");
+            var folder = GetOrCreateTestFolder();
+            git_repository_init(out var repo, folder, false);
+            DirectoryAssert.Exists(Path.Combine(folder, ".git"));
+            git_repository_free(repo);
         }
         
         [Test]

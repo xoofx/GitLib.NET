@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class RefdbTests : GitLibTestsBase
     {
+        public RefdbTests() : base("refdb") {}
+        
         private void Check()
         {
             Test_git_refdb_new();

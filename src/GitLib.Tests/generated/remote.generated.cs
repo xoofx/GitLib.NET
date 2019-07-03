@@ -12,6 +12,8 @@ namespace GitLib.Tests
 {
     public partial class RemoteTests : GitLibTestsBase
     {
+        public RemoteTests() : base("remote") {}
+        
         private void Check()
         {
             Test_git_remote_create();

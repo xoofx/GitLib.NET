@@ -59,7 +59,7 @@ namespace GitLib
             /// </summary>
             public uint describe_strategy;
             
-            [MarshalAs(UnmanagedType.LPUTF8Str)]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
             public string pattern;
             
             /// <summary>
@@ -105,7 +105,7 @@ namespace GitLib
             /// If the workdir is dirty and this is set, this string will
             /// be appended to the description string.
             /// </summary>
-            [MarshalAs(UnmanagedType.LPUTF8Str)]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
             public string dirty_suffix;
         }
         
