@@ -20,10 +20,10 @@ namespace GitLib
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
         public partial struct git_message_trailer
         {
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
             public string key;
             
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
             public string value;
         }
         

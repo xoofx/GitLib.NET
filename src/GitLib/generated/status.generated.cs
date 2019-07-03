@@ -281,7 +281,7 @@ namespace GitLib
         }
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_status_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, uint status_flags, IntPtr payload);
+        public delegate int git_status_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string path, uint status_flags, IntPtr payload);
         
         /// <summary>
         /// Initialize git_status_options structure

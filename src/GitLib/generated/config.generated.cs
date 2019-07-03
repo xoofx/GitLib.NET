@@ -133,13 +133,13 @@ namespace GitLib
             /// <summary>
             /// Name of the entry (normalised)
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
             public string name;
             
             /// <summary>
             /// String value of the entry
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
             public string value;
             
             /// <summary>

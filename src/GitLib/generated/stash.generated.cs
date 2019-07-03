@@ -204,7 +204,7 @@ namespace GitLib
         public delegate int git_stash_apply_progress_cb(git_stash_apply_progress_t progress, IntPtr payload);
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_stash_cb(size_t index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message, in git_oid stash_id, IntPtr payload);
+        public delegate int git_stash_cb(size_t index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string message, in git_oid stash_id, IntPtr payload);
         
         /// <summary>
         /// Save the local modifications to a new stash.

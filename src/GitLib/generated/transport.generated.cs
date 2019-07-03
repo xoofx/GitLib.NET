@@ -171,7 +171,7 @@ namespace GitLib
         public const git_cert_ssh_t GIT_CERT_SSH_SHA1 = git_cert_ssh_t.GIT_CERT_SSH_SHA1;
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_cred_acquire_cb(out IntPtr cred, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string username_from_url, uint allowed_types, IntPtr payload);
+        public delegate int git_cred_acquire_cb(out IntPtr cred, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string url, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string username_from_url, uint allowed_types, IntPtr payload);
         
         /// <summary>
         /// The base structure for all credential types
@@ -351,7 +351,7 @@ namespace GitLib
         }
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void git_cred_ssh_interactive_callback([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, int name_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string instruction, int instruction_len, int num_prompts, ref LIBSSH2_USERAUTH_KBDINT_PROMPT prompts, ref LIBSSH2_USERAUTH_KBDINT_RESPONSE responses, out IntPtr @abstract);
+        public delegate void git_cred_ssh_interactive_callback([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string name, int name_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string instruction, int instruction_len, int num_prompts, ref LIBSSH2_USERAUTH_KBDINT_PROMPT prompts, ref LIBSSH2_USERAUTH_KBDINT_RESPONSE responses, out IntPtr @abstract);
         
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
         public readonly partial struct LIBSSH2_USERAUTH_KBDINT_PROMPT : IEquatable<LIBSSH2_USERAUTH_KBDINT_PROMPT>

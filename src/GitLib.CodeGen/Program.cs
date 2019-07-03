@@ -17,9 +17,13 @@ namespace GitLib.CodeGen
         private CppTypedef _gitResultType;
         private CppTypedef _gitResultBoolType;
         private readonly Dictionary<string, List<string>> _gitResultFunctionsDetectedButNotRegistered;
+        private List<CSharpStruct> _structs;
+        private Dictionary<CSharpStruct, HashSet<CSharpRefKind>> _structRefUsages;
 
         private Program()
         {
+            _structs = new List<CSharpStruct>();
+            _structRefUsages = new Dictionary<CSharpStruct, HashSet<CSharpRefKind>>();
             _gitResultFunctionsDetectedButNotRegistered = new Dictionary<string, List<string>>();
         }
 
@@ -62,7 +66,7 @@ typedef int git_result_bool;
 ",
                 
                 DispatchOutputPerInclude = true,
-                DefaultMarshalForString = new CSharpMarshalAttribute(CSharpUnmanagedKind.CustomMarshaler) { MarshalTypeRef = "typeof(UTF8MarshallerStrict)" },
+                DefaultMarshalForString = new CSharpMarshalAttribute(CSharpUnmanagedKind.CustomMarshaler) { MarshalTypeRef = "typeof(UTF8MarshallerRelaxedNoCleanup)" },
 
                 MappingRules =
                 {
@@ -93,7 +97,7 @@ typedef int git_result_bool;
                     
                     e => e.Map<CppField>("git_strarray::strings").Private(),
                     e => e.Map<CppField>("git_strarray::count").Private(),
-                    e => e.MapAll<CppParameter>().CSharpAction(ProcessCSharpParameter),
+                    e => e.MapAll<CppClass>().CSharpAction(ProcessCSharpStruct),
                     e => e.MapAll<CppFunction>().CppAction(ProcessCppFunctions).CSharpAction(ProcessCSharpMethods)
                 }
             };
@@ -115,6 +119,8 @@ typedef int git_result_bool;
                 Console.Error.WriteLine("Unexpected parsing errors");
                 Environment.Exit(1);
             }
+            
+            ProcessStringMarshallingForStructs();
             
             var fs = new PhysicalFileSystem();
             
@@ -190,6 +196,9 @@ typedef int git_result_bool;
 //                    }
 //                }
             }
+
+
+
             
             {
                 var subfs = new SubFileSystem(fs, fs.ConvertPathFromInternal(destTestsFolder));
@@ -199,6 +208,7 @@ typedef int git_result_bool;
             
             ReportFunctionWithPossibleGitResultNotRegistered();
         }
+
 
         private static string ToPascalCase(string name)
         {
@@ -230,27 +240,6 @@ typedef int git_result_bool;
             "git_strarray_free",
             "git_strarray_copy",
         };
-
-        private void ProcessCSharpParameter(CSharpConverter converter, CSharpElement element)
-        {
-            if (element is CSharpParameter csParam)
-            {
-                if (csParam.ParameterType is CSharpRefType refType)
-                {
-                    if (csParam.Name == "@out" && refType.Kind == CSharpRefKind.Ref)
-                    {
-                        refType.Kind = CSharpRefKind.Out;
-                    }
-                    else if (refType.ElementType is CSharpStruct csStruct && csStruct.Name == "git_strarray" && refType.Kind == CSharpRefKind.Ref)
-                    {
-                        if (csParam.Parent is CSharpMethod csParentMethod && !KeepRefForStrArrayMethods.Contains(csParentMethod.Name))
-                        {
-                            refType.Kind = CSharpRefKind.Out;
-                        }
-                    }
-                }
-            }
-        }
 
         private static bool IsStrArray(CSharpParameter csParam, out CSharpRefKind refKind)
         {
@@ -332,22 +321,122 @@ typedef int git_result_bool;
                 cppFunction.ReturnType = _gitResultFunctionsWithBoolReturned.Contains(cppFunction.Name) ? _gitResultBoolType : _gitResultType;
             }
         }
+        
+        private void ProcessCSharpStruct(CSharpConverter converter, CSharpElement csElement)
+        {
+            if (!(csElement is CSharpStruct csStruct))
+            {
+                return;
+            }
+            _structs.Add(csStruct);
+        }
+
+        private void RecordStructUsage(CSharpRefKind refKind, CSharpStruct csStruct)
+        {
+            if (!_structRefUsages.TryGetValue(csStruct, out var listRefs))
+            {
+                listRefs = new HashSet<CSharpRefKind>();
+                _structRefUsages.Add(csStruct, listRefs);
+            }
+            listRefs.Add(refKind);
+        }
+
+        private void ProcessStringMarshallingForStructs()
+        {
+            foreach (var csStruct in _structs)
+            {
+                if (!_structRefUsages.TryGetValue(csStruct, out var refKinds))
+                {
+                    continue;
+                }
+
+                bool isIn = false;
+                bool isOut = false;
+                foreach (var refKind in refKinds)
+                {
+                    switch (refKind)
+                    {
+                        case CSharpRefKind.None:
+                        case CSharpRefKind.In:
+                            isIn = true;
+                            break;
+                        case CSharpRefKind.Out:
+                            isOut = true;
+                            break;
+                        case CSharpRefKind.Ref:
+                        case CSharpRefKind.RefReadOnly:
+                            isIn = true;
+                            isOut = true;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                foreach (var csField in csStruct.Members.OfType<CSharpField>())
+                {
+                    if (csField.FieldType is CSharpTypeWithAttributes csTypeWithAttributes && csTypeWithAttributes.ElementType is CSharpPrimitiveType csPrimitiveType &&  csPrimitiveType.Kind == CSharpPrimitiveKind.String)
+                    {
+                        if (isIn && !isOut)
+                        {
+                            csTypeWithAttributes = new CSharpTypeWithAttributes(csTypeWithAttributes.ElementType);
+                            csTypeWithAttributes.Attributes.Add(new CSharpMarshalAttribute(CSharpUnmanagedKind.CustomMarshaler) {MarshalTypeRef = "typeof(UTF8MarshallerStrict)"});
+                            csField.FieldType = csTypeWithAttributes;
+                        }
+                    }
+                }
+            }
+        }
+
+        private void ProcessCSharpParameter(CSharpElement parent, CSharpParameter csParam)
+        {
+            // If method is returning a string, don't try to release the memory
+            if (csParam.ParameterType is CSharpTypeWithAttributes typeWithAttr && typeWithAttr.ElementType == CSharpPrimitiveType.String)
+            {
+                csParam.ParameterType = new CSharpTypeWithAttributes(CSharpPrimitiveType.String)
+                {
+                    Attributes =
+                    {
+                        new CSharpMarshalAttribute(CSharpUnmanagedKind.CustomMarshaler) {MarshalTypeRef = "typeof(UTF8MarshallerStrict)"}
+                    }
+                };
+                return;
+            }            
+            
+            if (csParam.ParameterType is CSharpRefType refType)
+            {
+                var csStruct = refType.ElementType as CSharpStruct;
+                if (csStruct != null)
+                {
+                    RecordStructUsage(refType.Kind, csStruct);
+                }
+                
+                if (csParam.Name == "@out" && refType.Kind == CSharpRefKind.Ref)
+                {
+                    refType.Kind = CSharpRefKind.Out;
+                }
+                else if (csStruct != null && csStruct.Name == "git_strarray" && refType.Kind == CSharpRefKind.Ref)
+                {
+                    if (csParam.Parent is CSharpMethod csParentMethod && !KeepRefForStrArrayMethods.Contains(csParentMethod.Name))
+                    {
+                        refType.Kind = CSharpRefKind.Out;
+                    }
+                }
+            }
+            else if (csParam.ParameterType is CSharpStruct csStruct)
+
+            {
+                RecordStructUsage(CSharpRefKind.None, csStruct);
+            }
+        }
 
         private void ProcessCSharpMethods(CSharpConverter converter, CSharpElement element)
         {
             if (element is CSharpMethod csMethod)
             {
-                // If method is returning a string, don't try to release the memory
-                if (csMethod.ReturnType is CSharpTypeWithAttributes typeWithAttr && typeWithAttr.ElementType == CSharpPrimitiveType.String)
+                foreach (var csParam in csMethod.Parameters)
                 {
-                    csMethod.ReturnType = new CSharpTypeWithAttributes(CSharpPrimitiveType.String)
-                    {
-                        Attributes =
-                        {
-                            new CSharpMarshalAttribute(CSharpUnmanagedKind.CustomMarshaler) {MarshalTypeRef = "typeof(UTF8MarshallerRelaxedNoCleanup)"}
-                        }
-                    };
-                    return;
+                    ProcessCSharpParameter(csMethod, csParam);
                 }
                 
                 if (_gitResultType != null)

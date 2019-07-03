@@ -129,7 +129,7 @@ namespace GitLib
             /// is set to false.  If `notes.rewriteRef` is also NULL, notes will
             /// not be rewritten.
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
             public string rewrite_notes_ref;
             
             /// <summary>
@@ -172,7 +172,7 @@ namespace GitLib
             /// The executable the user has requested be run.  This will only
             /// be populated for operations of type `GIT_REBASE_OPERATION_EXEC`.
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
             public string exec;
         }
         

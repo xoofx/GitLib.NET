@@ -95,7 +95,7 @@ namespace GitLib
         public delegate int git_reference_foreach_cb(git_reference reference, IntPtr payload);
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_reference_foreach_name_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, IntPtr payload);
+        public delegate int git_reference_foreach_name_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string name, IntPtr payload);
         
         /// <summary>
         /// Lookup a reference by name in a repository.

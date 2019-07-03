@@ -15,7 +15,7 @@ namespace GitLib
     public static partial class libgit2
     {
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_tag_foreach_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, ref git_oid oid, IntPtr payload);
+        public delegate int git_tag_foreach_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string name, ref git_oid oid, IntPtr payload);
         
         /// <summary>
         /// Lookup a tag object from the repository.

@@ -227,7 +227,7 @@ namespace GitLib
         }
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_index_matched_path_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string matched_pathspec, IntPtr payload);
+        public delegate int git_index_matched_path_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string path, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string matched_pathspec, IntPtr payload);
         
         /// <summary>
         /// Create a new bare Git index object as a memory representation

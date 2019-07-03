@@ -198,7 +198,7 @@ namespace GitLib
             
             public git_oid orig_commit_id;
             
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
             public string orig_path;
             
             public size_t orig_start_line_number;

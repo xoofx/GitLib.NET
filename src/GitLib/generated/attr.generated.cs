@@ -61,7 +61,7 @@ namespace GitLib
         public const git_attr_t GIT_ATTR_VALUE_T = git_attr_t.GIT_ATTR_VALUE_T;
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_attr_foreach_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string value, IntPtr payload);
+        public delegate int git_attr_foreach_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string value, IntPtr payload);
         
         /// <summary>
         /// Return the value type for a given attribute.

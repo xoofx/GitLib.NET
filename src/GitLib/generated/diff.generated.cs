@@ -1130,7 +1130,7 @@ namespace GitLib
         {
             public git_oid id;
             
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
             public string path;
             
             public git_off_t size;
@@ -1275,22 +1275,22 @@ namespace GitLib
             /// The virtual "directory" prefix for old file names in hunk headers.
             /// Default is "a".
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
             public string old_prefix;
             
             /// <summary>
             /// The virtual "directory" prefix for new file names in hunk headers.
             /// Defaults to "b".
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
             public string new_prefix;
         }
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_diff_notify_cb(git_diff diff_so_far, in git_diff_delta delta_to_add, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string matched_pathspec, IntPtr payload);
+        public delegate int git_diff_notify_cb(git_diff diff_so_far, in git_diff_delta delta_to_add, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string matched_pathspec, IntPtr payload);
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_diff_progress_cb(git_diff diff_so_far, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string old_path, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string new_path, IntPtr payload);
+        public delegate int git_diff_progress_cb(git_diff diff_so_far, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string old_path, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string new_path, IntPtr payload);
         
         /// <summary>
         /// The contents of one of the files in a binary diff.
@@ -1306,7 +1306,7 @@ namespace GitLib
             /// <summary>
             /// The binary data, deflated.
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
             public string data;
             
             /// <summary>
@@ -1448,7 +1448,7 @@ namespace GitLib
             /// <summary>
             /// Pointer to diff text, not NUL-byte terminated
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
             public string content;
         }
         
@@ -1461,12 +1461,12 @@ namespace GitLib
             public file_signature_delegate file_signature;
             
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate int file_signature_delegate(out IntPtr @out, in git_diff_file file, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string fullpath, IntPtr payload);
+            public delegate int file_signature_delegate(out IntPtr @out, in git_diff_file file, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string fullpath, IntPtr payload);
             
             public buffer_signature_delegate buffer_signature;
             
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate int buffer_signature_delegate(out IntPtr @out, in git_diff_file file, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string buf, size_t buflen, IntPtr payload);
+            public delegate int buffer_signature_delegate(out IntPtr @out, in git_diff_file file, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string buf, size_t buflen, IntPtr payload);
             
             public free_signature_delegate free_signature;
             
@@ -1600,13 +1600,13 @@ namespace GitLib
             /// <summary>
             /// Summary of the change
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
             public string summary;
             
             /// <summary>
             /// Commit message's body
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
             public string body;
             
             /// <summary>

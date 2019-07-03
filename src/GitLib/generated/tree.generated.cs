@@ -98,7 +98,7 @@ namespace GitLib
         public delegate int git_treebuilder_filter_cb(git_tree_entry entry, IntPtr payload);
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_treewalk_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string root, git_tree_entry entry, IntPtr payload);
+        public delegate int git_treewalk_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string root, git_tree_entry entry, IntPtr payload);
         
         /// <summary>
         /// Lookup a tree object from the repository.

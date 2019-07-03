@@ -63,7 +63,7 @@ namespace GitLib
             public write_delegate write;
             
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate int write_delegate(ref git_odb_stream stream, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string buffer, size_t len);
+            public delegate int write_delegate(ref git_odb_stream stream, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string buffer, size_t len);
             
             public finalize_write_delegate finalize_write;
             

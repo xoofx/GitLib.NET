@@ -137,7 +137,7 @@ namespace GitLib
         }
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_submodule_cb(git_submodule sm, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, IntPtr payload);
+        public delegate int git_submodule_cb(git_submodule sm, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string name, IntPtr payload);
         
         /// <summary>
         /// Initialize git_submodule_update_options structure

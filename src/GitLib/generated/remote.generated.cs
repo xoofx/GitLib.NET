@@ -196,7 +196,7 @@ namespace GitLib
             public update_tips_delegate update_tips;
             
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate int update_tips_delegate([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname, in git_oid a, in git_oid b, IntPtr data);
+            public delegate int update_tips_delegate([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string refname, in git_oid a, in git_oid b, IntPtr data);
             
             /// <summary>
             /// Function to call with progress information during pack
@@ -241,7 +241,7 @@ namespace GitLib
         public delegate int git_push_transfer_progress(uint current, uint total, size_t bytes, IntPtr payload);
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_push_update_reference_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string status, IntPtr data);
+        public delegate int git_push_update_reference_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string refname, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string status, IntPtr data);
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate int git_push_negotiation(out IntPtr updates, size_t len, IntPtr payload);
@@ -295,13 +295,13 @@ namespace GitLib
             /// The remote's name.
             /// Setting this to NULL results in an in-memory/anonymous remote.
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
             public string name;
             
             /// <summary>
             /// The fetchspec the remote should use.
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
             public string fetchspec;
             
             /// <summary>
