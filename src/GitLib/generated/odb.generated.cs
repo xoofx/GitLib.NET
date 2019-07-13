@@ -75,14 +75,14 @@ namespace GitLib
         /// assuming `objects_dir` as the Objects folder which
         /// contains a 'pack/' folder with the corresponding data
         /// </remarks>
-        public static git_result git_odb_open(out git_odb @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string objects_dir)
+        public static git_result git_odb_open(out git_odb @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string objects_dir)
         {
             var __result__ = git_odb_open__(out @out, objects_dir).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_odb_open", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_odb_open__(out git_odb @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string objects_dir);
+        private static extern git_result git_odb_open__(out git_odb @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string objects_dir);
         
         /// <summary>
         /// Add an on-disk alternate to an existing Object DB.
@@ -95,14 +95,14 @@ namespace GitLib
         /// to a full repository, to use it as an alternate store.Alternate backends are always checked for objects *after*
         /// all the main backends have been exhausted.Writing is disabled on alternate backends.
         /// </remarks>
-        public static git_result git_odb_add_disk_alternate(git_odb odb, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path)
+        public static git_result git_odb_add_disk_alternate(git_odb odb, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path)
         {
             var __result__ = git_odb_add_disk_alternate__(odb, path).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_odb_add_disk_alternate", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_odb_add_disk_alternate__(git_odb odb, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path);
+        private static extern git_result git_odb_add_disk_alternate__(git_odb odb, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path);
         
         /// <summary>
         /// Close an open object database.
@@ -338,14 +338,14 @@ namespace GitLib
         /// This method will fail if the total number of received bytes exceeds the
         /// size declared with `git_odb_open_wstream()`
         /// </remarks>
-        public static git_result git_odb_stream_write(ref git_odb_stream stream, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string buffer, size_t len)
+        public static git_result git_odb_stream_write(ref git_odb_stream stream, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string buffer, size_t len)
         {
             var __result__ = git_odb_stream_write__(ref stream, buffer, len).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_odb_stream_write", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_odb_stream_write__(ref git_odb_stream stream, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string buffer, size_t len);
+        private static extern git_result git_odb_stream_write__(ref git_odb_stream stream, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string buffer, size_t len);
         
         /// <summary>
         /// Finish writing to an odb stream
@@ -464,14 +464,14 @@ namespace GitLib
         /// <param name="path">file to read and determine object id for</param>
         /// <param name="type">the type of the object that will be hashed</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_odb_hashfile(out git_oid @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, git_object_t type)
+        public static git_result git_odb_hashfile(out git_oid @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path, git_object_t type)
         {
             var __result__ = git_odb_hashfile__(out @out, path, type).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_odb_hashfile", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_odb_hashfile__(out git_oid @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, git_object_t type);
+        private static extern git_result git_odb_hashfile__(out git_oid @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path, git_object_t type);
         
         /// <summary>
         /// Create a copy of an odb_object

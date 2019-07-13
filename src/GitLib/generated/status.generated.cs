@@ -281,7 +281,7 @@ namespace GitLib
         }
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_status_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string path, uint status_flags, IntPtr payload);
+        public delegate int git_status_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string path, uint status_flags, IntPtr payload);
         
         /// <summary>
         /// Initialize git_status_options structure
@@ -372,14 +372,14 @@ namespace GitLib
         /// detection, there is no choice but to do a full `git_status_list_new` and
         /// scan through looking for the path that you are interested in.
         /// </remarks>
-        public static git_result git_status_file(ref uint status_flags, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path)
+        public static git_result git_status_file(ref uint status_flags, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path)
         {
             var __result__ = git_status_file__(ref status_flags, repo, path).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_status_file", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_status_file__(ref uint status_flags, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path);
+        private static extern git_result git_status_file__(ref uint status_flags, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path);
         
         /// <summary>
         /// Gather file status information and populate the `git_status_list`.
@@ -450,13 +450,13 @@ namespace GitLib
         /// whether the file is already in the index or committed to the repository.One way to think of this is if you were to do "git add ." on the
         /// directory containing the file, would it be added or not?
         /// </remarks>
-        public static git_result git_status_should_ignore(ref int ignored, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path)
+        public static git_result git_status_should_ignore(ref int ignored, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path)
         {
             var __result__ = git_status_should_ignore__(ref ignored, repo, path).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_status_should_ignore", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_status_should_ignore__(ref int ignored, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path);
+        private static extern git_result git_status_should_ignore__(ref int ignored, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path);
     }
 }

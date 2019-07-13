@@ -198,7 +198,7 @@ namespace GitLib
             
             public git_oid orig_commit_id;
             
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
             public string orig_path;
             
             public size_t orig_start_line_number;
@@ -286,14 +286,14 @@ namespace GitLib
         /// though GIT_BLAME_OPTIONS_INIT were passed.</param>
         /// <returns>0 on success, or an error code. (use git_error_last for information
         /// about the error.)</returns>
-        public static git_result git_blame_file(out git_blame @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, ref git_blame_options options)
+        public static git_result git_blame_file(out git_blame @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path, ref git_blame_options options)
         {
             var __result__ = git_blame_file__(out @out, repo, path, ref options).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_blame_file", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_blame_file__(out git_blame @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, ref git_blame_options options);
+        private static extern git_result git_blame_file__(out git_blame @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path, ref git_blame_options options);
         
         /// <summary>
         /// Get blame data for a file that has been modified in memory. The `reference`
@@ -312,14 +312,14 @@ namespace GitLib
         /// Lines that differ between the buffer and the committed version are marked as
         /// having a zero OID for their final_commit_id.
         /// </remarks>
-        public static git_result git_blame_buffer(out git_blame @out, git_blame reference, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string buffer, size_t buffer_len)
+        public static git_result git_blame_buffer(out git_blame @out, git_blame reference, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string buffer, size_t buffer_len)
         {
             var __result__ = git_blame_buffer__(out @out, reference, buffer, buffer_len).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_blame_buffer", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_blame_buffer__(out git_blame @out, git_blame reference, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string buffer, size_t buffer_len);
+        private static extern git_result git_blame_buffer__(out git_blame @out, git_blame reference, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string buffer, size_t buffer_len);
         
         /// <summary>
         /// Free memory allocated by git_blame_file or git_blame_buffer.

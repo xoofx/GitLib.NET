@@ -99,7 +99,7 @@ namespace GitLib
         /// in the commit is missing; in that case UTF-8 is assumed.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_commit_message_encoding(git_commit commit);
         
         /// <summary>
@@ -112,8 +112,31 @@ namespace GitLib
         /// potential leading newlines.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_commit_message(git_commit commit);
+        
+        /// <summary>
+        /// Get the full message of a commit.
+        /// </summary>
+        /// <param name="commit">a previously loaded commit.</param>
+        /// <returns>the message of a commit</returns>
+        /// <remarks>
+        /// The returned message will be slightly prettified by removing any
+        /// potential leading newlines.
+        /// </remarks>
+        [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl, EntryPoint = "git_commit_message")]
+        private static extern IntPtr git_commit_message_(git_commit commit);
+
+
+        public static string git_commit_message2(git_commit commit)
+        {
+            var marshaller = UTF8MarshalerRelaxedNoCleanup.GetInstance(null);
+            var ptr = git_commit_message_(commit);
+            //return UTF8MarshallerRelaxedNoCleanup.FromNative(ptr);
+            var result = (string)marshaller.MarshalNativeToManaged(ptr);
+            marshaller.CleanUpNativeData(ptr);
+            return result;
+        }
         
         /// <summary>
         /// Get the full raw message of a commit.
@@ -121,7 +144,7 @@ namespace GitLib
         /// <param name="commit">a previously loaded commit.</param>
         /// <returns>the raw message of a commit</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_commit_message_raw(git_commit commit);
         
         /// <summary>
@@ -134,7 +157,7 @@ namespace GitLib
         /// first paragraph of the message with whitespace trimmed and squashed.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_commit_summary(git_commit commit);
         
         /// <summary>
@@ -149,7 +172,7 @@ namespace GitLib
         /// trailing whitespaces are trimmed.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_commit_body(git_commit commit);
         
         /// <summary>
@@ -230,7 +253,7 @@ namespace GitLib
         /// <param name="commit">a previously loaded commit</param>
         /// <returns>the header text of the commit</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_commit_raw_header(git_commit commit);
         
         /// <summary>
@@ -327,14 +350,14 @@ namespace GitLib
         /// <param name="field">the header field to return</param>
         /// <returns>0 on succeess, GIT_ENOTFOUND if the field does not exist,
         /// or an error code</returns>
-        public static git_result git_commit_header_field(out git_buf @out, git_commit commit, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string field)
+        public static git_result git_commit_header_field(out git_buf @out, git_commit commit, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string field)
         {
             var __result__ = git_commit_header_field__(out @out, commit, field).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_commit_header_field", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_commit_header_field__(out git_buf @out, git_commit commit, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string field);
+        private static extern git_result git_commit_header_field__(out git_buf @out, git_commit commit, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string field);
         
         /// <summary>
         /// Extract the signature from a commit
@@ -355,7 +378,7 @@ namespace GitLib
         /// error class will be `GIT_ERROR_OBJECT`.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_commit_extract_signature(ref git_buf signature, ref git_buf signed_data, git_repository repo, ref git_oid commit_id, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string field);
+        public static extern int git_commit_extract_signature(ref git_buf signature, ref git_buf signed_data, git_repository repo, ref git_oid commit_id, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string field);
         
         /// <summary>
         /// Create new commit in the repository from a list of `git_object` pointers
@@ -391,14 +414,14 @@ namespace GitLib
         /// The message will **not** be cleaned up automatically. You can do that
         /// with the `git_message_prettify()` function.
         /// </remarks>
-        public static git_result git_commit_create(ref git_oid id, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string update_ref, in git_signature author, in git_signature committer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message_encoding, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message, git_tree tree, size_t parent_count, [MarshalAs(UnmanagedType.LPArray)] git_commit[] parents)
+        public static git_result git_commit_create(ref git_oid id, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string update_ref, in git_signature author, in git_signature committer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string message_encoding, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string message, git_tree tree, size_t parent_count, [MarshalAs(UnmanagedType.LPArray)] git_commit[] parents)
         {
             var __result__ = git_commit_create__(ref id, repo, update_ref, author, committer, message_encoding, message, tree, parent_count, parents).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_commit_create", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_commit_create__(ref git_oid id, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string update_ref, in git_signature author, in git_signature committer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message_encoding, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message, git_tree tree, size_t parent_count, [MarshalAs(UnmanagedType.LPArray)] git_commit[] parents);
+        private static extern git_result git_commit_create__(ref git_oid id, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string update_ref, in git_signature author, in git_signature committer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string message_encoding, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string message, git_tree tree, size_t parent_count, [MarshalAs(UnmanagedType.LPArray)] git_commit[] parents);
         
         /// <summary>
         /// Create new commit in the repository using a variable argument list.
@@ -412,7 +435,7 @@ namespace GitLib
         /// not be safe to export for certain languages or compilersAll other parameters remain the same as `git_commit_create()`.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_commit_create_v(ref git_oid id, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string update_ref, in git_signature author, in git_signature committer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message_encoding, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message, git_tree tree, size_t parent_count);
+        public static extern int git_commit_create_v(ref git_oid id, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string update_ref, in git_signature author, in git_signature committer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string message_encoding, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string message, git_tree tree, size_t parent_count);
         
         /// <summary>
         /// Amend an existing commit by replacing only non-NULL values.
@@ -431,7 +454,7 @@ namespace GitLib
         /// will use the values from the original `commit_to_amend`.All parameters have the same meanings as in `git_commit_create()`.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_commit_amend(ref git_oid id, git_commit commit_to_amend, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string update_ref, in git_signature author, in git_signature committer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message_encoding, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message, git_tree tree);
+        public static extern int git_commit_amend(ref git_oid id, git_commit commit_to_amend, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string update_ref, in git_signature author, in git_signature committer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string message_encoding, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string message, git_tree tree);
         
         /// <summary>
         /// Create a commit and write it into a buffer
@@ -459,14 +482,14 @@ namespace GitLib
         /// writing it to the objectdb, write the contents of the object into a
         /// buffer.
         /// </remarks>
-        public static git_result git_commit_create_buffer(out git_buf @out, git_repository repo, in git_signature author, in git_signature committer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message_encoding, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message, git_tree tree, size_t parent_count, [MarshalAs(UnmanagedType.LPArray)] git_commit[] parents)
+        public static git_result git_commit_create_buffer(out git_buf @out, git_repository repo, in git_signature author, in git_signature committer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string message_encoding, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string message, git_tree tree, size_t parent_count, [MarshalAs(UnmanagedType.LPArray)] git_commit[] parents)
         {
             var __result__ = git_commit_create_buffer__(out @out, repo, author, committer, message_encoding, message, tree, parent_count, parents).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_commit_create_buffer", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_commit_create_buffer__(out git_buf @out, git_repository repo, in git_signature author, in git_signature committer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message_encoding, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message, git_tree tree, size_t parent_count, [MarshalAs(UnmanagedType.LPArray)] git_commit[] parents);
+        private static extern git_result git_commit_create_buffer__(out git_buf @out, git_repository repo, in git_signature author, in git_signature committer, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string message_encoding, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string message, git_tree tree, size_t parent_count, [MarshalAs(UnmanagedType.LPArray)] git_commit[] parents);
         
         /// <summary>
         /// Create a commit object from the given buffer and signature
@@ -482,14 +505,14 @@ namespace GitLib
         /// header field in which to store the signature, attach the signature
         /// to the commit and write it into the given repository.
         /// </remarks>
-        public static git_result git_commit_create_with_signature(out git_oid @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string commit_content, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string signature, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string signature_field)
+        public static git_result git_commit_create_with_signature(out git_oid @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string commit_content, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string signature, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string signature_field)
         {
             var __result__ = git_commit_create_with_signature__(out @out, repo, commit_content, signature, signature_field).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_commit_create_with_signature", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_commit_create_with_signature__(out git_oid @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string commit_content, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string signature, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string signature_field);
+        private static extern git_result git_commit_create_with_signature__(out git_oid @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string commit_content, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string signature, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string signature_field);
         
         /// <summary>
         /// Create an in-memory copy of a commit. The copy must be explicitly

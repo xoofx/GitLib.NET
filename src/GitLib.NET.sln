@@ -16,6 +16,10 @@ EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestGitLib", "TestGitLib\TestGitLib.csproj", "{97A3B2A0-BC39-49C7-9AAF-D7BB4ED6F2B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitLib.Benchmarks", "GitLib.Benchmarks\GitLib.Benchmarks.csproj", "{21741FB4-5675-44DE-AF50-E41F55FD970D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CppAst.CodeGen", "..\..\CppAst.CodeGen\src\CppAst.CodeGen\CppAst.CodeGen.csproj", "{6F974276-D37A-4692-BD07-80F3FD5AC122}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,5 +42,13 @@ Global
 		{97A3B2A0-BC39-49C7-9AAF-D7BB4ED6F2B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97A3B2A0-BC39-49C7-9AAF-D7BB4ED6F2B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97A3B2A0-BC39-49C7-9AAF-D7BB4ED6F2B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21741FB4-5675-44DE-AF50-E41F55FD970D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21741FB4-5675-44DE-AF50-E41F55FD970D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21741FB4-5675-44DE-AF50-E41F55FD970D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21741FB4-5675-44DE-AF50-E41F55FD970D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F974276-D37A-4692-BD07-80F3FD5AC122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F974276-D37A-4692-BD07-80F3FD5AC122}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F974276-D37A-4692-BD07-80F3FD5AC122}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F974276-D37A-4692-BD07-80F3FD5AC122}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

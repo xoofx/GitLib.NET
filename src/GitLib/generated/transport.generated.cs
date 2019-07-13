@@ -171,7 +171,7 @@ namespace GitLib
         public const git_cert_ssh_t GIT_CERT_SSH_SHA1 = git_cert_ssh_t.GIT_CERT_SSH_SHA1;
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_cred_acquire_cb(out IntPtr cred, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string url, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string username_from_url, uint allowed_types, IntPtr payload);
+        public delegate int git_cred_acquire_cb(out IntPtr cred, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string url, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string username_from_url, uint allowed_types, IntPtr payload);
         
         /// <summary>
         /// The base structure for all credential types
@@ -351,7 +351,7 @@ namespace GitLib
         }
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void git_cred_ssh_interactive_callback([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string name, int name_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string instruction, int instruction_len, int num_prompts, ref LIBSSH2_USERAUTH_KBDINT_PROMPT prompts, ref LIBSSH2_USERAUTH_KBDINT_RESPONSE responses, out IntPtr @abstract);
+        public delegate void git_cred_ssh_interactive_callback([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string name, int name_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string instruction, int instruction_len, int num_prompts, ref LIBSSH2_USERAUTH_KBDINT_PROMPT prompts, ref LIBSSH2_USERAUTH_KBDINT_RESPONSE responses, out IntPtr @abstract);
         
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
         public readonly partial struct LIBSSH2_USERAUTH_KBDINT_PROMPT : IEquatable<LIBSSH2_USERAUTH_KBDINT_PROMPT>
@@ -502,14 +502,14 @@ namespace GitLib
         /// <param name="username">The username of the credential.</param>
         /// <param name="password">The password of the credential.</param>
         /// <returns>0 for success or an error code for failure</returns>
-        public static git_result git_cred_userpass_plaintext_new(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string username, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string password)
+        public static git_result git_cred_userpass_plaintext_new(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string username, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string password)
         {
             var __result__ = git_cred_userpass_plaintext_new__(out @out, username, password).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_cred_userpass_plaintext_new", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_cred_userpass_plaintext_new__(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string username, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string password);
+        private static extern git_result git_cred_userpass_plaintext_new__(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string username, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string password);
         
         /// <summary>
         /// Create a new passphrase-protected ssh key credential object.
@@ -521,14 +521,14 @@ namespace GitLib
         /// <param name="privatekey">The path to the private key of the credential.</param>
         /// <param name="passphrase">The passphrase of the credential.</param>
         /// <returns>0 for success or an error code for failure</returns>
-        public static git_result git_cred_ssh_key_new(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string username, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string publickey, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string privatekey, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string passphrase)
+        public static git_result git_cred_ssh_key_new(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string username, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string publickey, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string privatekey, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string passphrase)
         {
             var __result__ = git_cred_ssh_key_new__(out @out, username, publickey, privatekey, passphrase).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_cred_ssh_key_new", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_cred_ssh_key_new__(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string username, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string publickey, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string privatekey, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string passphrase);
+        private static extern git_result git_cred_ssh_key_new__(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string username, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string publickey, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string privatekey, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string passphrase);
         
         /// <summary>
         /// Create a new ssh keyboard-interactive based credential object.
@@ -538,14 +538,14 @@ namespace GitLib
         /// <param name="prompt_callback">The callback method used for prompts.</param>
         /// <param name="payload">Additional data to pass to the callback.</param>
         /// <returns>0 for success or an error code for failure.</returns>
-        public static git_result git_cred_ssh_interactive_new(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string username, git_cred_ssh_interactive_callback prompt_callback, IntPtr payload)
+        public static git_result git_cred_ssh_interactive_new(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string username, git_cred_ssh_interactive_callback prompt_callback, IntPtr payload)
         {
             var __result__ = git_cred_ssh_interactive_new__(out @out, username, prompt_callback, payload).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_cred_ssh_interactive_new", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_cred_ssh_interactive_new__(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string username, git_cred_ssh_interactive_callback prompt_callback, IntPtr payload);
+        private static extern git_result git_cred_ssh_interactive_new__(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string username, git_cred_ssh_interactive_callback prompt_callback, IntPtr payload);
         
         /// <summary>
         /// Create a new ssh key credential object used for querying an ssh-agent.
@@ -554,14 +554,14 @@ namespace GitLib
         /// <param name="out">The newly created credential object.</param>
         /// <param name="username">username to use to authenticate</param>
         /// <returns>0 for success or an error code for failure</returns>
-        public static git_result git_cred_ssh_key_from_agent(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string username)
+        public static git_result git_cred_ssh_key_from_agent(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string username)
         {
             var __result__ = git_cred_ssh_key_from_agent__(out @out, username).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_cred_ssh_key_from_agent", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_cred_ssh_key_from_agent__(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string username);
+        private static extern git_result git_cred_ssh_key_from_agent__(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string username);
         
         /// <summary>
         /// Create an ssh key credential with a custom signing function.
@@ -577,14 +577,14 @@ namespace GitLib
         /// This lets you use your own function to sign the challenge.This function and its credential type is provided for completeness
         /// and wraps `libssh2_userauth_publickey()`, which is undocumented.The supplied credential parameter will be internally duplicated.
         /// </remarks>
-        public static git_result git_cred_ssh_custom_new(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string username, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string publickey, size_t publickey_len, git_cred_sign_callback sign_callback, IntPtr payload)
+        public static git_result git_cred_ssh_custom_new(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string username, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string publickey, size_t publickey_len, git_cred_sign_callback sign_callback, IntPtr payload)
         {
             var __result__ = git_cred_ssh_custom_new__(out @out, username, publickey, publickey_len, sign_callback, payload).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_cred_ssh_custom_new", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_cred_ssh_custom_new__(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string username, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string publickey, size_t publickey_len, git_cred_sign_callback sign_callback, IntPtr payload);
+        private static extern git_result git_cred_ssh_custom_new__(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string username, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string publickey, size_t publickey_len, git_cred_sign_callback sign_callback, IntPtr payload);
         
         /// <summary>
         /// Create a "default" credential usable for Negotiate mechanisms like NTLM
@@ -608,7 +608,7 @@ namespace GitLib
         /// none is specified in the url.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_cred_username_new(out IntPtr cred, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string username);
+        public static extern int git_cred_username_new(out IntPtr cred, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string username);
         
         /// <summary>
         /// Create a new ssh key credential object reading the keys from memory.
@@ -619,14 +619,14 @@ namespace GitLib
         /// <param name="privatekey">The private key of the credential.</param>
         /// <param name="passphrase">The passphrase of the credential.</param>
         /// <returns>0 for success or an error code for failure</returns>
-        public static git_result git_cred_ssh_key_memory_new(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string username, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string publickey, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string privatekey, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string passphrase)
+        public static git_result git_cred_ssh_key_memory_new(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string username, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string publickey, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string privatekey, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string passphrase)
         {
             var __result__ = git_cred_ssh_key_memory_new__(out @out, username, publickey, privatekey, passphrase).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_cred_ssh_key_memory_new", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_cred_ssh_key_memory_new__(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string username, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string publickey, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string privatekey, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string passphrase);
+        private static extern git_result git_cred_ssh_key_memory_new__(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string username, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string publickey, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string privatekey, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string passphrase);
         
         /// <summary>
         /// Free a credential.

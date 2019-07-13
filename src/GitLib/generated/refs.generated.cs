@@ -95,7 +95,7 @@ namespace GitLib
         public delegate int git_reference_foreach_cb(git_reference reference, IntPtr payload);
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_reference_foreach_name_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string name, IntPtr payload);
+        public delegate int git_reference_foreach_name_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string name, IntPtr payload);
         
         /// <summary>
         /// Lookup a reference by name in a repository.
@@ -108,14 +108,14 @@ namespace GitLib
         /// The returned reference must be freed by the user.The name will be checked for validity.
         /// See `git_reference_symbolic_create()` for rules about valid names.
         /// </remarks>
-        public static git_result git_reference_lookup(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
+        public static git_result git_reference_lookup(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name)
         {
             var __result__ = git_reference_lookup__(out @out, repo, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_reference_lookup", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_reference_lookup__(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
+        private static extern git_result git_reference_lookup__(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name);
         
         /// <summary>
         /// Lookup a reference by name and resolve immediately to OID.
@@ -130,14 +130,14 @@ namespace GitLib
         /// allocate or free any `git_reference` objects for simple situations.The name will be checked for validity.
         /// See `git_reference_symbolic_create()` for rules about valid names.
         /// </remarks>
-        public static git_result git_reference_name_to_id(out git_oid @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
+        public static git_result git_reference_name_to_id(out git_oid @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name)
         {
             var __result__ = git_reference_name_to_id__(out @out, repo, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_reference_name_to_id", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_reference_name_to_id__(out git_oid @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
+        private static extern git_result git_reference_name_to_id__(out git_oid @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name);
         
         /// <summary>
         /// Lookup a reference by DWIMing its short name
@@ -150,14 +150,14 @@ namespace GitLib
         /// Apply the git precendence rules to the given shorthand to determine
         /// which reference the user is referring to.
         /// </remarks>
-        public static git_result git_reference_dwim(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string shorthand)
+        public static git_result git_reference_dwim(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string shorthand)
         {
             var __result__ = git_reference_dwim__(out @out, repo, shorthand).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_reference_dwim", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_reference_dwim__(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string shorthand);
+        private static extern git_result git_reference_dwim__(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string shorthand);
         
         /// <summary>
         /// Conditionally create a new symbolic reference.
@@ -190,14 +190,14 @@ namespace GitLib
         /// of updating does not match the one passed through `current_value`
         /// (i.e. if the ref has changed since the user read it).
         /// </remarks>
-        public static git_result git_reference_symbolic_create_matching(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string target, int force, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string current_value, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string log_message)
+        public static git_result git_reference_symbolic_create_matching(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string target, int force, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string current_value, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string log_message)
         {
             var __result__ = git_reference_symbolic_create_matching__(out @out, repo, name, target, force, current_value, log_message).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_reference_symbolic_create_matching", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_reference_symbolic_create_matching__(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string target, int force, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string current_value, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string log_message);
+        private static extern git_result git_reference_symbolic_create_matching__(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string target, int force, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string current_value, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string log_message);
         
         /// <summary>
         /// Create a new symbolic reference.
@@ -227,14 +227,14 @@ namespace GitLib
         /// not belong in the standard set (HEAD, branches and remote-tracking
         /// branches) and it does not have a reflog.
         /// </remarks>
-        public static git_result git_reference_symbolic_create(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string target, int force, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string log_message)
+        public static git_result git_reference_symbolic_create(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string target, int force, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string log_message)
         {
             var __result__ = git_reference_symbolic_create__(out @out, repo, name, target, force, log_message).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_reference_symbolic_create", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_reference_symbolic_create__(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string target, int force, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string log_message);
+        private static extern git_result git_reference_symbolic_create__(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string target, int force, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string log_message);
         
         /// <summary>
         /// Create a new direct reference.
@@ -265,14 +265,14 @@ namespace GitLib
         /// not belong in the standard set (HEAD, branches and remote-tracking
         /// branches) and and it does not have a reflog.
         /// </remarks>
-        public static git_result git_reference_create(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, in git_oid id, int force, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string log_message)
+        public static git_result git_reference_create(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, in git_oid id, int force, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string log_message)
         {
             var __result__ = git_reference_create__(out @out, repo, name, id, force, log_message).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_reference_create", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_reference_create__(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, in git_oid id, int force, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string log_message);
+        private static extern git_result git_reference_create__(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, in git_oid id, int force, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string log_message);
         
         /// <summary>
         /// Conditionally create new direct reference
@@ -307,14 +307,14 @@ namespace GitLib
         /// of updating does not match the one passed through `current_id`
         /// (i.e. if the ref has changed since the user read it).
         /// </remarks>
-        public static git_result git_reference_create_matching(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, in git_oid id, int force, in git_oid current_id, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string log_message)
+        public static git_result git_reference_create_matching(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, in git_oid id, int force, in git_oid current_id, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string log_message)
         {
             var __result__ = git_reference_create_matching__(out @out, repo, name, id, force, current_id, log_message).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_reference_create_matching", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_reference_create_matching__(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, in git_oid id, int force, in git_oid current_id, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string log_message);
+        private static extern git_result git_reference_create_matching__(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, in git_oid id, int force, in git_oid current_id, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string log_message);
         
         /// <summary>
         /// Get the OID pointed to by a direct reference.
@@ -351,7 +351,7 @@ namespace GitLib
         /// Only available if the reference is symbolic.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_reference_symbolic_target(git_reference @ref);
         
         /// <summary>
@@ -374,7 +374,7 @@ namespace GitLib
         /// See `git_reference_symbolic_create()` for rules about valid names.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_reference_name(git_reference @ref);
         
         /// <summary>
@@ -422,14 +422,14 @@ namespace GitLib
         /// not belong in the standard set (HEAD, branches and remote-tracking
         /// branches) and and it does not have a reflog.
         /// </remarks>
-        public static git_result git_reference_symbolic_set_target(out git_reference @out, git_reference @ref, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string target, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string log_message)
+        public static git_result git_reference_symbolic_set_target(out git_reference @out, git_reference @ref, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string target, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string log_message)
         {
             var __result__ = git_reference_symbolic_set_target__(out @out, @ref, target, log_message).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_reference_symbolic_set_target", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_reference_symbolic_set_target__(out git_reference @out, git_reference @ref, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string target, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string log_message);
+        private static extern git_result git_reference_symbolic_set_target__(out git_reference @out, git_reference @ref, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string target, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string log_message);
         
         /// <summary>
         /// Conditionally create a new reference with the same name as the given reference but a
@@ -445,14 +445,14 @@ namespace GitLib
         /// <remarks>
         /// The new reference will be written to disk, overwriting the given reference.
         /// </remarks>
-        public static git_result git_reference_set_target(out git_reference @out, git_reference @ref, in git_oid id, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string log_message)
+        public static git_result git_reference_set_target(out git_reference @out, git_reference @ref, in git_oid id, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string log_message)
         {
             var __result__ = git_reference_set_target__(out @out, @ref, id, log_message).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_reference_set_target", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_reference_set_target__(out git_reference @out, git_reference @ref, in git_oid id, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string log_message);
+        private static extern git_result git_reference_set_target__(out git_reference @out, git_reference @ref, in git_oid id, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string log_message);
         
         /// <summary>
         /// Rename an existing reference.
@@ -470,14 +470,14 @@ namespace GitLib
         /// reflog is enabled for the repository. We only rename
         /// the reflog if it exists.
         /// </remarks>
-        public static git_result git_reference_rename(out git_reference new_ref, git_reference @ref, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string new_name, int force, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string log_message)
+        public static git_result git_reference_rename(out git_reference new_ref, git_reference @ref, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string new_name, int force, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string log_message)
         {
             var __result__ = git_reference_rename__(out new_ref, @ref, new_name, force, log_message).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_reference_rename", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_reference_rename__(out git_reference new_ref, git_reference @ref, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string new_name, int force, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string log_message);
+        private static extern git_result git_reference_rename__(out git_reference new_ref, git_reference @ref, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string new_name, int force, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string log_message);
         
         /// <summary>
         /// Delete an existing reference.
@@ -508,14 +508,14 @@ namespace GitLib
         /// This method removes the named reference from the repository without
         /// looking at its old value.
         /// </remarks>
-        public static git_result git_reference_remove(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
+        public static git_result git_reference_remove(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name)
         {
             var __result__ = git_reference_remove__(repo, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_reference_remove", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_reference_remove__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
+        private static extern git_result git_reference_remove__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name);
         
         /// <summary>
         /// Fill a list with all the references that can be found in a repository.
@@ -643,14 +643,14 @@ namespace GitLib
         /// <param name="repo">the repository</param>
         /// <param name="glob">the glob to match against the reference names</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_reference_iterator_glob_new(out git_reference_iterator @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string glob)
+        public static git_result git_reference_iterator_glob_new(out git_reference_iterator @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string glob)
         {
             var __result__ = git_reference_iterator_glob_new__(out @out, repo, glob).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_reference_iterator_glob_new", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_reference_iterator_glob_new__(out git_reference_iterator @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string glob);
+        private static extern git_result git_reference_iterator_glob_new__(out git_reference_iterator @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string glob);
         
         /// <summary>
         /// Get the next reference
@@ -710,14 +710,14 @@ namespace GitLib
         /// any sequence of letters, a '?' matches any letter, and square brackets
         /// can be used to define character ranges (such as "[0-9]" for digits).
         /// </remarks>
-        public static git_result git_reference_foreach_glob(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string glob, git_reference_foreach_name_cb callback, IntPtr payload)
+        public static git_result git_reference_foreach_glob(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string glob, git_reference_foreach_name_cb callback, IntPtr payload)
         {
             var __result__ = git_reference_foreach_glob__(repo, glob, callback, payload).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_reference_foreach_glob", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_reference_foreach_glob__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string glob, git_reference_foreach_name_cb callback, IntPtr payload);
+        private static extern git_result git_reference_foreach_glob__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string glob, git_reference_foreach_name_cb callback, IntPtr payload);
         
         /// <summary>
         /// Check if a reflog exists for the specified reference.
@@ -726,14 +726,14 @@ namespace GitLib
         /// <param name="refname">the reference's name</param>
         /// <returns>0 when no reflog can be found, 1 when it exists;
         /// otherwise an error code.</returns>
-        public static git_result git_reference_has_log(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname)
+        public static git_result git_reference_has_log(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string refname)
         {
             var __result__ = git_reference_has_log__(repo, refname).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_reference_has_log", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_reference_has_log__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname);
+        private static extern git_result git_reference_has_log__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string refname);
         
         /// <summary>
         /// Ensure there is a reflog for a particular reference.
@@ -745,14 +745,14 @@ namespace GitLib
         /// Make sure that successive updates to the reference will append to
         /// its log.
         /// </remarks>
-        public static git_result git_reference_ensure_log(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname)
+        public static git_result git_reference_ensure_log(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string refname)
         {
             var __result__ = git_reference_ensure_log__(repo, refname).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_reference_ensure_log", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_reference_ensure_log__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname);
+        private static extern git_result git_reference_ensure_log__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string refname);
         
         /// <summary>
         /// Check if a reference is a local branch.
@@ -806,14 +806,14 @@ namespace GitLib
         /// components into a single slash.Once normalized, if the reference name is valid, it will be returned in
         /// the user allocated buffer.See `git_reference_symbolic_create()` for rules about valid names.
         /// </remarks>
-        public static git_result git_reference_normalize_name(IntPtr buffer_out, size_t buffer_size, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, uint flags)
+        public static git_result git_reference_normalize_name(IntPtr buffer_out, size_t buffer_size, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, uint flags)
         {
             var __result__ = git_reference_normalize_name__(buffer_out, buffer_size, name, flags).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_reference_normalize_name", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_reference_normalize_name__(IntPtr buffer_out, size_t buffer_size, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, uint flags);
+        private static extern git_result git_reference_normalize_name__(IntPtr buffer_out, size_t buffer_size, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, uint flags);
         
         /// <summary>
         /// Recursively peel reference until object of the specified type is found.
@@ -854,7 +854,7 @@ namespace GitLib
         /// {" which have special meaning to revparse.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_reference_is_valid_name([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname);
+        public static extern int git_reference_is_valid_name([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string refname);
         
         /// <summary>
         /// Get the reference's short name
@@ -867,7 +867,7 @@ namespace GitLib
         /// name.The memory is owned by the reference and must not be freed.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_reference_shorthand(git_reference @ref);
     }
 }

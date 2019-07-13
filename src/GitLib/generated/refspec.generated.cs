@@ -22,7 +22,7 @@ namespace GitLib
         /// <param name="is_fetch">is this a refspec for a fetch</param>
         /// <returns>0 if the refspec string could be parsed, -1 otherwise</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_refspec_parse(out git_refspec refspec, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string input, int is_fetch);
+        public static extern int git_refspec_parse(out git_refspec refspec, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string input, int is_fetch);
         
         /// <summary>
         /// Free a refspec object which has been created by git_refspec_parse
@@ -37,7 +37,7 @@ namespace GitLib
         /// <param name="refspec">the refspec</param>
         /// <returns>the refspec's source specifier</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_refspec_src(git_refspec refspec);
         
         /// <summary>
@@ -46,7 +46,7 @@ namespace GitLib
         /// <param name="refspec">the refspec</param>
         /// <returns>the refspec's destination specifier</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_refspec_dst(git_refspec refspec);
         
         /// <summary>
@@ -57,7 +57,7 @@ namespace GitLib
         /// @returns the refspec's original string
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_refspec_string(git_refspec refspec);
         
         /// <summary>
@@ -83,7 +83,7 @@ namespace GitLib
         /// <param name="refname">the name of the reference to check</param>
         /// <returns>1 if the refspec matches, 0 otherwise</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_refspec_src_matches(git_refspec refspec, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname);
+        public static extern int git_refspec_src_matches(git_refspec refspec, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string refname);
         
         /// <summary>
         /// Check if a refspec's destination descriptor matches a reference
@@ -92,7 +92,7 @@ namespace GitLib
         /// <param name="refname">the name of the reference to check</param>
         /// <returns>1 if the refspec matches, 0 otherwise</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_refspec_dst_matches(git_refspec refspec, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname);
+        public static extern int git_refspec_dst_matches(git_refspec refspec, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string refname);
         
         /// <summary>
         /// Transform a reference to its target following the refspec's rules
@@ -101,14 +101,14 @@ namespace GitLib
         /// <param name="spec">the refspec</param>
         /// <param name="name">the name of the reference to transform</param>
         /// <returns>0, GIT_EBUFS or another error</returns>
-        public static git_result git_refspec_transform(out git_buf @out, git_refspec spec, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
+        public static git_result git_refspec_transform(out git_buf @out, git_refspec spec, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name)
         {
             var __result__ = git_refspec_transform__(out @out, spec, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_refspec_transform", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_refspec_transform__(out git_buf @out, git_refspec spec, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
+        private static extern git_result git_refspec_transform__(out git_buf @out, git_refspec spec, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name);
         
         /// <summary>
         /// Transform a target reference to its source reference following the refspec's rules
@@ -117,13 +117,13 @@ namespace GitLib
         /// <param name="spec">the refspec</param>
         /// <param name="name">the name of the reference to transform</param>
         /// <returns>0, GIT_EBUFS or another error</returns>
-        public static git_result git_refspec_rtransform(out git_buf @out, git_refspec spec, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
+        public static git_result git_refspec_rtransform(out git_buf @out, git_refspec spec, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name)
         {
             var __result__ = git_refspec_rtransform__(out @out, spec, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_refspec_rtransform", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_refspec_rtransform__(out git_buf @out, git_refspec spec, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
+        private static extern git_result git_refspec_rtransform__(out git_buf @out, git_refspec spec, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name);
     }
 }

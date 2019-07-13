@@ -29,14 +29,14 @@ namespace GitLib
         /// ' and '&gt;') characters are not allowed
         /// to be used in either the `name` or the `email` parameter.
         /// </remarks>
-        public static git_result git_signature_new(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string email, git_time_t time, int offset)
+        public static git_result git_signature_new(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string email, git_time_t time, int offset)
         {
             var __result__ = git_signature_new__(out @out, name, email, time, offset).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_signature_new", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_signature_new__(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string email, git_time_t time, int offset);
+        private static extern git_result git_signature_new__(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string email, git_time_t time, int offset);
         
         /// <summary>
         /// Create a new action signature with a timestamp of 'now'.
@@ -48,14 +48,14 @@ namespace GitLib
         /// <remarks>
         /// Call `git_signature_free()` to free the data.
         /// </remarks>
-        public static git_result git_signature_now(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string email)
+        public static git_result git_signature_now(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string email)
         {
             var __result__ = git_signature_now__(out @out, name, email).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_signature_now", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_signature_now__(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string email);
+        private static extern git_result git_signature_now__(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string email);
         
         /// <summary>
         /// Create a new action signature with default user and now timestamp.
@@ -90,14 +90,14 @@ namespace GitLib
         /// <param name="out">new signature</param>
         /// <param name="buf">signature string</param>
         /// <returns>0 on success, or an error code</returns>
-        public static git_result git_signature_from_buffer(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string buf)
+        public static git_result git_signature_from_buffer(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string buf)
         {
             var __result__ = git_signature_from_buffer__(out @out, buf).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_signature_from_buffer", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_signature_from_buffer__(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string buf);
+        private static extern git_result git_signature_from_buffer__(out IntPtr @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string buf);
         
         /// <summary>
         /// Create a copy of an existing signature.  All internal strings are also

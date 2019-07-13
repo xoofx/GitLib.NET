@@ -61,7 +61,7 @@ namespace GitLib
         public const git_attr_t GIT_ATTR_VALUE_T = git_attr_t.GIT_ATTR_VALUE_T;
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_attr_foreach_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string value, IntPtr payload);
+        public delegate int git_attr_foreach_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string value, IntPtr payload);
         
         /// <summary>
         /// Return the value type for a given attribute.
@@ -75,7 +75,7 @@ namespace GitLib
         /// as a NULL-terminated C string.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern git_attr_t git_attr_value([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string attr);
+        public static extern git_attr_t git_attr_value([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string attr);
         
         /// <summary>
         /// Look up the value of one git attribute for path.
@@ -92,7 +92,7 @@ namespace GitLib
         /// treated as a plain file (not a directory).</param>
         /// <param name="name">The name of the attribute to look up.</param>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_attr_get(out string value_out, git_repository repo, uint flags, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
+        public static extern int git_attr_get(out string value_out, git_repository repo, uint flags, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name);
         
         /// <summary>
         /// Look up a list of git attributes for path.
@@ -118,7 +118,7 @@ namespace GitLib
         /// the three attributes you asked about.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_attr_get_many(out string values_out, git_repository repo, uint flags, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, size_t num_attr, out string names);
+        public static extern int git_attr_get_many(out string values_out, git_repository repo, uint flags, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path, size_t num_attr, out string names);
         
         /// <summary>
         /// Loop over all the git attributes for a path.
@@ -132,14 +132,14 @@ namespace GitLib
         /// See git_attr_foreach_cb.</param>
         /// <param name="payload">Passed on as extra parameter to callback function.</param>
         /// <returns>0 on success, non-zero callback return value, or error code</returns>
-        public static git_result git_attr_foreach(git_repository repo, uint flags, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, git_attr_foreach_cb callback, IntPtr payload)
+        public static git_result git_attr_foreach(git_repository repo, uint flags, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path, git_attr_foreach_cb callback, IntPtr payload)
         {
             var __result__ = git_attr_foreach__(repo, flags, path, callback, payload).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_attr_foreach", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_attr_foreach__(git_repository repo, uint flags, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, git_attr_foreach_cb callback, IntPtr payload);
+        private static extern git_result git_attr_foreach__(git_repository repo, uint flags, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path, git_attr_foreach_cb callback, IntPtr payload);
         
         /// <summary>
         /// Flush the gitattributes cache.
@@ -163,6 +163,6 @@ namespace GitLib
         /// macro, you would call:git_attr_add_macro(repo, "binary", "-diff -crlf");
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_attr_add_macro(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string values);
+        public static extern int git_attr_add_macro(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string values);
     }
 }

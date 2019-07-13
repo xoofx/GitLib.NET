@@ -49,14 +49,14 @@ namespace GitLib
         /// <param name="replace_name">the name to replace, or NULL</param>
         /// <param name="replace_email">the email to replace</param>
         /// <returns>0 on success, or an error code</returns>
-        public static git_result git_mailmap_add_entry(git_mailmap mm, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string real_name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string real_email, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string replace_name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string replace_email)
+        public static git_result git_mailmap_add_entry(git_mailmap mm, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string real_name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string real_email, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string replace_name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string replace_email)
         {
             var __result__ = git_mailmap_add_entry__(mm, real_name, real_email, replace_name, replace_email).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_mailmap_add_entry", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_mailmap_add_entry__(git_mailmap mm, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string real_name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string real_email, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string replace_name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string replace_email);
+        private static extern git_result git_mailmap_add_entry__(git_mailmap mm, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string real_name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string real_email, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string replace_name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string replace_email);
         
         /// <summary>
         /// Create a new mailmap instance containing a single mailmap file
@@ -65,14 +65,14 @@ namespace GitLib
         /// <param name="buf">buffer to parse the mailmap from</param>
         /// <param name="len">the length of the input buffer</param>
         /// <returns>0 on success, or an error code</returns>
-        public static git_result git_mailmap_from_buffer(out git_mailmap @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string buf, size_t len)
+        public static git_result git_mailmap_from_buffer(out git_mailmap @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string buf, size_t len)
         {
             var __result__ = git_mailmap_from_buffer__(out @out, buf, len).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_mailmap_from_buffer", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_mailmap_from_buffer__(out git_mailmap @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string buf, size_t len);
+        private static extern git_result git_mailmap_from_buffer__(out git_mailmap @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string buf, size_t len);
         
         /// <summary>
         /// Create a new mailmap instance from a repository, loading mailmap files based
@@ -109,14 +109,14 @@ namespace GitLib
         /// <remarks>
         /// The lifetime of the strings are tied to `mm`, `name`, and `email` parameters.
         /// </remarks>
-        public static git_result git_mailmap_resolve(out string real_name, out string real_email, git_mailmap mm, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string email)
+        public static git_result git_mailmap_resolve(out string real_name, out string real_email, git_mailmap mm, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string email)
         {
             var __result__ = git_mailmap_resolve__(out real_name, out real_email, mm, name, email).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_mailmap_resolve", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_mailmap_resolve__(out string real_name, out string real_email, git_mailmap mm, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string email);
+        private static extern git_result git_mailmap_resolve__(out string real_name, out string real_email, git_mailmap mm, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string email);
         
         /// <summary>
         /// Resolve a signature to use real names and emails with a mailmap.

@@ -87,14 +87,14 @@ namespace GitLib
         /// information on the syntax accepted.The returned object should be released with `git_object_free` when no
         /// longer needed.
         /// </remarks>
-        public static git_result git_revparse_single(out git_object @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string spec)
+        public static git_result git_revparse_single(out git_object @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string spec)
         {
             var __result__ = git_revparse_single__(out @out, repo, spec).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_revparse_single", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_revparse_single__(out git_object @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string spec);
+        private static extern git_result git_revparse_single__(out git_object @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string spec);
         
         /// <summary>
         /// Find a single object and intermediate reference by a revision string.
@@ -121,14 +121,14 @@ namespace GitLib
         /// in, `reference_out` will be valued as well.The returned object should be released with `git_object_free` and the
         /// returned reference with `git_reference_free` when no longer needed.
         /// </remarks>
-        public static git_result git_revparse_ext(out git_object object_out, out git_reference reference_out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string spec)
+        public static git_result git_revparse_ext(out git_object object_out, out git_reference reference_out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string spec)
         {
             var __result__ = git_revparse_ext__(out object_out, out reference_out, repo, spec).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_revparse_ext", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_revparse_ext__(out git_object object_out, out git_reference reference_out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string spec);
+        private static extern git_result git_revparse_ext__(out git_object object_out, out git_reference reference_out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string spec);
         
         /// <summary>
         /// Parse a revision string for `from`, `to`, and intent.
@@ -143,13 +143,13 @@ namespace GitLib
         /// http://git-scm.com/docs/git-rev-parse.html#_specifying_revisions for
         /// information on the syntax accepted.
         /// </remarks>
-        public static git_result git_revparse(ref git_revspec revspec, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string spec)
+        public static git_result git_revparse(ref git_revspec revspec, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string spec)
         {
             var __result__ = git_revparse__(ref revspec, repo, spec).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_revparse", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_revparse__(ref git_revspec revspec, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string spec);
+        private static extern git_result git_revparse__(ref git_revspec revspec, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string spec);
     }
 }

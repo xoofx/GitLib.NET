@@ -415,25 +415,25 @@ namespace GitLib
             /// <summary>
             /// alternative checkout path to workdir
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
             public string target_directory;
             
             /// <summary>
             /// the name of the common ancestor side of conflicts
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
             public string ancestor_label;
             
             /// <summary>
             /// the name of the "our" side of conflicts
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
             public string our_label;
             
             /// <summary>
             /// the name of the "their" side of conflicts
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
             public string their_label;
             
             /// <summary>
@@ -445,10 +445,10 @@ namespace GitLib
         }
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_checkout_notify_cb(git_checkout_notify_t why, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string path, in git_diff_file baseline, in git_diff_file target, in git_diff_file workdir, IntPtr payload);
+        public delegate int git_checkout_notify_cb(git_checkout_notify_t why, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string path, in git_diff_file baseline, in git_diff_file target, in git_diff_file workdir, IntPtr payload);
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate void git_checkout_progress_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string path, size_t completed_steps, size_t total_steps, IntPtr payload);
+        public delegate void git_checkout_progress_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string path, size_t completed_steps, size_t total_steps, IntPtr payload);
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate void git_checkout_perfdata_cb(in git_checkout_perfdata perfdata, IntPtr payload);

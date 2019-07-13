@@ -1130,7 +1130,7 @@ namespace GitLib
         {
             public git_oid id;
             
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
             public string path;
             
             public git_off_t size;
@@ -1275,22 +1275,22 @@ namespace GitLib
             /// The virtual "directory" prefix for old file names in hunk headers.
             /// Default is "a".
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
             public string old_prefix;
             
             /// <summary>
             /// The virtual "directory" prefix for new file names in hunk headers.
             /// Defaults to "b".
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
             public string new_prefix;
         }
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_diff_notify_cb(git_diff diff_so_far, in git_diff_delta delta_to_add, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string matched_pathspec, IntPtr payload);
+        public delegate int git_diff_notify_cb(git_diff diff_so_far, in git_diff_delta delta_to_add, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string matched_pathspec, IntPtr payload);
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_diff_progress_cb(git_diff diff_so_far, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string old_path, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string new_path, IntPtr payload);
+        public delegate int git_diff_progress_cb(git_diff diff_so_far, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string old_path, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string new_path, IntPtr payload);
         
         /// <summary>
         /// The contents of one of the files in a binary diff.
@@ -1306,7 +1306,7 @@ namespace GitLib
             /// <summary>
             /// The binary data, deflated.
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
             public string data;
             
             /// <summary>
@@ -1448,7 +1448,7 @@ namespace GitLib
             /// <summary>
             /// Pointer to diff text, not NUL-byte terminated
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
             public string content;
         }
         
@@ -1461,12 +1461,12 @@ namespace GitLib
             public file_signature_delegate file_signature;
             
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate int file_signature_delegate(out IntPtr @out, in git_diff_file file, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string fullpath, IntPtr payload);
+            public delegate int file_signature_delegate(out IntPtr @out, in git_diff_file file, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string fullpath, IntPtr payload);
             
             public buffer_signature_delegate buffer_signature;
             
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate int buffer_signature_delegate(out IntPtr @out, in git_diff_file file, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string buf, size_t buflen, IntPtr payload);
+            public delegate int buffer_signature_delegate(out IntPtr @out, in git_diff_file file, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string buf, size_t buflen, IntPtr payload);
             
             public free_signature_delegate free_signature;
             
@@ -1600,13 +1600,13 @@ namespace GitLib
             /// <summary>
             /// Summary of the change
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
             public string summary;
             
             /// <summary>
             /// Commit message's body
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
             public string body;
             
             /// <summary>
@@ -1998,14 +1998,14 @@ namespace GitLib
         /// to 1 and no call to the hunk_cb nor line_cb will be made (unless you pass
         /// `GIT_DIFF_FORCE_TEXT` of course).
         /// </remarks>
-        public static git_result git_diff_blobs(git_blob old_blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string old_as_path, git_blob new_blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string new_as_path, in git_diff_options options, git_diff_file_cb file_cb, git_diff_binary_cb binary_cb, git_diff_hunk_cb hunk_cb, git_diff_line_cb line_cb, IntPtr payload)
+        public static git_result git_diff_blobs(git_blob old_blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string old_as_path, git_blob new_blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string new_as_path, in git_diff_options options, git_diff_file_cb file_cb, git_diff_binary_cb binary_cb, git_diff_hunk_cb hunk_cb, git_diff_line_cb line_cb, IntPtr payload)
         {
             var __result__ = git_diff_blobs__(old_blob, old_as_path, new_blob, new_as_path, options, file_cb, binary_cb, hunk_cb, line_cb, payload).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_diff_blobs", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_diff_blobs__(git_blob old_blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string old_as_path, git_blob new_blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string new_as_path, in git_diff_options options, git_diff_file_cb file_cb, git_diff_binary_cb binary_cb, git_diff_hunk_cb hunk_cb, git_diff_line_cb line_cb, IntPtr payload);
+        private static extern git_result git_diff_blobs__(git_blob old_blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string old_as_path, git_blob new_blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string new_as_path, in git_diff_options options, git_diff_file_cb file_cb, git_diff_binary_cb binary_cb, git_diff_hunk_cb hunk_cb, git_diff_line_cb line_cb, IntPtr payload);
         
         /// <summary>
         /// Directly run a diff between a blob and a buffer.
@@ -2030,14 +2030,14 @@ namespace GitLib
         /// entire content of the buffer added).  Passing NULL to the buffer will do
         /// the reverse, with GIT_DELTA_REMOVED and blob content removed.
         /// </remarks>
-        public static git_result git_diff_blob_to_buffer(git_blob old_blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string old_as_path, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string buffer, size_t buffer_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string buffer_as_path, in git_diff_options options, git_diff_file_cb file_cb, git_diff_binary_cb binary_cb, git_diff_hunk_cb hunk_cb, git_diff_line_cb line_cb, IntPtr payload)
+        public static git_result git_diff_blob_to_buffer(git_blob old_blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string old_as_path, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string buffer, size_t buffer_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string buffer_as_path, in git_diff_options options, git_diff_file_cb file_cb, git_diff_binary_cb binary_cb, git_diff_hunk_cb hunk_cb, git_diff_line_cb line_cb, IntPtr payload)
         {
             var __result__ = git_diff_blob_to_buffer__(old_blob, old_as_path, buffer, buffer_len, buffer_as_path, options, file_cb, binary_cb, hunk_cb, line_cb, payload).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_diff_blob_to_buffer", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_diff_blob_to_buffer__(git_blob old_blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string old_as_path, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string buffer, size_t buffer_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string buffer_as_path, in git_diff_options options, git_diff_file_cb file_cb, git_diff_binary_cb binary_cb, git_diff_hunk_cb hunk_cb, git_diff_line_cb line_cb, IntPtr payload);
+        private static extern git_result git_diff_blob_to_buffer__(git_blob old_blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string old_as_path, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string buffer, size_t buffer_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string buffer_as_path, in git_diff_options options, git_diff_file_cb file_cb, git_diff_binary_cb binary_cb, git_diff_hunk_cb hunk_cb, git_diff_line_cb line_cb, IntPtr payload);
         
         /// <summary>
         /// Directly run a diff between two buffers.
@@ -2060,14 +2060,14 @@ namespace GitLib
         /// context, so the `git_diff_file` parameters to the callbacks will be
         /// faked a la the rules for `git_diff_blobs()`.
         /// </remarks>
-        public static git_result git_diff_buffers(IntPtr old_buffer, size_t old_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string old_as_path, IntPtr new_buffer, size_t new_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string new_as_path, in git_diff_options options, git_diff_file_cb file_cb, git_diff_binary_cb binary_cb, git_diff_hunk_cb hunk_cb, git_diff_line_cb line_cb, IntPtr payload)
+        public static git_result git_diff_buffers(IntPtr old_buffer, size_t old_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string old_as_path, IntPtr new_buffer, size_t new_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string new_as_path, in git_diff_options options, git_diff_file_cb file_cb, git_diff_binary_cb binary_cb, git_diff_hunk_cb hunk_cb, git_diff_line_cb line_cb, IntPtr payload)
         {
             var __result__ = git_diff_buffers__(old_buffer, old_len, old_as_path, new_buffer, new_len, new_as_path, options, file_cb, binary_cb, hunk_cb, line_cb, payload).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_diff_buffers", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_diff_buffers__(IntPtr old_buffer, size_t old_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string old_as_path, IntPtr new_buffer, size_t new_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string new_as_path, in git_diff_options options, git_diff_file_cb file_cb, git_diff_binary_cb binary_cb, git_diff_hunk_cb hunk_cb, git_diff_line_cb line_cb, IntPtr payload);
+        private static extern git_result git_diff_buffers__(IntPtr old_buffer, size_t old_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string old_as_path, IntPtr new_buffer, size_t new_len, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string new_as_path, in git_diff_options options, git_diff_file_cb file_cb, git_diff_binary_cb binary_cb, git_diff_hunk_cb hunk_cb, git_diff_line_cb line_cb, IntPtr payload);
         
         /// <summary>
         /// Read the contents of a git patch file into a `git_diff` object.
@@ -2086,14 +2086,14 @@ namespace GitLib
         /// implementation, it will not read unified diffs produced by
         /// the `diff` program, nor any other types of patch files.
         /// </remarks>
-        public static git_result git_diff_from_buffer(out git_diff @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string content, size_t content_len)
+        public static git_result git_diff_from_buffer(out git_diff @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string content, size_t content_len)
         {
             var __result__ = git_diff_from_buffer__(out @out, content, content_len).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_diff_from_buffer", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_diff_from_buffer__(out git_diff @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string content, size_t content_len);
+        private static extern git_result git_diff_from_buffer__(out git_diff @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string content, size_t content_len);
         
         /// <summary>
         /// Accumulate diff statistics for all patches.

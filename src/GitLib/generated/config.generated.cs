@@ -133,13 +133,13 @@ namespace GitLib
             /// <summary>
             /// Name of the entry (normalised)
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
             public string name;
             
             /// <summary>
             /// String value of the entry
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
             public string value;
             
             /// <summary>
@@ -196,7 +196,7 @@ namespace GitLib
         {
             public git_cvar_t cvar_type;
             
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))]
             public string str_match;
             
             public int map_value;
@@ -326,14 +326,14 @@ namespace GitLib
         /// of the config file instances in order (instances with
         /// a higher priority level will be accessed first).
         /// </remarks>
-        public static git_result git_config_add_file_ondisk(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, git_config_level_t level, git_repository repo, int force)
+        public static git_result git_config_add_file_ondisk(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path, git_config_level_t level, git_repository repo, int force)
         {
             var __result__ = git_config_add_file_ondisk__(cfg, path, level, repo, force).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_config_add_file_ondisk", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_config_add_file_ondisk__(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, git_config_level_t level, git_repository repo, int force);
+        private static extern git_result git_config_add_file_ondisk__(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path, git_config_level_t level, git_repository repo, int force);
         
         /// <summary>
         /// Create a new config instance containing a single on-disk file
@@ -347,14 +347,14 @@ namespace GitLib
         /// - git_config_new
         /// - git_config_add_file_ondisk
         /// </remarks>
-        public static git_result git_config_open_ondisk(out git_config @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path)
+        public static git_result git_config_open_ondisk(out git_config @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path)
         {
             var __result__ = git_config_open_ondisk__(out @out, path).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_config_open_ondisk", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_config_open_ondisk__(out git_config @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path);
+        private static extern git_result git_config_open_ondisk__(out git_config @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path);
         
         /// <summary>
         /// Build a single-level focused config object from a multi-level one.
@@ -432,14 +432,14 @@ namespace GitLib
         /// <remarks>
         /// Free the git_config_entry after use with `git_config_entry_free()`.
         /// </remarks>
-        public static git_result git_config_get_entry(out IntPtr @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
+        public static git_result git_config_get_entry(out IntPtr @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name)
         {
             var __result__ = git_config_get_entry__(out @out, cfg, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_config_get_entry", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_config_get_entry__(out IntPtr @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
+        private static extern git_result git_config_get_entry__(out IntPtr @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name);
         
         /// <summary>
         /// Get the value of an integer config variable.
@@ -453,14 +453,14 @@ namespace GitLib
         /// defined level. A higher level means a higher priority. The
         /// first occurrence of the variable will be returned here.
         /// </remarks>
-        public static git_result git_config_get_int32(out int @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
+        public static git_result git_config_get_int32(out int @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name)
         {
             var __result__ = git_config_get_int32__(out @out, cfg, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_config_get_int32", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_config_get_int32__(out int @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
+        private static extern git_result git_config_get_int32__(out int @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name);
         
         /// <summary>
         /// Get the value of a long integer config variable.
@@ -474,14 +474,14 @@ namespace GitLib
         /// defined level. A higher level means a higher priority. The
         /// first occurrence of the variable will be returned here.
         /// </remarks>
-        public static git_result git_config_get_int64(out long @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
+        public static git_result git_config_get_int64(out long @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name)
         {
             var __result__ = git_config_get_int64__(out @out, cfg, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_config_get_int64", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_config_get_int64__(out long @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
+        private static extern git_result git_config_get_int64__(out long @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name);
         
         /// <summary>
         /// Get the value of a boolean config variable.
@@ -496,14 +496,14 @@ namespace GitLib
         /// defined level. A higher level means a higher priority. The
         /// first occurrence of the variable will be returned here.
         /// </remarks>
-        public static git_result git_config_get_bool(out int @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
+        public static git_result git_config_get_bool(out int @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name)
         {
             var __result__ = git_config_get_bool__(out @out, cfg, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_config_get_bool", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_config_get_bool__(out int @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
+        private static extern git_result git_config_get_bool__(out int @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name);
         
         /// <summary>
         /// Get the value of a path config variable.
@@ -519,14 +519,14 @@ namespace GitLib
         /// defined level. A higher level means a higher priority. The
         /// first occurrence of the variable will be returned here.
         /// </remarks>
-        public static git_result git_config_get_path(out git_buf @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
+        public static git_result git_config_get_path(out git_buf @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name)
         {
             var __result__ = git_config_get_path__(out @out, cfg, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_config_get_path", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_config_get_path__(out git_buf @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
+        private static extern git_result git_config_get_path__(out git_buf @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name);
         
         /// <summary>
         /// Get the value of a string config variable.
@@ -542,14 +542,14 @@ namespace GitLib
         /// defined level. A higher level means a higher priority. The
         /// first occurrence of the variable will be returned here.
         /// </remarks>
-        public static git_result git_config_get_string(out string @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
+        public static git_result git_config_get_string(out string @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name)
         {
             var __result__ = git_config_get_string__(out @out, cfg, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_config_get_string", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_config_get_string__(out string @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
+        private static extern git_result git_config_get_string__(out string @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name);
         
         /// <summary>
         /// Get the value of a string config variable.
@@ -563,14 +563,14 @@ namespace GitLib
         /// defined level. A higher level means a higher priority. The
         /// first occurrence of the variable will be returned here.
         /// </remarks>
-        public static git_result git_config_get_string_buf(out git_buf @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
+        public static git_result git_config_get_string_buf(out git_buf @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name)
         {
             var __result__ = git_config_get_string_buf__(out @out, cfg, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_config_get_string_buf", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_config_get_string_buf__(out git_buf @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
+        private static extern git_result git_config_get_string_buf__(out git_buf @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name);
         
         /// <summary>
         /// Get each value of a multivar in a foreach callback
@@ -587,7 +587,7 @@ namespace GitLib
         /// subsection is left unchanged.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_config_get_multivar_foreach(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string regexp, git_config_foreach_cb callback, IntPtr payload);
+        public static extern int git_config_get_multivar_foreach(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string regexp, git_config_foreach_cb callback, IntPtr payload);
         
         /// <summary>
         /// Get each value of a multivar
@@ -603,7 +603,7 @@ namespace GitLib
         /// subsection is left unchanged.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_config_multivar_iterator_new(out git_config_iterator @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string regexp);
+        public static extern int git_config_multivar_iterator_new(out git_config_iterator @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string regexp);
         
         /// <summary>
         /// Return the current entry and advance the iterator
@@ -639,14 +639,14 @@ namespace GitLib
         /// <param name="name">the variable's name</param>
         /// <param name="value">Integer value for the variable</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_config_set_int32(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, int value)
+        public static git_result git_config_set_int32(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, int value)
         {
             var __result__ = git_config_set_int32__(cfg, name, value).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_config_set_int32", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_config_set_int32__(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, int value);
+        private static extern git_result git_config_set_int32__(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, int value);
         
         /// <summary>
         /// Set the value of a long integer config variable in the config file
@@ -656,14 +656,14 @@ namespace GitLib
         /// <param name="name">the variable's name</param>
         /// <param name="value">Long integer value for the variable</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_config_set_int64(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, long value)
+        public static git_result git_config_set_int64(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, long value)
         {
             var __result__ = git_config_set_int64__(cfg, name, value).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_config_set_int64", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_config_set_int64__(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, long value);
+        private static extern git_result git_config_set_int64__(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, long value);
         
         /// <summary>
         /// Set the value of a boolean config variable in the config file
@@ -673,14 +673,14 @@ namespace GitLib
         /// <param name="name">the variable's name</param>
         /// <param name="value">the value to store</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_config_set_bool(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, int value)
+        public static git_result git_config_set_bool(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, int value)
         {
             var __result__ = git_config_set_bool__(cfg, name, value).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_config_set_bool", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_config_set_bool__(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, int value);
+        private static extern git_result git_config_set_bool__(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, int value);
         
         /// <summary>
         /// Set the value of a string config variable in the config file
@@ -694,14 +694,14 @@ namespace GitLib
         /// A copy of the string is made and the user is free to use it
         /// afterwards.
         /// </remarks>
-        public static git_result git_config_set_string(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string value)
+        public static git_result git_config_set_string(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string value)
         {
             var __result__ = git_config_set_string__(cfg, name, value).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_config_set_string", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_config_set_string__(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string value);
+        private static extern git_result git_config_set_string__(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string value);
         
         /// <summary>
         /// Set a multivar in the local config file.
@@ -714,7 +714,7 @@ namespace GitLib
         /// The regular expression is applied case-sensitively on the value.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_config_set_multivar(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string regexp, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string value);
+        public static extern int git_config_set_multivar(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string regexp, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string value);
         
         /// <summary>
         /// Delete a config variable from the config file
@@ -723,7 +723,7 @@ namespace GitLib
         /// <param name="cfg">the configuration</param>
         /// <param name="name">the variable to delete</param>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_config_delete_entry(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
+        public static extern int git_config_delete_entry(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name);
         
         /// <summary>
         /// Deletes one or several entries from a multivar in the local config file.
@@ -735,14 +735,14 @@ namespace GitLib
         /// <remarks>
         /// The regular expression is applied case-sensitively on the value.
         /// </remarks>
-        public static git_result git_config_delete_multivar(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string regexp)
+        public static git_result git_config_delete_multivar(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string regexp)
         {
             var __result__ = git_config_delete_multivar__(cfg, name, regexp).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_config_delete_multivar", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_config_delete_multivar__(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string regexp);
+        private static extern git_result git_config_delete_multivar__(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string regexp);
         
         /// <summary>
         /// Perform an operation on each config variable.
@@ -792,7 +792,7 @@ namespace GitLib
         /// subsection is left unchanged.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_config_iterator_glob_new(out git_config_iterator @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string regexp);
+        public static extern int git_config_iterator_glob_new(out git_config_iterator @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string regexp);
         
         /// <summary>
         /// Perform an operation on each config variable matching a regular expression.
@@ -811,7 +811,7 @@ namespace GitLib
         /// the variable name: the case-insensitive parts are lower-case.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_config_foreach_match(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string regexp, git_config_foreach_cb callback, IntPtr payload);
+        public static extern int git_config_foreach_match(git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string regexp, git_config_foreach_cb callback, IntPtr payload);
         
         /// <summary>
         /// Query the value of a config variable and return it mapped to
@@ -835,14 +835,14 @@ namespace GitLib
         /// the given constant will be stored in `out`, and likewise for "default".If not a single match can be made to store in `out`, an error code will be
         /// returned.
         /// </remarks>
-        public static git_result git_config_get_mapped(out int @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, in git_cvar_map maps, size_t map_n)
+        public static git_result git_config_get_mapped(out int @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, in git_cvar_map maps, size_t map_n)
         {
             var __result__ = git_config_get_mapped__(out @out, cfg, name, maps, map_n).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_config_get_mapped", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_config_get_mapped__(out int @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, in git_cvar_map maps, size_t map_n);
+        private static extern git_result git_config_get_mapped__(out int @out, git_config cfg, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, in git_cvar_map maps, size_t map_n);
         
         /// <summary>
         /// Maps a string value to an integer constant
@@ -852,7 +852,7 @@ namespace GitLib
         /// <param name="map_n">number of mapping objects in `maps`</param>
         /// <param name="value">value to parse</param>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_config_lookup_map_value(out int @out, in git_cvar_map maps, size_t map_n, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string value);
+        public static extern int git_config_lookup_map_value(out int @out, in git_cvar_map maps, size_t map_n, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string value);
         
         /// <summary>
         /// Parse a string value as a bool.
@@ -865,7 +865,7 @@ namespace GitLib
         /// Valid values for false are: 'false', 'no', 'off', 0
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_config_parse_bool(out int @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string value);
+        public static extern int git_config_parse_bool(out int @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string value);
         
         /// <summary>
         /// Parse a string value as an int32.
@@ -878,7 +878,7 @@ namespace GitLib
         /// or 1073741824 prior to output.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_config_parse_int32(out int @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string value);
+        public static extern int git_config_parse_int32(out int @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string value);
         
         /// <summary>
         /// Parse a string value as an int64.
@@ -891,7 +891,7 @@ namespace GitLib
         /// or 1073741824 prior to output.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_config_parse_int64(out long @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string value);
+        public static extern int git_config_parse_int64(out long @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string value);
         
         /// <summary>
         /// Parse a string value as a path.
@@ -905,7 +905,7 @@ namespace GitLib
         /// returned.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_config_parse_path(out git_buf @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string value);
+        public static extern int git_config_parse_path(out git_buf @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string value);
         
         /// <summary>
         /// Perform an operation on each config variable in a given config backend,
@@ -922,7 +922,7 @@ namespace GitLib
         /// subsection is left unchanged.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_config_backend_foreach_match(git_config_backend backend, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string regexp, git_config_foreach_cb callback, IntPtr payload);
+        public static extern int git_config_backend_foreach_match(git_config_backend backend, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string regexp, git_config_foreach_cb callback, IntPtr payload);
         
         /// <summary>
         /// Lock the backend with the highest priority

@@ -77,14 +77,14 @@ namespace GitLib
         /// <remarks>
         /// The iterator must be freed manually by the user.
         /// </remarks>
-        public static git_result git_note_iterator_new(out IntPtr @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string notes_ref)
+        public static git_result git_note_iterator_new(out IntPtr @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string notes_ref)
         {
             var __result__ = git_note_iterator_new__(out @out, repo, notes_ref).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_note_iterator_new", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_note_iterator_new__(out IntPtr @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string notes_ref);
+        private static extern git_result git_note_iterator_new__(out IntPtr @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string notes_ref);
         
         /// <summary>
         /// Creates a new iterator for notes from a commit
@@ -141,14 +141,14 @@ namespace GitLib
         /// <remarks>
         /// The note must be freed manually by the user.
         /// </remarks>
-        public static git_result git_note_read(out git_note @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string notes_ref, in git_oid oid)
+        public static git_result git_note_read(out git_note @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string notes_ref, in git_oid oid)
         {
             var __result__ = git_note_read__(out @out, repo, notes_ref, oid).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_note_read", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_note_read__(out git_note @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string notes_ref, in git_oid oid);
+        private static extern git_result git_note_read__(out git_note @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string notes_ref, in git_oid oid);
         
         /// <summary>
         /// Read the note for an object from a note commit
@@ -192,7 +192,7 @@ namespace GitLib
         /// <param name="note">the note</param>
         /// <returns>the note message</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_note_message(git_note note);
         
         /// <summary>
@@ -216,14 +216,14 @@ namespace GitLib
         /// <param name="note">Content of the note to add for object oid</param>
         /// <param name="force">Overwrite existing note</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_note_create(out git_oid @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string notes_ref, in git_signature author, in git_signature committer, in git_oid oid, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string note, int force)
+        public static git_result git_note_create(out git_oid @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string notes_ref, in git_signature author, in git_signature committer, in git_oid oid, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string note, int force)
         {
             var __result__ = git_note_create__(out @out, repo, notes_ref, author, committer, oid, note, force).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_note_create", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_note_create__(out git_oid @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string notes_ref, in git_signature author, in git_signature committer, in git_oid oid, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string note, int force);
+        private static extern git_result git_note_create__(out git_oid @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string notes_ref, in git_signature author, in git_signature committer, in git_oid oid, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string note, int force);
         
         /// <summary>
         /// Add a note for an object from a commit
@@ -244,14 +244,14 @@ namespace GitLib
         /// This function will create a notes commit for a given object,
         /// the commit is a dangling commit, no reference is created.
         /// </remarks>
-        public static git_result git_note_commit_create(ref git_oid notes_commit_out, ref git_oid notes_blob_out, git_repository repo, git_commit parent, in git_signature author, in git_signature committer, in git_oid oid, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string note, int allow_note_overwrite)
+        public static git_result git_note_commit_create(ref git_oid notes_commit_out, ref git_oid notes_blob_out, git_repository repo, git_commit parent, in git_signature author, in git_signature committer, in git_oid oid, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string note, int allow_note_overwrite)
         {
             var __result__ = git_note_commit_create__(ref notes_commit_out, ref notes_blob_out, repo, parent, author, committer, oid, note, allow_note_overwrite).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_note_commit_create", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_note_commit_create__(ref git_oid notes_commit_out, ref git_oid notes_blob_out, git_repository repo, git_commit parent, in git_signature author, in git_signature committer, in git_oid oid, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string note, int allow_note_overwrite);
+        private static extern git_result git_note_commit_create__(ref git_oid notes_commit_out, ref git_oid notes_blob_out, git_repository repo, git_commit parent, in git_signature author, in git_signature committer, in git_oid oid, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string note, int allow_note_overwrite);
         
         /// <summary>
         /// Remove the note for an object
@@ -263,14 +263,14 @@ namespace GitLib
         /// <param name="committer">signature of the notes commit committer</param>
         /// <param name="oid">OID of the git object to remove the note from</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_note_remove(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string notes_ref, in git_signature author, in git_signature committer, in git_oid oid)
+        public static git_result git_note_remove(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string notes_ref, in git_signature author, in git_signature committer, in git_oid oid)
         {
             var __result__ = git_note_remove__(repo, notes_ref, author, committer, oid).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_note_remove", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_note_remove__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string notes_ref, in git_signature author, in git_signature committer, in git_oid oid);
+        private static extern git_result git_note_remove__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string notes_ref, in git_signature author, in git_signature committer, in git_oid oid);
         
         /// <summary>
         /// Remove the note for an object
@@ -330,13 +330,13 @@ namespace GitLib
         /// to stop looping.</param>
         /// <param name="payload">Extra parameter to callback function.</param>
         /// <returns>0 on success, non-zero callback return value, or error code</returns>
-        public static git_result git_note_foreach(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string notes_ref, git_note_foreach_cb note_cb, IntPtr payload)
+        public static git_result git_note_foreach(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string notes_ref, git_note_foreach_cb note_cb, IntPtr payload)
         {
             var __result__ = git_note_foreach__(repo, notes_ref, note_cb, payload).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_note_foreach", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_note_foreach__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string notes_ref, git_note_foreach_cb note_cb, IntPtr payload);
+        private static extern git_result git_note_foreach__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string notes_ref, git_note_foreach_cb note_cb, IntPtr payload);
     }
 }

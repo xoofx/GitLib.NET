@@ -112,7 +112,7 @@ namespace GitLib
             /// The name of the branch to checkout. NULL means use the
             /// remote's default branch.
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
             public string checkout_branch;
             
             /// <summary>
@@ -144,10 +144,10 @@ namespace GitLib
         }
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_repository_create_cb(out git_repository @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string path, int bare, IntPtr payload);
+        public delegate int git_repository_create_cb(out git_repository @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string path, int bare, IntPtr payload);
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_remote_create_cb(out git_remote @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string url, IntPtr payload);
+        public delegate int git_remote_create_cb(out git_remote @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string url, IntPtr payload);
         
         /// <summary>
         /// Initialize git_clone_options structure
@@ -184,13 +184,13 @@ namespace GitLib
         /// git's defaults. You can use the options in the callback to
         /// customize how these are created.
         /// </remarks>
-        public static git_result git_clone(out git_repository @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string local_path, in git_clone_options options)
+        public static git_result git_clone(out git_repository @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string url, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string local_path, in git_clone_options options)
         {
             var __result__ = git_clone__(out @out, url, local_path, options).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_clone", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_clone__(out git_repository @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string local_path, in git_clone_options options);
+        private static extern git_result git_clone__(out git_repository @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string url, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string local_path, in git_clone_options options);
     }
 }

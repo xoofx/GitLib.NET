@@ -63,7 +63,7 @@ namespace GitLib
             public write_delegate write;
             
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate int write_delegate(ref git_odb_stream stream, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string buffer, size_t len);
+            public delegate int write_delegate(ref git_odb_stream stream, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string buffer, size_t len);
             
             public finalize_write_delegate finalize_write;
             
@@ -106,14 +106,14 @@ namespace GitLib
         /// <param name="out">location to store the odb backend pointer</param>
         /// <param name="objects_dir">the Git repository's objects directory</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_odb_backend_pack(out git_odb_backend @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string objects_dir)
+        public static git_result git_odb_backend_pack(out git_odb_backend @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string objects_dir)
         {
             var __result__ = git_odb_backend_pack__(out @out, objects_dir).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_odb_backend_pack", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_odb_backend_pack__(out git_odb_backend @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string objects_dir);
+        private static extern git_result git_odb_backend_pack__(out git_odb_backend @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string objects_dir);
         
         /// <summary>
         /// Create a backend for loose objects
@@ -125,14 +125,14 @@ namespace GitLib
         /// <param name="dir_mode">permissions to use creating a directory or 0 for defaults</param>
         /// <param name="file_mode">permissions to use creating a file or 0 for defaults</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_odb_backend_loose(out git_odb_backend @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string objects_dir, int compression_level, int do_fsync, uint dir_mode, uint file_mode)
+        public static git_result git_odb_backend_loose(out git_odb_backend @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string objects_dir, int compression_level, int do_fsync, uint dir_mode, uint file_mode)
         {
             var __result__ = git_odb_backend_loose__(out @out, objects_dir, compression_level, do_fsync, dir_mode, file_mode).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_odb_backend_loose", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_odb_backend_loose__(out git_odb_backend @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string objects_dir, int compression_level, int do_fsync, uint dir_mode, uint file_mode);
+        private static extern git_result git_odb_backend_loose__(out git_odb_backend @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string objects_dir, int compression_level, int do_fsync, uint dir_mode, uint file_mode);
         
         /// <summary>
         /// Create a backend out of a single packfile
@@ -144,13 +144,13 @@ namespace GitLib
         /// This can be useful for inspecting the contents of a single
         /// packfile.
         /// </remarks>
-        public static git_result git_odb_backend_one_pack(out git_odb_backend @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string index_file)
+        public static git_result git_odb_backend_one_pack(out git_odb_backend @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string index_file)
         {
             var __result__ = git_odb_backend_one_pack__(out @out, index_file).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_odb_backend_one_pack", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_odb_backend_one_pack__(out git_odb_backend @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string index_file);
+        private static extern git_result git_odb_backend_one_pack__(out git_odb_backend @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string index_file);
     }
 }

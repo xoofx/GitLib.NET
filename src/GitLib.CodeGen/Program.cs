@@ -66,7 +66,7 @@ typedef int git_result_bool;
 ",
                 
                 DispatchOutputPerInclude = true,
-                DefaultMarshalForString = new CSharpMarshalAttribute(CSharpUnmanagedKind.CustomMarshaler) { MarshalTypeRef = "typeof(UTF8MarshallerRelaxedNoCleanup)" },
+                DefaultMarshalForString = new CSharpMarshalAttribute(CSharpUnmanagedKind.CustomMarshaler) { MarshalTypeRef = "typeof(UTF8MarshalerRelaxedNoCleanup)" },
 
                 MappingRules =
                 {
@@ -380,7 +380,7 @@ typedef int git_result_bool;
                         if (isIn && !isOut)
                         {
                             csTypeWithAttributes = new CSharpTypeWithAttributes(csTypeWithAttributes.ElementType);
-                            csTypeWithAttributes.Attributes.Add(new CSharpMarshalAttribute(CSharpUnmanagedKind.CustomMarshaler) {MarshalTypeRef = "typeof(UTF8MarshallerStrict)"});
+                            csTypeWithAttributes.Attributes.Add(new CSharpMarshalAttribute(CSharpUnmanagedKind.CustomMarshaler) {MarshalTypeRef = "typeof(UTF8MarshalerStrict)"});
                             csField.FieldType = csTypeWithAttributes;
                         }
                     }
@@ -397,7 +397,7 @@ typedef int git_result_bool;
                 {
                     Attributes =
                     {
-                        new CSharpMarshalAttribute(CSharpUnmanagedKind.CustomMarshaler) {MarshalTypeRef = "typeof(UTF8MarshallerStrict)"}
+                        new CSharpMarshalAttribute(CSharpUnmanagedKind.CustomMarshaler) {MarshalTypeRef = "typeof(UTF8MarshalerStrict)"}
                     }
                 };
                 return;

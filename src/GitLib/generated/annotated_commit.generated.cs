@@ -43,14 +43,14 @@ namespace GitLib
         /// <param name="remote_url">url of the remote</param>
         /// <param name="id">the commit object id of the remote branch</param>
         /// <returns>0 on success or error code</returns>
-        public static git_result git_annotated_commit_from_fetchhead(out git_annotated_commit @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string branch_name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string remote_url, in git_oid id)
+        public static git_result git_annotated_commit_from_fetchhead(out git_annotated_commit @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string branch_name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string remote_url, in git_oid id)
         {
             var __result__ = git_annotated_commit_from_fetchhead__(out @out, repo, branch_name, remote_url, id).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_annotated_commit_from_fetchhead", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_annotated_commit_from_fetchhead__(out git_annotated_commit @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string branch_name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string remote_url, in git_oid id);
+        private static extern git_result git_annotated_commit_from_fetchhead__(out git_annotated_commit @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string branch_name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string remote_url, in git_oid id);
         
         /// <summary>
         /// Creates a `git_annotated_commit` from the given commit id.
@@ -91,14 +91,14 @@ namespace GitLib
         /// http://git-scm.com/docs/git-rev-parse.html#_specifying_revisions for
         /// information on the syntax accepted.
         /// </remarks>
-        public static git_result git_annotated_commit_from_revspec(out git_annotated_commit @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string revspec)
+        public static git_result git_annotated_commit_from_revspec(out git_annotated_commit @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string revspec)
         {
             var __result__ = git_annotated_commit_from_revspec__(out @out, repo, revspec).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_annotated_commit_from_revspec", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_annotated_commit_from_revspec__(out git_annotated_commit @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string revspec);
+        private static extern git_result git_annotated_commit_from_revspec__(out git_annotated_commit @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string revspec);
         
         /// <summary>
         /// Gets the commit ID that the given `git_annotated_commit` refers to.
@@ -114,7 +114,7 @@ namespace GitLib
         /// <param name="commit">the given annotated commit</param>
         /// <returns>ref name.</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_annotated_commit_ref(git_annotated_commit commit);
         
         /// <summary>

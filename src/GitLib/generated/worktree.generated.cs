@@ -119,14 +119,14 @@ namespace GitLib
         /// <param name="repo">The repository containing worktrees</param>
         /// <param name="name">Name of the working tree to look up</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_worktree_lookup(out git_worktree @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
+        public static git_result git_worktree_lookup(out git_worktree @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name)
         {
             var __result__ = git_worktree_lookup__(out @out, repo, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_worktree_lookup", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_worktree_lookup__(out git_worktree @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
+        private static extern git_result git_worktree_lookup__(out git_worktree @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name);
         
         /// <summary>
         /// Open a worktree of a given repository
@@ -200,14 +200,14 @@ namespace GitLib
         /// required data structures inside the repository and check out
         /// the current HEAD at `path`
         /// </remarks>
-        public static git_result git_worktree_add(out git_worktree @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, in git_worktree_add_options opts)
+        public static git_result git_worktree_add(out git_worktree @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path, in git_worktree_add_options opts)
         {
             var __result__ = git_worktree_add__(out @out, repo, name, path, opts).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_worktree_add", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_worktree_add__(out git_worktree @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, in git_worktree_add_options opts);
+        private static extern git_result git_worktree_add__(out git_worktree @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path, in git_worktree_add_options opts);
         
         /// <summary>
         /// Lock worktree if not already locked
@@ -220,7 +220,7 @@ namespace GitLib
         /// working tree is being locked.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_worktree_lock(git_worktree wt, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string reason);
+        public static extern int git_worktree_lock(git_worktree wt, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string reason);
         
         /// <summary>
         /// Unlock a locked worktree
@@ -265,7 +265,7 @@ namespace GitLib
         /// <returns>The worktree's name. The pointer returned is valid for the
         /// lifetime of the git_worktree</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_worktree_name(git_worktree wt);
         
         /// <summary>
@@ -275,7 +275,7 @@ namespace GitLib
         /// <returns>The worktree's filesystem path. The pointer returned
         /// is valid for the lifetime of the git_worktree.</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_worktree_path(git_worktree wt);
         
         /// <summary>

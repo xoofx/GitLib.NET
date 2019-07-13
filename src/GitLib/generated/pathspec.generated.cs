@@ -198,7 +198,7 @@ namespace GitLib
         /// fall back on being case sensitive.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_pathspec_matches_path(git_pathspec ps, uint flags, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path);
+        public static extern int git_pathspec_matches_path(git_pathspec ps, uint flags, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path);
         
         /// <summary>
         /// Match a pathspec against the working directory of a repository.
@@ -333,7 +333,7 @@ namespace GitLib
         /// `git_pathspec_match_diff`.  If so, it will always return NULL.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_pathspec_match_list_entry(git_pathspec_match_list m, size_t pos);
         
         /// <summary>
@@ -371,7 +371,7 @@ namespace GitLib
         /// This will be return NULL for positions out of range.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_pathspec_match_list_failed_entry(git_pathspec_match_list m, size_t pos);
     }
 }

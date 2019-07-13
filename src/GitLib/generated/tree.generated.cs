@@ -90,7 +90,7 @@ namespace GitLib
             /// <summary>
             /// The full path from the root tree
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))]
             public string path;
         }
         
@@ -98,7 +98,7 @@ namespace GitLib
         public delegate int git_treebuilder_filter_cb(git_tree_entry entry, IntPtr payload);
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_treewalk_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string root, git_tree_entry entry, IntPtr payload);
+        public delegate int git_treewalk_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string root, git_tree_entry entry, IntPtr payload);
         
         /// <summary>
         /// Lookup a tree object from the repository.
@@ -182,7 +182,7 @@ namespace GitLib
         /// have to free it, but you must not use it after the git_tree is released.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern git_tree_entry git_tree_entry_byname(git_tree tree, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string filename);
+        public static extern git_tree_entry git_tree_entry_byname(git_tree tree, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string filename);
         
         /// <summary>
         /// Lookup a tree entry by its position in the tree
@@ -223,7 +223,7 @@ namespace GitLib
         /// the user and must be freed explicitly with `git_tree_entry_free()`.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_tree_entry_bypath(out git_tree_entry @out, git_tree root, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path);
+        public static extern int git_tree_entry_bypath(out git_tree_entry @out, git_tree root, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path);
         
         /// <summary>
         /// Duplicate a tree entry
@@ -262,7 +262,7 @@ namespace GitLib
         /// <param name="entry">a tree entry</param>
         /// <returns>the name of the file</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_tree_entry_name(git_tree_entry entry);
         
         /// <summary>
@@ -390,7 +390,7 @@ namespace GitLib
         /// not be freed manually.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern git_tree_entry git_treebuilder_get(git_treebuilder bld, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string filename);
+        public static extern git_tree_entry git_treebuilder_get(git_treebuilder bld, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string filename);
         
         /// <summary>
         /// Add or update an entry to the builder
@@ -414,14 +414,14 @@ namespace GitLib
         /// correct type.  If you do not want this behavior, set the
         /// `GIT_OPT_ENABLE_STRICT_OBJECT_CREATION` library option to false.
         /// </remarks>
-        public static git_result git_treebuilder_insert(out git_tree_entry @out, git_treebuilder bld, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string filename, in git_oid id, git_filemode_t filemode)
+        public static git_result git_treebuilder_insert(out git_tree_entry @out, git_treebuilder bld, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string filename, in git_oid id, git_filemode_t filemode)
         {
             var __result__ = git_treebuilder_insert__(out @out, bld, filename, id, filemode).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_treebuilder_insert", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_treebuilder_insert__(out git_tree_entry @out, git_treebuilder bld, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string filename, in git_oid id, git_filemode_t filemode);
+        private static extern git_result git_treebuilder_insert__(out git_tree_entry @out, git_treebuilder bld, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string filename, in git_oid id, git_filemode_t filemode);
         
         /// <summary>
         /// Remove an entry from the builder by its filename
@@ -429,7 +429,7 @@ namespace GitLib
         /// <param name="bld">Tree builder</param>
         /// <param name="filename">Filename of the entry to remove</param>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_treebuilder_remove(git_treebuilder bld, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string filename);
+        public static extern int git_treebuilder_remove(git_treebuilder bld, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string filename);
         
         /// <summary>
         /// Selectively remove entries in the tree

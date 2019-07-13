@@ -196,7 +196,7 @@ namespace GitLib
             public update_tips_delegate update_tips;
             
             [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-            public delegate int update_tips_delegate([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string refname, in git_oid a, in git_oid b, IntPtr data);
+            public delegate int update_tips_delegate([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string refname, in git_oid a, in git_oid b, IntPtr data);
             
             /// <summary>
             /// Function to call with progress information during pack
@@ -241,7 +241,7 @@ namespace GitLib
         public delegate int git_push_transfer_progress(uint current, uint total, size_t bytes, IntPtr payload);
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_push_update_reference_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string refname, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string status, IntPtr data);
+        public delegate int git_push_update_reference_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string refname, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string status, IntPtr data);
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         public delegate int git_push_negotiation(out IntPtr updates, size_t len, IntPtr payload);
@@ -295,13 +295,13 @@ namespace GitLib
             /// The remote's name.
             /// Setting this to NULL results in an in-memory/anonymous remote.
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
             public string name;
             
             /// <summary>
             /// The fetchspec the remote should use.
             /// </summary>
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
             public string fetchspec;
             
             /// <summary>
@@ -402,14 +402,14 @@ namespace GitLib
         /// <param name="name">the remote's name</param>
         /// <param name="url">the remote's url</param>
         /// <returns>0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
-        public static git_result git_remote_create(out git_remote @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url)
+        public static git_result git_remote_create(out git_remote @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string url)
         {
             var __result__ = git_remote_create__(out @out, repo, name, url).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_remote_create", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_remote_create__(out git_remote @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url);
+        private static extern git_result git_remote_create__(out git_remote @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string url);
         
         /// <summary>
         /// Initialize git_remote_create_options structure
@@ -440,14 +440,14 @@ namespace GitLib
         /// <remarks>
         /// This function allows more fine-grained control over the remote creation.Passing NULL as the opts argument will result in a detached remote.
         /// </remarks>
-        public static git_result git_remote_create_with_opts(out git_remote @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url, in git_remote_create_options opts)
+        public static git_result git_remote_create_with_opts(out git_remote @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string url, in git_remote_create_options opts)
         {
             var __result__ = git_remote_create_with_opts__(out @out, url, opts).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_remote_create_with_opts", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_remote_create_with_opts__(out git_remote @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url, in git_remote_create_options opts);
+        private static extern git_result git_remote_create_with_opts__(out git_remote @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string url, in git_remote_create_options opts);
         
         /// <summary>
         /// Add a remote with the provided fetch refspec (or default if NULL) to the repository's
@@ -459,14 +459,14 @@ namespace GitLib
         /// <param name="url">the remote's url</param>
         /// <param name="fetch">the remote fetch value</param>
         /// <returns>0, GIT_EINVALIDSPEC, GIT_EEXISTS or an error code</returns>
-        public static git_result git_remote_create_with_fetchspec(out git_remote @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string fetch)
+        public static git_result git_remote_create_with_fetchspec(out git_remote @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string url, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string fetch)
         {
             var __result__ = git_remote_create_with_fetchspec__(out @out, repo, name, url, fetch).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_remote_create_with_fetchspec", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_remote_create_with_fetchspec__(out git_remote @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string fetch);
+        private static extern git_result git_remote_create_with_fetchspec__(out git_remote @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string url, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string fetch);
         
         /// <summary>
         /// Create an anonymous remote
@@ -479,14 +479,14 @@ namespace GitLib
         /// Create a remote with the given url in-memory. You can use this when
         /// you have a URL instead of a remote's name.
         /// </remarks>
-        public static git_result git_remote_create_anonymous(out git_remote @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url)
+        public static git_result git_remote_create_anonymous(out git_remote @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string url)
         {
             var __result__ = git_remote_create_anonymous__(out @out, repo, url).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_remote_create_anonymous", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_remote_create_anonymous__(out git_remote @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url);
+        private static extern git_result git_remote_create_anonymous__(out git_remote @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string url);
         
         /// <summary>
         /// Create a remote without a connected local repo
@@ -500,14 +500,14 @@ namespace GitLib
         /// will not consider any repo configuration values (such as insteadof url
         /// substitutions).
         /// </remarks>
-        public static git_result git_remote_create_detached(out git_remote @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url)
+        public static git_result git_remote_create_detached(out git_remote @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string url)
         {
             var __result__ = git_remote_create_detached__(out @out, url).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_remote_create_detached", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_remote_create_detached__(out git_remote @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url);
+        private static extern git_result git_remote_create_detached__(out git_remote @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string url);
         
         /// <summary>
         /// Get the information for a particular remote
@@ -520,14 +520,14 @@ namespace GitLib
         /// The name will be checked for validity.
         /// See `git_tag_create()` for rules about valid names.
         /// </remarks>
-        public static git_result git_remote_lookup(out git_remote @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
+        public static git_result git_remote_lookup(out git_remote @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name)
         {
             var __result__ = git_remote_lookup__(out @out, repo, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_remote_lookup", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_remote_lookup__(out git_remote @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
+        private static extern git_result git_remote_lookup__(out git_remote @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name);
         
         /// <summary>
         /// Create a copy of an existing remote.  All internal strings are also
@@ -562,7 +562,7 @@ namespace GitLib
         /// <param name="remote">the remote</param>
         /// <returns>a pointer to the name or NULL for in-memory remotes</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_remote_name(git_remote remote);
         
         /// <summary>
@@ -575,7 +575,7 @@ namespace GitLib
         /// return the modified URL.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_remote_url(git_remote remote);
         
         /// <summary>
@@ -588,7 +588,7 @@ namespace GitLib
         /// will return the modified URL.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_remote_pushurl(git_remote remote);
         
         /// <summary>
@@ -602,14 +602,14 @@ namespace GitLib
         /// Remote objects already in memory will not be affected. This assumes
         /// the common case of a single-url remote and will otherwise return an error.
         /// </remarks>
-        public static git_result git_remote_set_url(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string remote, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url)
+        public static git_result git_remote_set_url(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string remote, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string url)
         {
             var __result__ = git_remote_set_url__(repo, remote, url).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_remote_set_url", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_remote_set_url__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string remote, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url);
+        private static extern git_result git_remote_set_url__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string remote, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string url);
         
         /// <summary>
         /// Set the remote's url for pushing in the configuration.
@@ -622,7 +622,7 @@ namespace GitLib
         /// the common case of a single-url remote and will otherwise return an error.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_remote_set_pushurl(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string remote, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string url);
+        public static extern int git_remote_set_pushurl(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string remote, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string url);
         
         /// <summary>
         /// Add a fetch refspec to the remote's configuration
@@ -635,14 +635,14 @@ namespace GitLib
         /// Add the given refspec to the fetch list in the configuration. No
         /// loaded remote instances will be affected.
         /// </remarks>
-        public static git_result git_remote_add_fetch(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string remote, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refspec)
+        public static git_result git_remote_add_fetch(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string remote, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string refspec)
         {
             var __result__ = git_remote_add_fetch__(repo, remote, refspec).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_remote_add_fetch", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_remote_add_fetch__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string remote, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refspec);
+        private static extern git_result git_remote_add_fetch__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string remote, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string refspec);
         
         /// <summary>
         /// Get the remote's list of fetch refspecs
@@ -676,14 +676,14 @@ namespace GitLib
         /// Add the given refspec to the push list in the configuration. No
         /// loaded remote instances will be affected.
         /// </remarks>
-        public static git_result git_remote_add_push(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string remote, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refspec)
+        public static git_result git_remote_add_push(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string remote, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string refspec)
         {
             var __result__ = git_remote_add_push__(repo, remote, refspec).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_remote_add_push", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_remote_add_push__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string remote, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refspec);
+        private static extern git_result git_remote_add_push__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string remote, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string refspec);
         
         /// <summary>
         /// Get the remote's list of push refspecs
@@ -961,14 +961,14 @@ namespace GitLib
         /// <param name="download_tags">what the behaviour for downloading tags is for this fetch. This is
         /// ignored for push. This must be the same value passed to `git_remote_download()`.</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_remote_update_tips(git_remote remote, in git_remote_callbacks callbacks, int update_fetchhead, git_remote_autotag_option_t download_tags, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string reflog_message)
+        public static git_result git_remote_update_tips(git_remote remote, in git_remote_callbacks callbacks, int update_fetchhead, git_remote_autotag_option_t download_tags, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string reflog_message)
         {
             var __result__ = git_remote_update_tips__(remote, callbacks, update_fetchhead, download_tags, reflog_message).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_remote_update_tips", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_remote_update_tips__(git_remote remote, in git_remote_callbacks callbacks, int update_fetchhead, git_remote_autotag_option_t download_tags, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string reflog_message);
+        private static extern git_result git_remote_update_tips__(git_remote remote, in git_remote_callbacks callbacks, int update_fetchhead, git_remote_autotag_option_t download_tags, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string reflog_message);
         
         /// <summary>
         /// Download new data and update tips
@@ -984,7 +984,7 @@ namespace GitLib
         /// Convenience function to connect to a remote, download the data,
         /// disconnect and update the remote-tracking branches.
         /// </remarks>
-        public static git_result git_remote_fetch(git_remote remote, string[] refspecs, in git_fetch_options opts, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string reflog_message)
+        public static git_result git_remote_fetch(git_remote remote, string[] refspecs, in git_fetch_options opts, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string reflog_message)
         {
             var refspecs__ = git_strarray.Allocate(refspecs);
             var __result__ = git_remote_fetch__(remote, in refspecs__, opts, reflog_message);
@@ -994,7 +994,7 @@ namespace GitLib
         }
         
         [DllImport(GitLibName, EntryPoint = "git_remote_fetch", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_remote_fetch__(git_remote remote, in git_strarray refspecs, in git_fetch_options opts, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string reflog_message);
+        private static extern git_result git_remote_fetch__(git_remote remote, in git_strarray refspecs, in git_fetch_options opts, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string reflog_message);
         
         /// <summary>
         /// Prune tracking refs that are no longer present on remote
@@ -1058,7 +1058,7 @@ namespace GitLib
         /// will be affected.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_remote_set_autotag(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string remote, git_remote_autotag_option_t value);
+        public static extern int git_remote_set_autotag(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string remote, git_remote_autotag_option_t value);
         
         /// <summary>
         /// Retrieve the ref-prune setting
@@ -1084,7 +1084,7 @@ namespace GitLib
         /// See `git_tag_create()` for rules about valid names.No loaded instances of a the remote with the old name will change
         /// their name or their list of refspecs.
         /// </remarks>
-        public static git_result git_remote_rename(out string[] problems, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string new_name)
+        public static git_result git_remote_rename(out string[] problems, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string new_name)
         {
             git_strarray problems__;
             var __result__ = git_remote_rename__(out problems__, repo, name, new_name).Check();
@@ -1094,7 +1094,7 @@ namespace GitLib
         }
         
         [DllImport(GitLibName, EntryPoint = "git_remote_rename", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_remote_rename__(out git_strarray problems, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string new_name);
+        private static extern git_result git_remote_rename__(out git_strarray problems, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string new_name);
         
         /// <summary>
         /// Ensure the remote name is well-formed.
@@ -1102,7 +1102,7 @@ namespace GitLib
         /// <param name="remote_name">name to be checked.</param>
         /// <returns>1 if the reference name is acceptable; 0 if it isn't</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_remote_is_valid_name([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string remote_name);
+        public static extern int git_remote_is_valid_name([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string remote_name);
         
         /// <summary>
         /// Delete an existing persisted remote.
@@ -1114,14 +1114,14 @@ namespace GitLib
         /// All remote-tracking branches and configuration settings
         /// for the remote will be removed.
         /// </remarks>
-        public static git_result git_remote_delete(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name)
+        public static git_result git_remote_delete(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name)
         {
             var __result__ = git_remote_delete__(repo, name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_remote_delete", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_remote_delete__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
+        private static extern git_result git_remote_delete__(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name);
         
         /// <summary>
         /// Retrieve the name of the remote's default branch

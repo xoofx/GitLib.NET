@@ -119,7 +119,7 @@ namespace GitLib
                     if (index < 0 || index > count) throw new ArgumentOutOfRangeException();
                     unsafe
                     {
-                        return UTF8MarshallerRelaxed.FromNative(((IntPtr*)strings)[index]);
+                        return UTF8MarshalerRelaxed.FromNative(((IntPtr*)strings)[index]);
                     }
                 }
             }
@@ -156,7 +156,7 @@ namespace GitLib
                 };
                 for (int i = 0; i < array.Length; i++)
                 {
-                    ((IntPtr*) nativeArray.strings)[i] = UTF8MarshallerRelaxed.ToNative(array[i]);
+                    ((IntPtr*) nativeArray.strings)[i] = UTF8MarshalerRelaxed.ToNative(array[i]);
                 }
 
                 return nativeArray;
@@ -170,7 +170,7 @@ namespace GitLib
             {
                 for (int i = 0; i < count; i++)
                 {
-                    UTF8MarshallerRelaxed.FreeNative(((IntPtr*) strings)[i]);
+                    UTF8MarshalerRelaxed.FreeNative(((IntPtr*) strings)[i]);
                 }
 
                 count = 0;
@@ -300,7 +300,7 @@ namespace GitLib
         {
             public override string ToString()
             {
-                return UTF8MarshallerRelaxed.FromNative(message);
+                return UTF8MarshalerRelaxed.FromNative(message);
             }
         }
     }

@@ -119,14 +119,14 @@ namespace GitLib
         /// that case, be careful to *not* free the blob until done with the
         /// buffer or copy it into memory you own.
         /// </remarks>
-        public static git_result git_blob_filtered_content(out git_buf @out, git_blob blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string as_path, int check_for_binary_data)
+        public static git_result git_blob_filtered_content(out git_buf @out, git_blob blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string as_path, int check_for_binary_data)
         {
             var __result__ = git_blob_filtered_content__(out @out, blob, as_path, check_for_binary_data).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_blob_filtered_content", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_blob_filtered_content__(out git_buf @out, git_blob blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string as_path, int check_for_binary_data);
+        private static extern git_result git_blob_filtered_content__(out git_buf @out, git_blob blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string as_path, int check_for_binary_data);
         
         /// <summary>
         /// Read a file from the working folder of a repository
@@ -138,14 +138,14 @@ namespace GitLib
         /// <param name="relative_path">file from which the blob will be created,
         /// relative to the repository's working dir</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_blob_create_fromworkdir(ref git_oid id, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string relative_path)
+        public static git_result git_blob_create_fromworkdir(ref git_oid id, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string relative_path)
         {
             var __result__ = git_blob_create_fromworkdir__(ref id, repo, relative_path).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_blob_create_fromworkdir", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_blob_create_fromworkdir__(ref git_oid id, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string relative_path);
+        private static extern git_result git_blob_create_fromworkdir__(ref git_oid id, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string relative_path);
         
         /// <summary>
         /// Read a file from the filesystem and write its content
@@ -156,14 +156,14 @@ namespace GitLib
         /// this repository can be bare or not</param>
         /// <param name="path">file from which the blob will be created</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_blob_create_fromdisk(ref git_oid id, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path)
+        public static git_result git_blob_create_fromdisk(ref git_oid id, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path)
         {
             var __result__ = git_blob_create_fromdisk__(ref id, repo, path).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_blob_create_fromdisk", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_blob_create_fromdisk__(ref git_oid id, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path);
+        private static extern git_result git_blob_create_fromdisk__(ref git_oid id, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path);
         
         /// <summary>
         /// Create a stream to write a new blob into the object db
@@ -186,14 +186,14 @@ namespace GitLib
         /// what git filters should be applied to the object before it is written
         /// to the object database.
         /// </remarks>
-        public static git_result git_blob_create_fromstream(out IntPtr @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string hintpath)
+        public static git_result git_blob_create_fromstream(out IntPtr @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string hintpath)
         {
             var __result__ = git_blob_create_fromstream__(out @out, repo, hintpath).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_blob_create_fromstream", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_blob_create_fromstream__(out IntPtr @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string hintpath);
+        private static extern git_result git_blob_create_fromstream__(out IntPtr @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string hintpath);
         
         /// <summary>
         /// Close the stream and write the blob to the object db

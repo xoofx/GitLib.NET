@@ -153,14 +153,14 @@ namespace GitLib
         /// *' or '['.Any references matching this glob which do not point to a
         /// committish will be ignored.
         /// </remarks>
-        public static git_result git_revwalk_push_glob(git_revwalk walk, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string glob)
+        public static git_result git_revwalk_push_glob(git_revwalk walk, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string glob)
         {
             var __result__ = git_revwalk_push_glob__(walk, glob).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_revwalk_push_glob", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_revwalk_push_glob__(git_revwalk walk, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string glob);
+        private static extern git_result git_revwalk_push_glob__(git_revwalk walk, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string glob);
         
         /// <summary>
         /// Push the repository's HEAD
@@ -213,14 +213,14 @@ namespace GitLib
         /// *' or '['.Any references matching this glob which do not point to a
         /// committish will be ignored.
         /// </remarks>
-        public static git_result git_revwalk_hide_glob(git_revwalk walk, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string glob)
+        public static git_result git_revwalk_hide_glob(git_revwalk walk, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string glob)
         {
             var __result__ = git_revwalk_hide_glob__(walk, glob).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_revwalk_hide_glob", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_revwalk_hide_glob__(git_revwalk walk, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string glob);
+        private static extern git_result git_revwalk_hide_glob__(git_revwalk walk, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string glob);
         
         /// <summary>
         /// Hide the repository's HEAD
@@ -245,14 +245,14 @@ namespace GitLib
         /// <remarks>
         /// The reference must point to a committish.
         /// </remarks>
-        public static git_result git_revwalk_push_ref(git_revwalk walk, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname)
+        public static git_result git_revwalk_push_ref(git_revwalk walk, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string refname)
         {
             var __result__ = git_revwalk_push_ref__(walk, refname).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_revwalk_push_ref", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_revwalk_push_ref__(git_revwalk walk, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname);
+        private static extern git_result git_revwalk_push_ref__(git_revwalk walk, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string refname);
         
         /// <summary>
         /// Hide the OID pointed to by a reference
@@ -263,14 +263,14 @@ namespace GitLib
         /// <remarks>
         /// The reference must point to a committish.
         /// </remarks>
-        public static git_result git_revwalk_hide_ref(git_revwalk walk, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname)
+        public static git_result git_revwalk_hide_ref(git_revwalk walk, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string refname)
         {
             var __result__ = git_revwalk_hide_ref__(walk, refname).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_revwalk_hide_ref", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_revwalk_hide_ref__(git_revwalk walk, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname);
+        private static extern git_result git_revwalk_hide_ref__(git_revwalk walk, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string refname);
         
         /// <summary>
         /// Get the next commit from the revision walk.
@@ -319,14 +319,14 @@ namespace GitLib
         /// &gt; is in the form accepted by 'git_revparse_single'.
         /// The left-hand commit will be hidden and the right-hand commit pushed.
         /// </remarks>
-        public static git_result git_revwalk_push_range(git_revwalk walk, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string range)
+        public static git_result git_revwalk_push_range(git_revwalk walk, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string range)
         {
             var __result__ = git_revwalk_push_range__(walk, range).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_revwalk_push_range", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_revwalk_push_range__(git_revwalk walk, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string range);
+        private static extern git_result git_revwalk_push_range__(git_revwalk walk, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string range);
         
         /// <summary>
         /// Simplify the history by first-parent

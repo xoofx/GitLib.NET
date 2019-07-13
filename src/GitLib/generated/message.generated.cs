@@ -20,10 +20,10 @@ namespace GitLib
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
         public partial struct git_message_trailer
         {
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
             public string key;
             
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
             public string value;
         }
         
@@ -60,14 +60,14 @@ namespace GitLib
         /// <remarks>
         /// Optionally, it can remove lines which start with the comment character.
         /// </remarks>
-        public static git_result git_message_prettify(out git_buf @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message, int strip_comments, sbyte comment_char)
+        public static git_result git_message_prettify(out git_buf @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string message, int strip_comments, sbyte comment_char)
         {
             var __result__ = git_message_prettify__(out @out, message, strip_comments, comment_char).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_message_prettify", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_message_prettify__(out git_buf @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message, int strip_comments, sbyte comment_char);
+        private static extern git_result git_message_prettify__(out git_buf @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string message, int strip_comments, sbyte comment_char);
         
         /// <summary>
         /// Parse trailers out of a message, filling the array pointed to by +arr+.
@@ -80,14 +80,14 @@ namespace GitLib
         /// Trailers are key/value pairs in the last paragraph of a message, not
         /// including any patches or conflicts that may be present.
         /// </remarks>
-        public static git_result git_message_trailers(ref git_message_trailer_array arr, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message)
+        public static git_result git_message_trailers(ref git_message_trailer_array arr, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string message)
         {
             var __result__ = git_message_trailers__(ref arr, message).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_message_trailers", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_message_trailers__(ref git_message_trailer_array arr, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string message);
+        private static extern git_result git_message_trailers__(ref git_message_trailer_array arr, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string message);
         
         /// <summary>
         /// Clean's up any allocated memory in the git_message_trailer_array filled by

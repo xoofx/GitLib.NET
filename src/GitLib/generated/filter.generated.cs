@@ -143,14 +143,14 @@ namespace GitLib
         /// This will return 0 (success) but set the output git_filter_list to NULL
         /// if no filters are requested for the given file.
         /// </remarks>
-        public static git_result git_filter_list_load(out git_filter_list filters, git_repository repo, git_blob blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, git_filter_mode_t mode, uint flags)
+        public static git_result git_filter_list_load(out git_filter_list filters, git_repository repo, git_blob blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path, git_filter_mode_t mode, uint flags)
         {
             var __result__ = git_filter_list_load__(out filters, repo, blob, path, mode, flags).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_filter_list_load", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_filter_list_load__(out git_filter_list filters, git_repository repo, git_blob blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, git_filter_mode_t mode, uint flags);
+        private static extern git_result git_filter_list_load__(out git_filter_list filters, git_repository repo, git_blob blob, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path, git_filter_mode_t mode, uint flags);
         
         /// <summary>
         /// Query the filter list to see if a given filter (by name) will run.
@@ -165,7 +165,7 @@ namespace GitLib
         /// the filter will be applied.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_filter_list_contains(git_filter_list filters, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string name);
+        public static extern int git_filter_list_contains(git_filter_list filters, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string name);
         
         /// <summary>
         /// Apply filter list to a data buffer.
@@ -201,7 +201,7 @@ namespace GitLib
         /// <param name="path">the path of the file to filter, a relative path will be
         /// taken as relative to the workdir</param>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_filter_list_apply_to_file(out git_buf @out, git_filter_list filters, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path);
+        public static extern int git_filter_list_apply_to_file(out git_buf @out, git_filter_list filters, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path);
         
         /// <summary>
         /// Apply a filter list to the contents of a blob
@@ -230,7 +230,7 @@ namespace GitLib
         /// taken as relative to the workdir</param>
         /// <param name="target">the stream into which the data will be written</param>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_filter_list_stream_file(git_filter_list filters, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, ref git_writestream target);
+        public static extern int git_filter_list_stream_file(git_filter_list filters, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path, ref git_writestream target);
         
         /// <summary>
         /// Apply a filter list to a blob as a stream

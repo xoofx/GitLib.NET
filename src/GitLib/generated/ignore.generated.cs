@@ -31,7 +31,7 @@ namespace GitLib
         /// that internal rules list.Example usage:error = git_ignore_add_rule(myrepo, "*.c@ndir /@nFile with space@n ");This would add three rules to the ignores.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_ignore_add_rule(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string rules);
+        public static extern int git_ignore_add_rule(git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string rules);
         
         /// <summary>
         /// Clear ignore rules that were explicitly added.
@@ -61,13 +61,13 @@ namespace GitLib
         /// whether the file is already in the index or committed to the repository.One way to think of this is if you were to do "git check-ignore --no-index"
         /// on the given file, would it be shown or not?
         /// </remarks>
-        public static git_result git_ignore_path_is_ignored(ref int ignored, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path)
+        public static git_result git_ignore_path_is_ignored(ref int ignored, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path)
         {
             var __result__ = git_ignore_path_is_ignored__(ref ignored, repo, path).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_ignore_path_is_ignored", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_ignore_path_is_ignored__(ref int ignored, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path);
+        private static extern git_result git_ignore_path_is_ignored__(ref int ignored, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path);
     }
 }

@@ -222,12 +222,12 @@ namespace GitLib
             
             public ushort flags_extended;
             
-            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))]
+            [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))]
             public string path;
         }
         
         [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
-        public delegate int git_index_matched_path_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string path, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))] string matched_pathspec, IntPtr payload);
+        public delegate int git_index_matched_path_cb([MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string path, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))] string matched_pathspec, IntPtr payload);
         
         /// <summary>
         /// Create a new bare Git index object as a memory representation
@@ -243,14 +243,14 @@ namespace GitLib
         /// will fail with the GIT_ERROR error code.If you need to access the index of an actual repository,
         /// use the `git_repository_index` wrapper.The index must be freed once it's no longer in use.
         /// </remarks>
-        public static git_result git_index_open(out git_index @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string index_path)
+        public static git_result git_index_open(out git_index @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string index_path)
         {
             var __result__ = git_index_open__(out @out, index_path).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_index_open", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_index_open__(out git_index @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string index_path);
+        private static extern git_result git_index_open__(out git_index @out, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string index_path);
         
         /// <summary>
         /// Create an in-memory index object.
@@ -391,7 +391,7 @@ namespace GitLib
         /// <param name="index">an existing index object</param>
         /// <returns>path to index file or NULL for in-memory index</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerRelaxedNoCleanup))]
+        [return:MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerRelaxedNoCleanup))]
         public static extern string git_index_path(git_index index);
         
         /// <summary>
@@ -526,7 +526,7 @@ namespace GitLib
         /// be able to make your own permanent copy of the data if necessary.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern ref readonly git_index_entry git_index_get_bypath(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, int stage);
+        public static extern ref readonly git_index_entry git_index_get_bypath(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path, int stage);
         
         /// <summary>
         /// Remove an entry from the index
@@ -535,14 +535,14 @@ namespace GitLib
         /// <param name="path">path to search</param>
         /// <param name="stage">stage to search</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_index_remove(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, int stage)
+        public static git_result git_index_remove(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path, int stage)
         {
             var __result__ = git_index_remove__(index, path, stage).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_index_remove", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_index_remove__(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path, int stage);
+        private static extern git_result git_index_remove__(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path, int stage);
         
         /// <summary>
         /// Remove all entries from the index under a given directory
@@ -551,14 +551,14 @@ namespace GitLib
         /// <param name="dir">container directory path</param>
         /// <param name="stage">stage to search</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_index_remove_directory(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string dir, int stage)
+        public static git_result git_index_remove_directory(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string dir, int stage)
         {
             var __result__ = git_index_remove_directory__(index, dir, stage).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_index_remove_directory", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_index_remove_directory__(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string dir, int stage);
+        private static extern git_result git_index_remove_directory__(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string dir, int stage);
         
         /// <summary>
         /// Add or update an index entry from an in-memory struct
@@ -651,14 +651,14 @@ namespace GitLib
         /// file will no longer be marked as conflicting.  The data about
         /// the conflict will be moved to the "resolve undo" (REUC) section.
         /// </remarks>
-        public static git_result git_index_add_bypath(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path)
+        public static git_result git_index_add_bypath(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path)
         {
             var __result__ = git_index_add_bypath__(index, path).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_index_add_bypath", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_index_add_bypath__(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path);
+        private static extern git_result git_index_add_bypath__(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path);
         
         /// <summary>
         /// Add or update an index entry from a buffer in memory
@@ -702,14 +702,14 @@ namespace GitLib
         /// file will no longer be marked as conflicting.  The data about
         /// the conflict will be moved to the "resolve undo" (REUC) section.
         /// </remarks>
-        public static git_result git_index_remove_bypath(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path)
+        public static git_result git_index_remove_bypath(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path)
         {
             var __result__ = git_index_remove_bypath__(index, path).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_index_remove_bypath", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_index_remove_bypath__(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path);
+        private static extern git_result git_index_remove_bypath__(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path);
         
         /// <summary>
         /// Add or update index entries matching files in the working directory.
@@ -834,7 +834,7 @@ namespace GitLib
         /// <param name="path">path to search</param>
         /// <returns>a zero-based position in the index if found; GIT_ENOTFOUND otherwise</returns>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_index_find(ref size_t at_pos, git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path);
+        public static extern int git_index_find(ref size_t at_pos, git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path);
         
         /// <summary>
         /// Find the first position of any entries matching a prefix. To find the first position
@@ -844,14 +844,14 @@ namespace GitLib
         /// <param name="index">an existing index object</param>
         /// <param name="prefix">the prefix to search for</param>
         /// <returns>0 with valid value in at_pos; an error code otherwise</returns>
-        public static git_result git_index_find_prefix(ref size_t at_pos, git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string prefix)
+        public static git_result git_index_find_prefix(ref size_t at_pos, git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string prefix)
         {
             var __result__ = git_index_find_prefix__(ref at_pos, index, prefix).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_index_find_prefix", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_index_find_prefix__(ref size_t at_pos, git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string prefix);
+        private static extern git_result git_index_find_prefix__(ref size_t at_pos, git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string prefix);
         
         /// <summary>
         /// Add or update index entries to represent a conflict.  Any staged
@@ -891,14 +891,14 @@ namespace GitLib
         /// `git_index_entry` struct is a publicly defined struct, you should
         /// be able to make your own permanent copy of the data if necessary.
         /// </remarks>
-        public static git_result git_index_conflict_get(out IntPtr ancestor_out, out IntPtr our_out, out IntPtr their_out, git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path)
+        public static git_result git_index_conflict_get(out IntPtr ancestor_out, out IntPtr our_out, out IntPtr their_out, git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path)
         {
             var __result__ = git_index_conflict_get__(out ancestor_out, out our_out, out their_out, index, path).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_index_conflict_get", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_index_conflict_get__(out IntPtr ancestor_out, out IntPtr our_out, out IntPtr their_out, git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path);
+        private static extern git_result git_index_conflict_get__(out IntPtr ancestor_out, out IntPtr our_out, out IntPtr their_out, git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path);
         
         /// <summary>
         /// Removes the index entries that represent a conflict of a single file.
@@ -906,14 +906,14 @@ namespace GitLib
         /// <param name="index">an existing index object</param>
         /// <param name="path">path to remove conflicts for</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_index_conflict_remove(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path)
+        public static git_result git_index_conflict_remove(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path)
         {
             var __result__ = git_index_conflict_remove__(index, path).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_index_conflict_remove", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_index_conflict_remove__(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string path);
+        private static extern git_result git_index_conflict_remove__(git_index index, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string path);
         
         /// <summary>
         /// Remove all conflicts in the index (entries with a stage greater than 0).

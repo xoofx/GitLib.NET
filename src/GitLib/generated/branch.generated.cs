@@ -58,14 +58,14 @@ namespace GitLib
         /// already exists with the given name, it'll be replaced.The returned reference must be freed by the user.The branch name will be checked for validity.
         /// See `git_tag_create()` for rules about valid names.
         /// </remarks>
-        public static git_result git_branch_create(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string branch_name, git_commit target, int force)
+        public static git_result git_branch_create(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string branch_name, git_commit target, int force)
         {
             var __result__ = git_branch_create__(out @out, repo, branch_name, target, force).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_branch_create", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_branch_create__(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string branch_name, git_commit target, int force);
+        private static extern git_result git_branch_create__(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string branch_name, git_commit target, int force);
         
         /// <summary>
         /// Create a new branch pointing at a target commit
@@ -78,7 +78,7 @@ namespace GitLib
         /// specified by a user, allowing for more exact reflog messages.See the documentation for `git_branch_create()`.
         /// </remarks>
         [DllImport(GitLibName, CallingConvention = CallingConvention.Cdecl)]
-        public static extern int git_branch_create_from_annotated(out git_reference ref_out, git_repository repository, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string branch_name, git_annotated_commit commit, int force);
+        public static extern int git_branch_create_from_annotated(out git_reference ref_out, git_repository repository, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string branch_name, git_annotated_commit commit, int force);
         
         /// <summary>
         /// Delete an existing branch reference.
@@ -152,14 +152,14 @@ namespace GitLib
         /// The new branch name will be checked for validity.
         /// See `git_tag_create()` for rules about valid names.
         /// </remarks>
-        public static git_result git_branch_move(out git_reference @out, git_reference branch, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string new_branch_name, int force)
+        public static git_result git_branch_move(out git_reference @out, git_reference branch, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string new_branch_name, int force)
         {
             var __result__ = git_branch_move__(out @out, branch, new_branch_name, force).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_branch_move", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_branch_move__(out git_reference @out, git_reference branch, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string new_branch_name, int force);
+        private static extern git_result git_branch_move__(out git_reference @out, git_reference branch, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string new_branch_name, int force);
         
         /// <summary>
         /// Lookup a branch by its name in a repository.
@@ -176,14 +176,14 @@ namespace GitLib
         /// The generated reference must be freed by the user.The branch name will be checked for validity.
         /// See `git_tag_create()` for rules about valid names.
         /// </remarks>
-        public static git_result git_branch_lookup(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string branch_name, git_branch_t branch_type)
+        public static git_result git_branch_lookup(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string branch_name, git_branch_t branch_type)
         {
             var __result__ = git_branch_lookup__(out @out, repo, branch_name, branch_type).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_branch_lookup", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_branch_lookup__(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string branch_name, git_branch_t branch_type);
+        private static extern git_result git_branch_lookup__(out git_reference @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string branch_name, git_branch_t branch_type);
         
         /// <summary>
         /// Return the name of the given local or remote branch.
@@ -233,14 +233,14 @@ namespace GitLib
         /// <param name="upstream_name">remote-tracking or local branch to set as
         /// upstream. Pass NULL to unset.</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_branch_set_upstream(git_reference branch, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string upstream_name)
+        public static git_result git_branch_set_upstream(git_reference branch, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string upstream_name)
         {
             var __result__ = git_branch_set_upstream__(branch, upstream_name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_branch_set_upstream", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_branch_set_upstream__(git_reference branch, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string upstream_name);
+        private static extern git_result git_branch_set_upstream__(git_reference branch, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string upstream_name);
         
         /// <summary>
         /// Return the name of the reference supporting the remote tracking branch,
@@ -252,14 +252,14 @@ namespace GitLib
         /// <param name="refname">reference name of the local branch.</param>
         /// <returns>0, GIT_ENOTFOUND when no remote tracking reference exists,
         /// otherwise an error code.</returns>
-        public static git_result git_branch_upstream_name(out git_buf @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname)
+        public static git_result git_branch_upstream_name(out git_buf @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string refname)
         {
             var __result__ = git_branch_upstream_name__(out @out, repo, refname).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_branch_upstream_name", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_branch_upstream_name__(out git_buf @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname);
+        private static extern git_result git_branch_upstream_name__(out git_buf @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string refname);
         
         /// <summary>
         /// Determine if the current local branch is pointed at by HEAD.
@@ -290,14 +290,14 @@ namespace GitLib
         /// when no remote matching remote was found,
         /// GIT_EAMBIGUOUS when the branch maps to several remotes,
         /// otherwise an error code.</returns>
-        public static git_result git_branch_remote_name(out git_buf @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string canonical_branch_name)
+        public static git_result git_branch_remote_name(out git_buf @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string canonical_branch_name)
         {
             var __result__ = git_branch_remote_name__(out @out, repo, canonical_branch_name).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_branch_remote_name", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_branch_remote_name__(out git_buf @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string canonical_branch_name);
+        private static extern git_result git_branch_remote_name__(out git_buf @out, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string canonical_branch_name);
         
         /// <summary>
         /// Retrieve the name of the upstream remote of a local branch
@@ -306,13 +306,13 @@ namespace GitLib
         /// <param name="repo">the repository in which to look</param>
         /// <param name="refname">the full name of the branch</param>
         /// <returns>0 or an error code</returns>
-        public static git_result git_branch_upstream_remote(ref git_buf buf, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname)
+        public static git_result git_branch_upstream_remote(ref git_buf buf, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string refname)
         {
             var __result__ = git_branch_upstream_remote__(ref buf, repo, refname).Check();
             return __result__;
         }
         
         [DllImport(GitLibName, EntryPoint = "git_branch_upstream_remote", CallingConvention = CallingConvention.Cdecl)]
-        private static extern git_result git_branch_upstream_remote__(ref git_buf buf, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshallerStrict))] string refname);
+        private static extern git_result git_branch_upstream_remote__(ref git_buf buf, git_repository repo, [MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(UTF8MarshalerStrict))] string refname);
     }
 }
